@@ -1,0 +1,13 @@
+//boostrap overwrites
+
+.border-bottom { 
+    border-bottom: 1px solid $light-grey; 
+}
+
+.bg-dark {
+    background-color: $dark-grey !important;
+}
+
+.hide{
+    display: none!important;
+}

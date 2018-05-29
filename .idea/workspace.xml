@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b80e5c83-70f4-4d16-8317-3555c563fea1" name="Default" comment="first Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/tronwalletex.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jest/cssTransform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jest/fileTransform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/paths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/polyfills.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack.config.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack.config.prod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpackDevServer.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/tron_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/css/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/css/pe-icon-7-stroke.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pe-icon-7-stroke.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pe-icon-7-stroke.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pe-icon-7-stroke.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Pe-icon-7-stroke.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/default-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/face-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/faces/tim_vector.jpe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/loading-bubbles.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/new_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/reactlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sidebar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sidebar-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sidebar-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sidebar-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/sidebar-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/tim_80x80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_alerts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_cards.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_chartist.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_checkbox-radio-switch.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_footers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_inputs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_misc.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_navbars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_responsive.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_sidebar-and-main-panel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_tables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_typography.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_cards.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_chartist.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_inputs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_morphing-buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_navbars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_social-buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_tabs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_transparency.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/lbd/mixins/_vendor-prefixes.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/light-bootstrap-dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/sass/light-bootstrap-dashboard.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Content.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomButton/CustomButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MainWrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notifications/NotbeforeAddWallet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notifications/Notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/account/Account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/account/FreezeBalanceModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/account/TokensView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/account/Transactions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/account/Votes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/ExternalUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/PaginationBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/SearchBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/TimeAgoI18N.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/loaders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dialogs/ExternalUrlWarning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dialogs/TestNetWarning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/text/Text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tokens/TokenCreate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tokens/TokenForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tokens/TokensView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transactions/CommonTransfers_js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transactions/TransfersList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transfer/Receive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transfer/Send.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transfer/SendOption.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transfer/WalletOption.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tronwalletexloader/TronLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/wallet/AddWallet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/wallet/Paging.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/wallet/Transactions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/wallet/Wallet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/wallet/notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/block-cube.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/icon-96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/trans_tron_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/tron.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/tron_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/actions/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/actions/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/appReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/balancesReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/combine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/tokensReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/transferReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/voteReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mainRedux/reducers/welletsReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/registerServiceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/encryption_js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/bootstrap-overwrites.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/utilities/bg-colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/utilities/box-shadows.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/utilities/general.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/utilities/line-heights.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/utilities/text-colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/br.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/translations/zh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/formHelper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/timing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/variables/Variables.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/components/dialogs/TestNetWarning.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="513" />
+    <option name="y" value="-4" />
+    <option name="width" value="1265" />
+    <option name="height" value="636" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tronwalletex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tronwalletex" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tronwalletex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tronwalletex" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tronwalletex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tronwalletex" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tronwalletex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tronwalletex" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tronwalletex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tronwalletex" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="wallet" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b80e5c83-70f4-4d16-8317-3555c563fea1" name="Default" comment="" />
+      <created>1527632856686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527632856686</updated>
+      <workItem from="1527632860139" duration="608000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="608000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24960877" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.32917318" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32917318" />
+      <window_info id="npm" side_tool="true" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32917318" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.24960877" />
+      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32917318" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32917318" />
+      <window_info anchor="bottom" id="Find" order="6" />
+      <window_info active="true" anchor="bottom" id="Messages" order="4" visible="true" weight="0.32917318" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first Commit" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/wallet/TronWalletExNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1604">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/wallet/VoteOverView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/popup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/jest/fileTransform.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/fonts/Pe-icon-7-stroke.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/sass/lbd/_responsive.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dialogs/TestNetWarning.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding>
+            <element signature="e#30#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

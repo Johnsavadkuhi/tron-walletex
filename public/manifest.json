@@ -1,0 +1,20 @@
+
+{
+  "manifest_version": 2,
+  "name": "TrxWallet",
+  "description": "this is a trx wallet",
+  "version": "0.0.1",
+  "homepage_url": "https://www.tronscan.org/",
+  "options_page":"index.html",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon" : "tron_logo.png"
+
+  },
+
+  "permissions": [],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+
+
+}

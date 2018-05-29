@@ -1,0 +1,46 @@
+//.bg-purple {
+//    background-color: var(--purple);
+//}
+.bg-primary{
+    background: #163151;
+    background: -webkit-linear-gradient(301deg, rgba(55, 69, 16, 0.64), #64768d,#21a4ce,#19b4ad);
+    background: -o-linear-gradient(301deg, rgba(55, 69, 16, 0.64), #64768d,#21a4ce,#19b4ad);
+    background: linear-gradient(301deg, rgba(55, 69, 16, 0.64), #64768d,#21a4ce,#19b4ad);}
+.bg-footer {
+
+    background-color:#102138 !important;
+
+}
+
+.bg-header {
+
+    background-color: rgba(41, 93, 147, 0.89) !important;
+
+}
+.bg-gradient {
+    background: #163151;
+    background: -webkit-linear-gradient(301deg,#132a45,#143a56,#21a4ce,#19b4ad);
+    background: -o-linear-gradient(301deg,#132a45,#143a56,#21a4ce,#19b4ad);
+    background: linear-gradient(149deg,#132a45,#143a56,#21a4ce,#19b4ad);
+
+    //background: linear-gradient(#8ba7d1, #00c1ee, #00d9d9, #3ae986, #a8eb12);
+}
+.bg-gradient1 {
+    background: #163151;
+    background: -webkit-linear-gradient(301deg, #27ceb4, #15b435, #a2ce6f,#143a56 );
+    background: -o-linear-gradient(301deg, #27ceb4, #15b435, #a2ce6f,#143a56);
+    background: linear-gradient(301deg, #27ceb4, #15b435, #a2ce6f,#143a56);
+
+    //background: linear-gradient(#8ba7d1, #00c1ee, #00d9d9, #3ae986, #a8eb12);
+}
+
+
+.bg-background{
+
+   background: rgba(0, 0, 0, 0) linear-gradient(-12.7deg, rgb(16, 108, 179), rgb(176, 95, 95)) repeat scroll 0% 0%
+}
+
+.bg-nice {
+
+    background: #F7F7F7;
+}
