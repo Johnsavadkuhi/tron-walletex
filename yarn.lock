@@ -62,9 +62,9 @@
   dependencies:
     recompose "^0.26.0 || ^0.27.0"
 
-"@tronscan/client@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.1.0.tgz#fbd4cc42d9e91da398e3d57d3017e34fdb07339b"
+"@tronscan/client@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.1.1.tgz#5c121e6b114706b0c2f042a9829904e6ff7440e4"
   dependencies:
     axios "^0.18.0"
     babel-plugin-transform-class-properties "^6.24.1"
