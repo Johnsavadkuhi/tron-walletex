@@ -476,6 +476,7 @@ class CreateToken extends Component {
     {
         if (selectedValue==="Select your Wallet") {
 
+            if(this.props.wallets.length ===0)
             return (
                 <div className="container pb-3 text-center ">
                     <div className="row">
@@ -507,7 +508,42 @@ class CreateToken extends Component {
                     <div/>
                 </div>
             );
+
+            else {
+
+                return (
+                    <div className="container pb-3 text-center ">
+                        <div className="row">
+
+                            <div className="col-md-3"> </div>
+                            <div className="col-sm-6">
+
+                                <div className="card">
+                                    <div className="card-body">
+
+                                        <div className="text-center p-3">
+
+                                            you have not select your wallet <br/>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div className="col-md-3"> </div>
+
+                        </div>
+
+                        <div/>
+                    </div>
+                );
+
+            }
         }
+
 
         else {
 
