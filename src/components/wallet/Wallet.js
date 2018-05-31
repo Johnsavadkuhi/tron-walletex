@@ -292,17 +292,19 @@ class  Wallet extends Component{
         let trx = find(tokenBalances, token => token.name === "TRX");
 
         return (
+
             <span className="t-3">
 
                 {
                     trx && <span className="text-center">
-                        {/*<h2 className="text-secondary">{tu("trx_balance")}</h2>*/}
 
                         <FormattedNumber  value={trx.balance}/> Trx
+
                     </span>
                 }
 
             </span>
+
         )
     }
 
@@ -806,10 +808,6 @@ class  Wallet extends Component{
 function mapStateToProps(state) {
 
     return {
-
-        // account: state.app.account,
-        // tokenBalances: state.account.tokens,
-        // frozen: state.account.frozen,
 
         balancesReducer: state.balancesReducer.walletBalances,
 
