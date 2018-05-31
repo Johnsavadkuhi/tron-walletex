@@ -489,7 +489,6 @@ class CreateToken extends Component {
 
                                     <div className="text-center p-3">
 
-
                                         you have not added any wallet yet <br/>
                                         click on <a href="#/AddWallet">Create Token</a> to add or generate new wallet
 
