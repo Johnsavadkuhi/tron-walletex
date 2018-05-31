@@ -13,6 +13,7 @@ class NotBeforeAddWallet extends Component {
                 <Grid fluid>
 
                     <div className="card">
+
                         <div className="header  pt-4 text-center">
 
                             <h4>About TRonWalletEx 0.1.beta </h4>
@@ -21,14 +22,12 @@ class NotBeforeAddWallet extends Component {
 
                         <div className="content">
 
-
                             <Row>
+
                                 <Col md={12}>
 
 
                                     <div className="container">
-
-
 
                                         <div className="row">
 
@@ -42,7 +41,6 @@ class NotBeforeAddWallet extends Component {
                                             </span>
 
                                             </div>
-
 
                                         </div>
 
@@ -91,9 +89,9 @@ class NotBeforeAddWallet extends Component {
 
                                         </div>
 
-                                            <div className="col-md-6 ">
+                                            <div className="col-md-12 ">
 
-                                                <div role="alert" className="alert-with-icon alert alert-info m-4 text-center" >
+                                                <div role="alert" className="alert-with-icon alert alert-info m-4 text-center p-4" >
 
                                                 <span data-notify="message" >
 
