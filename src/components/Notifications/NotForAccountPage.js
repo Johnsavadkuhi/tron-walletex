@@ -34,9 +34,11 @@ class NotBeforeAddWallet extends Component {
                                         <div className="col-md-6">
 
                                             <div role="alert" className="alert-with-icon alert alert-info m-4 text-center" >
-                                        <span data-notify="message" >
 
-                                            <h6> you can create multiple wallets </h6>
+                                                <span data-notify="message" >
+
+
+                                                    <h6> you can create multiple wallets </h6>
 
                                             </span>
 

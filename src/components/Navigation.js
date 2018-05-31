@@ -15,6 +15,7 @@ import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import AddIcon from '@material-ui/icons/Add';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import IconButton from "@material-ui/core/IconButton" ;
 
 const styles = theme => ({
     root: {
@@ -203,11 +204,11 @@ class Navigation extends Component {
                     />
 
                     <Chip
-                        avatar={<Avatar><AttachMoneyIcon/> </Avatar>}
+                        avatar={<Avatar> <IconButton ><small className="small">trx</small></IconButton> </Avatar>}
                         label="Buy Token"
                         onClick={this.handleClick("buyToken")}
                         onDelete={this.handleDelete}
-                        className="text-white m-2"
+                        className="text-white mr-2 ml-2 mb-2 "
                         deleteIcon={<DoneIcon/>}
                     />
 
