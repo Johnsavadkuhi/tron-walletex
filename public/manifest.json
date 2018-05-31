@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "TronWalletEx",
   "description": "this is Tron Wallet",
-  "version": "0.1",
+  "version": "1.0",
   "homepage_url": "https://www.tronwalletex.com/",
   "options_page":"index.html",
   "browser_action": {

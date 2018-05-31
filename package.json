@@ -1,6 +1,6 @@
 {
   "name": "tron-walletex",
-  "version": "0.1",
+  "version": "1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.0.0",
@@ -147,4 +147,5 @@
   },
   "author": "",
   "license": "ISC"
+
 }
