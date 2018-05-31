@@ -121,6 +121,7 @@ const renderInputField = ({
 
 class TokenForm extends Component {
   render() {
+
     const {
       handleSubmit,
       submitting,

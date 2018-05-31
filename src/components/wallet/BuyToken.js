@@ -1,31 +1,28 @@
-
-
+/*eslint-disable no-script-url*/
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {filter, find, includes, sortBy, round} from "lodash";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
+
+import {filter, find, includes, round, sortBy} from "lodash";
 // import {loadTokens} from "../../../actions/tokens";
-import {FormattedDate, FormattedNumber, FormattedRelative, FormattedTime, injectIntl} from "react-intl";
+import {FormattedDate, FormattedNumber, FormattedRelative, FormattedTime} from "react-intl";
 import {tu} from "../../utils/i18n";
 import {TextField} from "../../utils/formHelper";
-// import {Client} from "../../../services/api";
 import {ONE_TRX} from "../../constants";
-
-// import {ExternalLink, TokenLink} from "../../common/Links";
 // import Avatar from "../../common/Avatar";
-import {Sticky, StickyContainer} from "react-sticky";
 import SweetAlert from "react-bootstrap-sweetalert";
-
 // import Paging from "../../common/Paging";
 // import {checkPageChanged} from "../../../utils/PagingUtils";
-
 import {Client} from "@tronscan/client";
 import {setTokens} from "../../mainRedux/actions/actions";
+import {Sticky, StickyContainer} from "react-sticky";
 
 
-class TokensView extends Component {
+class BuyToken extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             activeToken: null,
@@ -45,10 +42,26 @@ class TokensView extends Component {
             pageSize: 25,
             page: 0,
             tokens: [],
+            selectedValue:'Select your Wallet',
+            isSelectedValueValid :false
         };
     }
 
+
+    handleChange =event =>{
+
+        if(event.target.value  === "Select your Wallet")
+          this.setState({ selectedValue: event.target.value ,isSelectedValueValid :false })
+        else
+            this.setState({selectedValue: event.target.value ,isSelectedValueValid :true })
+
+
+    };
+
+
+
     toggleToken(token) {
+
         this.setState({
             activeToken: token,
             amount: 0,
@@ -57,21 +70,28 @@ class TokensView extends Component {
             participateSuccess: false,
             loading: false,
         })
+
     }
 
     closeToken() {
+
         this.setState({
+
             activeToken: null,
             amount: 0,
             confirmed: false,
             confirmedParticipate: false,
             participateSuccess: false,
             loading: false,
+
         })
+
     }
 
     getTokenState = (token) => {
+
         let now = new Date().getTime();
+
         if (token.endTime < now || token.percentage === 100) {
             return 'finished';
         }
@@ -84,6 +104,7 @@ class TokensView extends Component {
     };
 
     buyTokens = (token) => {
+
         let {amount} = this.state;
 
         this.setState({
@@ -96,7 +117,7 @@ class TokensView extends Component {
                     cancelBtnBsStyle="default"
                     title="Are you sure?"
                     onConfirm={() => this.confirmTransaction(token)}
-                    onCancel={() => this.setState({ alert: null })}
+                    onCancel={() => this.setState({alert: null})}
                 >
                     Are you sure you want to buy<br/>
                     {amount} {token.name} for {amount * (token.price / ONE_TRX)} TRX?
@@ -119,7 +140,7 @@ class TokensView extends Component {
 
     loadPage = async (page = 0) => {
 
-        this.setState({ loading: true });
+        this.setState({loading: true});
 
         let {pageSize} = this.state;
 
@@ -153,20 +174,43 @@ class TokensView extends Component {
         return (amount > 0);
     };
 
+    whichAddressSelected =() => {
+
+        let {selectedValue} = this.state ;
+
+        let wallet ={address :"" , key:"" , name:""};
+
+        let fr = this.props.wallets ;
+
+        fr.filter(val =>{
+
+            return val.address === selectedValue
+
+        }).map((obj)=>(wallet=obj));
+
+
+        return wallet ;
+
+    };
+
     submit = async (token) => {
 
+        const wallet  =  this.whichAddressSelected();
+
         let {account} = this.props;
+
         let {amount} = this.state;
 
-        this.setState({ loading: true });
+        this.setState({loading: true});
 
         console.log("participate", token);
 
         let isSuccess = await new Client().participateAsset(
-            account.address,
+
+            wallet.address,
             token.ownerAddress,
             token.name,
-            amount * token.price)(account.key);
+            amount * token.price)(wallet.key);
 
         this.setState({
             activeToken: null,
@@ -206,18 +250,20 @@ class TokensView extends Component {
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">
                       <span className="text-success">
-                        <FormattedNumber value={token.issued} className="text-success"/>&nbsp;
+                        <FormattedNumber  value={token.issued} className="text-success "/>&nbsp;
                       </span>
-                                            /&nbsp;
-                                            <span className="text-muted">
+                                            <span className="text-muted ml-0">
                         <FormattedNumber value={token.totalSupply}/>
                       </span>
                                             <span className="float-right text-success">
                         {Math.ceil(token.percentage)}%
                       </span>
-                                            <div className="progress mt-1">
-                                                <div className="progress-bar bg-success" style={{width: token.percentage + '%'}}/>
+
+                                            <div className="progress1 mt-1">
+                                                <div className="progress-bar1 bg-success" style={{width: token.percentage + '%'}}/>
                                             </div>
+
+
                                         </li>
                                         <li className="list-group-item">
                                             {
@@ -242,12 +288,13 @@ class TokensView extends Component {
                                         </li>
                                     </ul>
                                     {
-                                        (/*account.isLoggedIn &&*/ this.getTokenState(token) === 'active') && (
+                                        (this.state.isSelectedValueValid && this.getTokenState(token) === 'active') && (
                                             !this.containsToken(token) ?
                                                 <div className="card-footer bg-transparent border-top-0">
                                                     {
                                                         this.getTokenState(token) === 'finished' ?
-                                                            <button className="btn btn-outline-secondary btn-block" disabled={true}>
+                                                            <button className="btn btn-outline-secondary btn-block"
+                                                                    disabled={true}>
                                                                 Finished
                                                             </button> :
                                                             <button className="btn btn-block btn-outline-primary"
@@ -262,7 +309,8 @@ class TokensView extends Component {
                                                         Price: {(token.price / ONE_TRX)}
                                                     </div>
                                                     <div className="input-group mt-3">
-                                                        <TextField type="number" cmp={this} field="amount" className="form-control"/>
+                                                        <TextField type="number" cmp={this} field="amount"
+                                                                   className="form-control"/>
                                                         <div className="input-group-append">
                                                             <button className="btn btn-success"
                                                                     type="button"
@@ -273,9 +321,10 @@ class TokensView extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="text-center mt-1 text-muted">
-                                                        <FormattedNumber value={amount} /> {token.name}<br/>
+                                                        <FormattedNumber value={amount}/> {token.name}<br/>
                                                         =&nbsp;
-                                                        <b><FormattedNumber value={amount * (token.price / ONE_TRX)}/> TRX</b>
+                                                        <b><FormattedNumber
+                                                            value={amount * (token.price / ONE_TRX)}/> TRX</b>
                                                     </div>
                                                 </div>
                                         )
@@ -330,28 +379,42 @@ class TokensView extends Component {
             <Fragment>
           <span className="text-muted">
             Starts&nbsp;
+
               <FormattedDate value={token.startTime}/>&nbsp;
+
               <FormattedTime value={token.startTime}/>
           </span>
             </Fragment>
         );
     }
 
+
+
     confirmTransaction = (token) => {
+
         this.setState({
             alert: (
-                <SweetAlert success title="Transaction Confirmed" onConfirm={() => this.setState({ alert: null })}>
+                <SweetAlert success title="Transaction Confirmed" onConfirm={() => this.setState({alert: null})}>
                     Successfully received x tokens
                 </SweetAlert>
             )
         });
+
         this.submit(token);
+
     };
+
+
+
 
     render() {
 
-        let {alert, loading, total, pageSize, page} = this.state;
+        let {alert, loading, total, pageSize, page , selectedValue} = this.state;
+
         let {match} = this.props;
+
+        let wallet = this.whichAddressSelected() ;
+
 
         return (
             <Fragment>
@@ -360,20 +423,65 @@ class TokensView extends Component {
                     <Sticky>
                         {
                             ({style, isSticky}) => (
-                                <div className={"row " + (isSticky ? " bg-white no-gutters p-2 border border-secondary  border-top-0" : "")}
-                                     style={{zIndex: 1000, ...style}}>
+                                <div
+                                    className={"row " + (isSticky ? " bg-white no-gutters p-2 border border-secondary  border-top-0" : "")}
+                                    style={{zIndex: 1000, ...style}}>
 
                                     <div className="col-sm-12">
+
                                         {/*<Paging loading={loading} url={match.url} total={total} pageSize={pageSize} page={page}  />*/}
-                                    </div>
+
+                                        </div>
                                 </div>
                             )
                         }
                     </Sticky>
-                    <div className="row mt-3">
-                        <div className="col-sm-12">
-                            {this.renderGrid()}
+
+                    <div className="row mt-4 mb-2">
+                        <div className="col-md-3"> </div>
+                        <div className="col-md-6">
+
+                            <div className="form-group">
+
+                                {/*<label>{tu("wallet")}</label>*/}
+
+                                <div className="input-group mb-3">
+
+                                    <select
+                                        className="form-control"
+                                        onChange={this.handleChange}
+                                        value={selectedValue}>
+
+                                        <option  name="Select your Wallet">Select your Wallet</option>
+                                        {
+                                            this.props.wallets.map((wallet)=>(
+                                                <option key ={wallet.name} value={wallet.address} >
+
+                                                    {wallet.address}
+
+                                                </option>
+
+                                            ))
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+
+
                         </div>
+                        <div className="col-md-3"> </div>
+                    </div>
+
+                    <div className="row mt-3">
+
+                        <div className="col-sm-12">
+
+
+                            {this.renderGrid()}
+
+
+                            </div>
                     </div>
                 </StickyContainer>
             </Fragment>
@@ -382,27 +490,24 @@ class TokensView extends Component {
 }
 
 function mapStateToProps(state) {
-
     return {
-        tokens: state.tokens.tokens,
-        account: state.app.account,
-    };
 
+        wallets : state.walletsReducer.wallets
+
+    };
 }
 
-// const mapDispatchToProps = {
-//     // loadTokens,
-// };
 
-const mapDispatchToProps = (dispatch) =>{
+
+const mapDispatchToProps = (dispatch) => {
 
     return {
 
-        loadTokens:async ()=>{
+        loadTokens: async () => {
 
-            const client = new Client() ;
+            const client = new Client();
 
-            let tokens = await  client.getTokens() ;
+            let tokens = await  client.getTokens();
 
             dispatch(setTokens(tokens));
 
@@ -412,5 +517,6 @@ const mapDispatchToProps = (dispatch) =>{
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(TokensView));
-
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps)
+)( withRouter(BuyToken));

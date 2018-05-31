@@ -2,9 +2,6 @@
 import React from "react";
 import {Sticky, StickyContainer} from "react-sticky";
 import Paging from "./Paging";
-// import {Client} from "../../services/api";
-// import {AddressLink, TransactionHashLink} from "./Links";
-// import {TRXPrice} from "./Price";
 import {ONE_TRX} from "../../constants";
 import {tu} from "../../utils/i18n";
 import TimeAgo from "react-timeago";
@@ -15,6 +12,7 @@ import {Client} from "@tronscan/client";
 export default class Transactions extends React.Component {
 
     constructor(props) {
+
         super(props);
 
         this.state = {

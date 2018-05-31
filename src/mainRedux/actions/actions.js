@@ -100,7 +100,7 @@ export const setLanguage = (language = 'en') => ({
 
 export const loadTokens = () => async (dispatch) => {
 
-    let assets = await new Client().getAssetIssueList();
+    let assets = await new Client().getTokens();
 
     dispatch(setTokens(assets));
 };

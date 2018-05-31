@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Provider} from "react-redux";
 import {configureStore} from "../store";
 import MainWrap from "./MainWrap";
+import { PersistGate } from 'redux-persist/integration/react'
 
 class App extends Component {
 
@@ -9,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             loading: true,
-            store: configureStore(),
+            store: configureStore().store,
         };
     }
 
@@ -17,15 +18,13 @@ class App extends Component {
 
         let {store} = this.state;
 
-        store.subscribe(() => {
-            console.log(store.getState());
-
-        });
 
         return (
 
             <Provider store={store}>
+                <PersistGate loading={null} persistor={configureStore().persistor}>
                 <MainWrap/>
+                </PersistGate>
             </Provider>
 
         );

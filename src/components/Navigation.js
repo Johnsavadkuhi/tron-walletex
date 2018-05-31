@@ -1,41 +1,24 @@
 /*eslint-disable no-script-url*/
 import React, {Component} from 'react';
 // import logo from '../../images/tron_logo.png';
-import Whitelogo from '../images/tron_logo.png' ;
-import Redlogo from '../images/logo.png' ;
-
+import Redlogo from '../images/logo.png';
 // import {routes} from "../../routes";
-import {/*Link ,NavLink,*/ withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 // import {filter} from "lodash";
-import {tu} from "../utils/i18n";
 import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Paper from '@material-ui/core/Paper';
 import {compose} from "redux";
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import SendIcon from '@material-ui/icons/Send';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import AddIcon from '@material-ui/icons/Add';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-
-
- import {Redirect} from "react-router-dom";
-
-
-
-
-
-
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const styles = theme => ({
     root: {
@@ -91,12 +74,16 @@ switch ([name][0])
         case "send":
             window.location = '#/send';
     break ;
-    case "tokens":
-        window.location = '#/tokens';
+    case "buyToken":
+        window.location = '#/BuyToken';
         break ;
 
     case "voting":
         window.location = '#/account/votes';
+        break ;
+
+    case "createToken":
+        window.location = '#/createToken';
         break ;
 
     default:
@@ -212,10 +199,18 @@ switch ([name][0])
                     />
 
                     <Chip
+                        avatar={<Avatar><AttachMoneyIcon/> </Avatar>}
+                        label="Buy Token"
+                        onClick={this.handleClick("buyToken")}
+                        onDelete={this.handleDelete}
+                        className="text-white m-2"
+                        deleteIcon={<DoneIcon />}
+                    />
 
+                    <Chip
                         avatar={<Avatar><MoneyOffIcon/> </Avatar>}
-                        label="Tokens"
-                        onClick={this.handleClick("tokens")}
+                        label="Create Token"
+                        onClick={this.handleClick("createToken")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
                         deleteIcon={<DoneIcon />}

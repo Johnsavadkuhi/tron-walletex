@@ -10,76 +10,40 @@ import Votes from "./components/account/Votes";
 import Send from "./components/transfer/Send";
 import Receive from "./components/transfer/Receive";
 import AddWallet from "./components/wallet/AddWallet";
-import TokensView from "./components/tokens/TokensView";
+import BuyToken from "./components/wallet/BuyToken";
+import CreateToken from "./components/wallet/CreateToken";
+import NotForAccountPage from "./components/Notifications/NotForAccountPage";
+
+
+import TokensView from "./components/wallet/TokensView";
 
 export const routes = [
+
   // {
-  //   path: "/blockchain",
-  //   label: "blockchain",
-  //   components: Blockchain,
-  //   icon: ''
-  // },
-  // {
-  //   path: "/network",
-  //   label: "network",
-  //   components: Representatives,
-  //   icon: '',
+  //   path: "/tokens",
+  //   label: "tokens",
+  //   components: TokensView,
   //   routes: [
   //     {
-  //       label: "nodes",
-  //       path: "/network/nodes",
-  //       components: Nodes,
+  //       label: "view",
+  //       path: "/tokens/view",
+  //       components: TokensView,
   //       icon: ''
   //     },
   //     {
-  //       label: "representatives",
-  //       path: "/network/representatives",
-  //       components: Representatives,
+  //       label: "create",
+  //       path: "/tokens/create",
+  //       components: TokensCreate,
   //       icon: ''
-  //     },
-  //   ]
+  //     }
+  //   ],
+  //   // search: {
+  //   //   label: "search",
+  //   //   components: SearchBar,
+  //   //   exclude: "/tokens/create",
+  //   //   placeholder: "search_token"
+  //   // }
   // },
-  // {
-  //   path: "/block/:id",
-  //   label: "block",
-  //   components: Block,
-  //   icon: '',
-  //   showInMenu: false,
-  // },
-  // {
-  //   path: "/blocks",
-  //   label: "blocks",
-  //   components: Blocks,
-  //   icon: '',
-  //   showInMenu: false,
-  // },
-
-
-  {
-    path: "/tokens",
-    label: "tokens",
-    components: TokensView,
-    routes: [
-      {
-        label: "view",
-        path: "/tokens/view",
-        components: TokensView,
-        icon: ''
-      },
-      {
-        label: "create",
-        path: "/tokens/create",
-        components: TokensCreate,
-        icon: ''
-      }
-    ],
-    // search: {
-    //   label: "search",
-    //   components: SearchBar,
-    //   exclude: "/tokens/create",
-    //   placeholder: "search_token"
-    // }
-  },
 
 
   {
@@ -103,18 +67,27 @@ export const routes = [
         showInMenu:false ,
         component:AddWallet,
     },
+    {
+        path:"/CreateToken",
+        showInMenu:false ,
+        component:CreateToken,
+    },
+
+    {
+        path:"/BuyToken",
+        showInMenu:false ,
+        component:BuyToken,
+    },
 
     {
         path: "/account/votes",
         showInMenu: false,
         component: Votes,
     },
-
     {
-
-        path: "/account/TokensView",
+        path: "/TokensView",
         shoInMenu:false ,
-        components: TokensView,
+        components:TokensView,
     },
 
   {
@@ -122,6 +95,12 @@ export const routes = [
     showInMenu: false,
     component: Account,
   },
+    {
+        path: "/",
+        label: "TronWalletEx",
+        showInMenu: false,
+        component: NotForAccountPage,
+    },
 
 ];
 

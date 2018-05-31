@@ -199,5 +199,24 @@ export const messages = {
     'Open Team Page':'Open Team Page',
     'age':'age',
     'hash':'hash',
+    'Details':'Details',
+    'token_abbr' :'Token Abbreviation',
+    'supply_message' : 'Total amount of tokens which will be in circulation\n',
+    'description_message' : 'A short description of the purpose of the token\n',
+    'Website URL' :'Website URL' ,
+    'exchange_rate_message_0':'Specify the price of a single token by defining how many tokens a participant will receive for every TRX they spend.',
+    'exchange_rate_message_1':'Participants will receive' ,
+    'exchange_rate_message_2':' For every',
+    'exchange_rate_message_3':'TRX',
+    'Frozen Supply':'Frozen Supply',
+    'Amount':'Amount',
+    'Days to freeze':'Days to freeze',
+    "participation_message_0":"Specify the participation period in which tokens will be issued.",
+    "participation_message_1":"During the participation period users can exchange TRX for tokens.",
+    'url_message':'A website where users can find more information about the token',
+    'token_issued_successfully'  :'Token Issued Successfully'
+
+
+
 
 };

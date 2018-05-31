@@ -14,10 +14,13 @@ import {FormattedDate, FormattedNumber, FormattedTime} from "react-intl";
 import {ONE_TRX} from "../../constants";
 import {Client} from "@tronscan/client";
 import FreezeBalanceModal from "../../components/account/FreezeBalanceModal";
-import {buildUnfreezeBalance} from "@tronprotocol/wallet-api/src/utils/transaction";
+import {buildUnfreezeBalance} from "@tronscan/client/src/utils/transactionBuilder";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
-import Transactions from "./Transactions";
 import Transfers from "../transactions/CommonTransfers_js";
+import IconButton from "@material-ui/core/IconButton" ;
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import {compose} from "redux";
 //expand menu
@@ -31,7 +34,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Notifications from "./notifications";
 
 
-// const ITEM_HEIGHT = 48;
+const ITEM_HEIGHT = 48;
 
 
 const styles = theme => ({
@@ -499,35 +502,35 @@ class  Wallet extends Component{
                                     action={
 
                                         <div>
-                                            <Notifications wallet={this.props.walletinfo}/>
+                                            {/*<Notifications wallet={this.props.walletinfo}/>*/}
 
 
-                                            {/*<IconButton*/}
-                                                {/*aria-label="More"*/}
-                                                {/*aria-owns={anchorEl ? 'long-menu' : null}*/}
-                                                {/*aria-haspopup="true"*/}
-                                                {/*onClick={this.handleClick}>*/}
+                                            <IconButton
+                                                aria-label="More"
+                                                aria-owns={anchorEl ? 'long-menu' : null}
+                                                aria-haspopup="true"
+                                                onClick={this.handleClick}>
 
-                                                {/*<MoreVertIcon />*/}
+                                                <MoreVertIcon />
 
-                                            {/*</IconButton>*/}
-                                            {/*<Menu*/}
-                                                {/*id="long-menu"*/}
-                                                {/*anchorEl={anchorEl}*/}
-                                                {/*open={Boolean(anchorEl)}*/}
-                                                {/*onClose={this.handleClose}*/}
-                                                {/*PaperProps={{*/}
-                                                    {/*style: {*/}
-                                                        {/*maxHeight: ITEM_HEIGHT * 4.5,*/}
-                                                        {/*width: 200,*/}
-                                                    {/*},*/}
-                                                {/*}}>*/}
+                                            </IconButton>
+                                            <Menu
+                                                id="long-menu"
+                                                anchorEl={anchorEl}
+                                                open={Boolean(anchorEl)}
+                                                onClose={this.handleClose}
+                                                PaperProps={{
+                                                    style: {
+                                                        maxHeight: ITEM_HEIGHT * 4.5,
+                                                        width: 200,
+                                                    },
+                                                }}>
 
-                                                {/*<MenuItem  onClick={this.handleClose('edite')}>Edit</MenuItem>*/}
-                                                {/*<MenuItem  onClick={this.handleClose('remove')}>Remove</MenuItem>*/}
-                                                {/*)*/}
+                                                <MenuItem  onClick={this.handleClose('edite')}>Edit</MenuItem>
+                                                <MenuItem  onClick={this.handleClose('remove')}>Remove</MenuItem>
+                                                )
 
-                                            {/*</Menu>*/}
+                                            </Menu>
 
 
 
@@ -595,6 +598,9 @@ class  Wallet extends Component{
 
                                                             <div className="card-body">
 
+
+                                                                <p className="text-primary">0</p>
+
                                                               Transactions
 
                                                             </div>
@@ -609,7 +615,7 @@ class  Wallet extends Component{
                                                     <div className="col-me-12">
                                                     <div className="text-center">
 
-                                                        <p className="text-truncate">Address : {address}</p>
+                                                        <p className="text-muted small "> Address : {address} </p>
 
                                                     </div>
                                                 </div>
@@ -634,7 +640,7 @@ class  Wallet extends Component{
                                                 <div className="container">
 
                                                     <div className="row ">
-                                                        <div className="col-md-3"></div>
+                                                        <div className="col-md-3"> </div>
                                                         <div className="col-md-6">
 
                                                             <div className="card" >
@@ -654,7 +660,7 @@ class  Wallet extends Component{
 
 
                                                         </div>
-                                                        <div className="col-md-3"></div>
+                                                        <div className="col-md-3"> </div>
 
                                                     </div>
                                                 </div>
@@ -675,12 +681,13 @@ class  Wallet extends Component{
                                             <div className="container">
 
                                                 <div className="row ">
+
                                                     <div className="col-md-3">
 
 
 
-
                                                     </div>
+
                                                     <div className="col-md-6">
 
                                                         <small className="text-muted mt-2 text-justify">
@@ -712,7 +719,7 @@ class  Wallet extends Component{
 
 
                                                     </div>
-                                                    <div className="col-md-3"></div>
+                                                    <div className="col-md-3"> </div>
 
                                                 </div>
                                             </div>

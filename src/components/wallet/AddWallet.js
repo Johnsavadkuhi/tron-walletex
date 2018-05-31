@@ -276,7 +276,7 @@ class AddWallet extends Component {
 
         return [<h6 className="text-muted"> Enter a Strong Password</h6>,
             <h6 className="text-muted">Download KeyStore</h6>,
-            <h6 className="text-muted">Print Private Key </h6>];
+            <h6 className="text-muted">Copy Private Key </h6>];
     };
 
 
@@ -295,7 +295,7 @@ class AddWallet extends Component {
                   <TextField
                       value={this.state.name}
                       type = "text"
-                      fullWidth
+
                       id = "walletName"
                       label = "Wallet Name"
                       className = "text-center bmd-label-static mt-2"
@@ -305,41 +305,41 @@ class AddWallet extends Component {
                   />
                  <br/>
 
-                  {/*<TextField*/}
-                        {/*value={this.state.password}*/}
-                        {/*type ="password"*/}
-                        {/*required*/}
-                        {/*id = "password"*/}
-                        {/*label = "password"*/}
-                        {/*className = "text-center bmd-label-static mt-2"*/}
-                        {/*margin = "normal"*/}
-                        {/*onChange={this.handleChange("password")}*/}
-                        {/*helperText="Enter at lease 8 characters"*/}
+                  <TextField
+                        value={this.state.password}
+                        type ="password"
+                        required
+                        id = "password"
+                        label = "password"
+                        className = "text-center bmd-label-static mt-2"
+                        margin = "normal"
+                        onChange={this.handleChange("password")}
+                        helperText="Enter at lease 8 characters"
 
-                    {/*/>*/}
+                    />
 
 
-                  <Input
+                  {/*<Input*/}
 
-                      className="text-center bmd-label-static mt-2 mb-3"
-                      type={this.state.showPassword ? 'text' : 'password'}
-                      value={this.state.password}
-                      onChange={this.handleChange('password')}
-                      placeholder="Password"
-                      fullWidth
+                      {/*className="text-center bmd-label-static mt-2 mb-3"*/}
+                      {/*type={this.state.showPassword ? 'text' : 'password'}*/}
+                      {/*value={this.state.password}*/}
+                      {/*onChange={this.handleChange('password')}*/}
+                      {/*placeholder="Password"*/}
+                      {/*fullWidth*/}
 
-                      endAdornment={
-                          <InputAdornment position="end">
-                              <IconButton
-                                  aria-label="Toggle password visibility"
-                                  onClick={this.handleChange("handleClickShowPassword")}
-                                  onMouseDown={this.handleChange("handleMouseDownPassword")}
-                              >
-                                  {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                              </IconButton>
-                          </InputAdornment>
-                      }
-                  />
+                      {/*endAdornment={*/}
+                          {/*<InputAdornment position="end">*/}
+                              {/*<IconButton*/}
+                                  {/*aria-label="Toggle password visibility"*/}
+                                  {/*onClick={this.handleChange("handleClickShowPassword")}*/}
+                                  {/*onMouseDown={this.handleChange("handleMouseDownPassword")}*/}
+                              {/*>*/}
+                                  {/*{this.state.showPassword ? <VisibilityOff /> : <Visibility />}*/}
+                              {/*</IconButton>*/}
+                          {/*</InputAdornment>*/}
+                      {/*}*/}
+                  {/*/>*/}
 
 
 
@@ -526,9 +526,9 @@ class AddWallet extends Component {
             {activeStep === steps.length &&
 
             (
-                <Paper square elevation={0}>
+                <Paper className="text-center" square elevation={0}>
 
-                    <Typography>All steps completed</Typography>
+                    <Typography className="text-primary text-center mb-3">All steps completed</Typography>
 
 
                     <Button onClick={this.handleReset}

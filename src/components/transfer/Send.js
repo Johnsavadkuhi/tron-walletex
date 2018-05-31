@@ -79,8 +79,6 @@ class Send extends React.Component {
       }).map((obj)=>(address=obj.address));
 
 
-
-
     return this.isAddress(to) && token !== "" && this.getSelectedTokenBalance() >= amount && amount > 0 && to !== address;
 
   };

@@ -4,4 +4,6 @@ import 'script-loader!popper.js/dist/umd/popper.min.js';
 
  // import "script-loader!bootstrap-material-design/dist/js/bootstrap-material-design.min";
 
+// import "script-loader!bootstrap/dist/js/bootstrap.min";
+
 import "script-loader!bootstrap-material-design/dist/js/bootstrap-material-design";

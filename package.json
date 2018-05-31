@@ -1,6 +1,6 @@
 {
-  "name": "wallet-web",
-  "version": "0.1.0",
+  "name": "tron-walletex",
+  "version": "0.1.beta",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.0.0",
