@@ -5,7 +5,7 @@ import * as qs from "query-string";
 import {loadTokenBalances} from "../../mainRedux/actions/actions";
 import {tu} from "../../utils/i18n";
 import {Client} from "@tronscan/client";
-import {isAddressValid} from "@tronprotocol/wallet-api/src/utils/crypto";
+import {isAddressValid} from "@tronscan/client/src/utils/crypto";
 import SendOption from "./SendOption";
 import {find} from "lodash";
 import {ONE_TRX} from "../../constants";

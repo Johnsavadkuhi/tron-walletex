@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Alert } from "react-bootstrap";
 
-import Button from "../../components/CustomButton/CustomButton";
+import Button from "../components/CustomButton/CustomButton";
 
 import NotificationSystem from 'react-notification-system';
-import {style} from "../../variables/Variables";
+import {style} from "../variables/Variables";
 
 
 class Notifications extends Component {

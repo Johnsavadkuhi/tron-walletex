@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
-import {ONE_TRX} from "../../constants";
+import {ONE_TRX} from "../constants";
 // import {AddressLink} from "../common/Links";
-import {getNotifyPermission, requestNotifyPermissions, sendNotification} from "../../services/notifications";
+import {getNotifyPermission, requestNotifyPermissions, sendNotification} from "../services/notifications";
 import SweetAlert from "react-bootstrap-sweetalert";
 // import {channel} from "../../services/api";
 import io from "socket.io-client";
@@ -120,7 +120,7 @@ export default class Notifications extends React.Component {
 
                 sendNotification(`Received ${amount} ${trx.tokenName} from ${trx.transferFromAddress}`, {
 
-                    icon: require("../../images/tron_logo.png")
+                    icon: require("../images/tron_logo.png")
 
                 });
             }
@@ -147,7 +147,7 @@ export default class Notifications extends React.Component {
 
             if (vote.candidateAddress === this.props.wallet.address) {
                 sendNotification(`Received ${vote.votes} votes from ${vote.voterAddress}`, {
-                    icon: require("../../images/tron_logo.png")
+                    icon: require("../images/tron_logo.png")
                 });
             }
 

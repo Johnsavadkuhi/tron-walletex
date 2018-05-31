@@ -204,8 +204,8 @@ class Navigation extends Component {
                     />
 
                     <Chip
-                        avatar={<Avatar> <IconButton ><small className="small">trx</small></IconButton> </Avatar>}
-                        label="Buy Token"
+                        avatar={<Avatar> <AttachMoneyIcon/> </Avatar>}
+                        label="Buy Tokens"
                         onClick={this.handleClick("buyToken")}
                         onDelete={this.handleDelete}
                         className="text-white mr-2 ml-2 mb-2 "
