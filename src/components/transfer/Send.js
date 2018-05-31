@@ -525,13 +525,13 @@ class Send extends React.Component {
 
   render() {
 
-
-
-
       return(
-          <div>{
 
-              this.renderWallets()}
+          <div>
+              {
+
+              this.renderWallets()
+          }
 
       </div>
 
