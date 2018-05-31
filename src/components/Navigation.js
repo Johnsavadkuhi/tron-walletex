@@ -1,6 +1,6 @@
 /*eslint-disable no-script-url*/
 import React, {Component} from 'react';
-import Redlogo from '../images/logo.png';
+import Redlogo from '../images/mainLogo.png';
 import {withRouter} from "react-router-dom";
 import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
@@ -42,50 +42,38 @@ class Navigation extends Component {
         }
     }
 
-// componentWillUpdate(nexProps)
-// {
-//     if(this.state.value !== 0 && nexProps)
-//     {
-//         this.setState({value: 0});
-//     }
-//
-// }
-//
-     handleDelete = ()=> {
-        // alert('You clicked the delete icon.'); // eslint-disable-line no-alert
+    handleDelete = () => {
     }
 
-     handleClick = name => event  => {
+    handleClick = name => event => {
 
 
+        switch ([name][0]) {
+            case "myWallets":
+                window.location = '#/account';
+                break;
+            case "addWallet":
+                window.location = '#/AddWallet';
+                break;
+            case "send":
+                window.location = '#/send';
+                break;
+            case "buyToken":
+                window.location = '#/BuyToken';
+                break;
 
-switch ([name][0])
-{
-    case "myWallets":
-        window.location = '#/account';
-        break ;
-    case "addWallet":
-        window.location = '#/AddWallet';
-        break ;
-        case "send":
-            window.location = '#/send';
-    break ;
-    case "buyToken":
-        window.location = '#/BuyToken';
-        break ;
+            case "voting":
+                window.location = '#/account/votes';
+                break;
 
-    case "voting":
-        window.location = '#/account/votes';
-        break ;
+            case "createToken":
+                window.location = '#/createToken';
+                break;
 
-    case "createToken":
-        window.location = '#/createToken';
-        break ;
+            default:
+                return;
 
-    default:
-        return ;
-
-}
+        }
     };
 
     setLanguage = (language) => {
@@ -96,7 +84,6 @@ switch ([name][0])
     render() {
 
 
-
         let {languages, activeLanguage} = this.props;
 
         return (
@@ -104,49 +91,81 @@ switch ([name][0])
             <div>
 
                 <nav className="navbar navbar-expand-md navbar-dark bg-white">
-                <div className="container">
-
-                <button className="navbar-toggler btn bmd-btn-fab dropdown-toggle bg-inverse"
-                type="button" data-toggle="collapse" data-target="#navbar-top">
-                <span className="navbar-toggler-icon text-dark"/>
-                </button>
-
-                <div className="d-md-none pull-right">
-                <img src={Redlogo} className="logo" alt="TronWalletEx"/>
-                </div>
-
-                <div className="collapse navbar-collapse" id="navbar-top">
-                <ul className="navbar-nav mr-auto ">
-                <li className="nav-item d-none d-md-block">
-                <img src={Redlogo} className="logo" alt="Tron"/>
-                </li>
+                    <div className="container">
+                        <div className="navbar-toggler dropdown-toggle" data-toggle="collapse">
 
 
+                                <div className="dropdown">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
 
-                </ul>
+                                        {activeLanguage.toUpperCase()}
 
-                <ul className="navbar-nav navbar-right">
+                                    </button>
 
-                <li className="nav-item dropdown navbar-right mr-4">
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        {
+                                            Object.keys(languages).map(language => (
+                                                <a key={language}
+                                                   className="dropdown-item font-weight-bold text-dark"
+                                                   href="javascript:;"
+                                                   onClick={() => this.setLanguage(language)}>{languages[language]}</a>
+                                            ))
+                                        }
 
-                <a className="nav-link dropdown-toggle dropdown-menu-right font-weight-bold text-dark "
-                data-toggle="dropdown" href="javascript:;">{activeLanguage.toUpperCase()}</a>
+                                    </div>
+                                </div>
 
-                <div className="dropdown-menu bg-light mr-4 pr-4">
 
-                {
-                Object.keys(languages).map(language => (
-                <a key={language}
-                className="dropdown-item font-weight-bold text-dark"
-                href="javascript:;"
-                onClick={() => this.setLanguage(language)}>{languages[language]}</a>
-                ))
-                }
-                </div>
-                </li>
-                </ul>
-                </div>
-                </div>
+
+                        </div>
+
+
+                        <div className="d-md-none pull-right">
+                            <img src={Redlogo} className="logo" alt="TronWalletEx"/>
+                        </div>
+
+                        <div className="collapse navbar-collapse" id="navbar-top">
+                            <ul className="navbar-nav mr-auto ">
+                                <li className="nav-item d-none d-md-block">
+                                    <img src={Redlogo} className="logo" alt="Tron"/>
+                                </li>
+
+
+                            </ul>
+
+                            <ul className="navbar-nav navbar-right mr-4">
+
+                                <div className="dropdown">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+
+                                        {activeLanguage.toUpperCase()}
+
+                                    </button>
+
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        {
+                                        Object.keys(languages).map(language => (
+                                        <a key={language}
+                                        className="dropdown-item font-weight-bold text-dark"
+                                        href="javascript:;"
+                                        onClick={() => this.setLanguage(language)}>{languages[language]}</a>
+                                        ))
+                                        }
+
+                                    </div>
+                                </div>
+
+
+
+                            </ul>
+
+
+                        </div>
+                    </div>
                 </nav>
 
                 <div className="text-center mt-4">
@@ -158,7 +177,7 @@ switch ([name][0])
                         onClick={this.handleClick("myWallets")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
 
                     />
 
@@ -170,7 +189,7 @@ switch ([name][0])
                         onClick={this.handleClick("addWallet")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
                     />
 
                     <Chip
@@ -180,7 +199,7 @@ switch ([name][0])
                         onClick={this.handleClick("send")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
                     />
 
                     <Chip
@@ -189,7 +208,7 @@ switch ([name][0])
                         onClick={this.handleClick("buyToken")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
                     />
 
                     <Chip
@@ -198,7 +217,7 @@ switch ([name][0])
                         onClick={this.handleClick("createToken")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
                     />
 
                     <Chip
@@ -208,37 +227,10 @@ switch ([name][0])
                         onClick={this.handleClick("voting")}
                         onDelete={this.handleDelete}
                         className="text-white m-2"
-                        deleteIcon={<DoneIcon />}
+                        deleteIcon={<DoneIcon/>}
                     />
 
                 </div>
-
-                {/*<Paper className="mr-4 ml-4 ">*/}
-
-                    {/*<div className={classes.root}>*/}
-                        {/*<AppBar position={"sticky"} color="inherit">*/}
-                            {/*<Tabs*/}
-                                {/*fullWidth*/}
-                                {/*className="text-center small"*/}
-                                {/*value={value}*/}
-                                {/*onChange={this.handleChange}*/}
-                                {/*scrollable*/}
-                                {/*scrollButtons="on"*/}
-                                {/*textColor="primary">*/}
-
-                                {/*<Tab href="#/account" label={tu('wallet')}/>*/}
-                                {/*<Tab href="#/AddWallet" label={tu('add')}/>*/}
-                                {/*<Tab href="#/Send" label={tu('send')}/>*/}
-                                {/*<Tab href="#/tokens/view" label="tokens"/>*/}
-                                {/*<Tab href="#/account/votes" label="Votes"/>*/}
-
-                            {/*</Tabs>*/}
-
-                        {/*</AppBar>*/}
-
-                    {/*</div>*/}
-
-                {/*</Paper>*/}
 
             </div>
 
