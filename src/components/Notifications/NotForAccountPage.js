@@ -16,7 +16,7 @@ class NotBeforeAddWallet extends Component {
 
                         <div className="header  pt-4 text-center">
 
-                            <h4>About TRonWalletEx 0.0.1 version </h4>
+                            <h4>About TronWalletEx 0.0.1 version </h4>
 
                         </div>
 
@@ -65,7 +65,7 @@ class NotBeforeAddWallet extends Component {
 
                                                 <span data-notify="message" >
 
-                                            <h6> you can Send TRX and other tokens </h6>
+                                            <h6> you can send TRX and other tokens </h6>
 
                                             </span>
 
@@ -80,7 +80,7 @@ class NotBeforeAddWallet extends Component {
 
                                                 <span data-notify="message" >
 
-                                                 <h6>  you can Buy Tokens </h6>
+                                                 <h6>  you can buy Tokens </h6>
 
                                             </span>
 
@@ -95,7 +95,7 @@ class NotBeforeAddWallet extends Component {
 
                                                 <span data-notify="message" >
 
-                                            <h6> you can create your Own Tokens  </h6>
+                                            <h6> you can create your own Tokens  </h6>
 
                                             </span>
 
