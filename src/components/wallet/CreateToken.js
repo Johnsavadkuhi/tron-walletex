@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {t, tu} from "../../utils/i18n";
 import {Client} from "@tronscan/client";
 import {connect} from "react-redux";
-import {loadTokens} from "../../mainRedux/actions/actions";
+// import {loadTokens} from "../../mainRedux/actions/actions";
 import {TextField} from "../../utils/formHelper";
 import {filter, trim, some, sumBy} from "lodash";
 import {ASSET_ISSUE_COST, ONE_TRX} from "../../constants";
@@ -340,6 +340,7 @@ class CreateToken extends Component {
                     case "totalSupply":
                         value = value > 1 || value === "" ? value : 1;
                         break;
+                    default : return  ;
                 }
             }
             newState[field] = value;
@@ -846,15 +847,13 @@ class CreateToken extends Component {
 
 
                 </div>
-                <div className="col-md-3"></div>
+                <div className="col-md-3"> </div>
 
             </div>
 
                 <div className="row">
                     {
-
-                       this. selectedWallet(selectedValue , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
-
+                        this.selectedWallet(selectedValue , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
                     }
                     {/*{this.avoidCreateToken(issuedAsset)}*/}
 

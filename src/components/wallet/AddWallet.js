@@ -26,12 +26,8 @@ import  {pkToAddress  } from "@tronscan/client/src/utils/crypto";
 import Input from '@material-ui/core/Input';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import NotBeforeAddWallet from "../../components/Notifications/NotbeforeAddWallet";
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import NotificationSystem from 'react-notification-system';
 import {style} from "../../variables/Variables";
-import IconButton from '@material-ui/core/IconButton';
 
 
 /**

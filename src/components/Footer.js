@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import Footer1 from "../components/common/footer";
 export default class Footer extends Component {
 
 

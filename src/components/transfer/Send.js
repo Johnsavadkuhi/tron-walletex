@@ -4,7 +4,6 @@ import React, {Fragment} from "react";
 import * as qs from "query-string";
 import {loadTokenBalances} from "../../mainRedux/actions/actions";
 import {tu} from "../../utils/i18n";
-// import {Client} from "../../../services/api";
 import {Client} from "@tronscan/client";
 import {isAddressValid} from "@tronprotocol/wallet-api/src/utils/crypto";
 import SendOption from "./SendOption";

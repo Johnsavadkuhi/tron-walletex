@@ -1,14 +1,10 @@
 /*eslint-disable no-script-url*/
 import React, {Component} from 'react';
-// import logo from '../../images/tron_logo.png';
 import Redlogo from '../images/logo.png';
-// import {routes} from "../../routes";
 import {withRouter} from "react-router-dom";
-// import {filter} from "lodash";
 import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
 import {compose} from "redux";
-
 import {withStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -92,15 +88,6 @@ switch ([name][0])
 }
     };
 
-
-
-
-    // handleChange = (event, value) => {
-    //
-    //     this.setState({value: value});
-    //
-    // };
-
     setLanguage = (language) => {
         this.props.setLanguage(language);
     };
@@ -108,11 +95,9 @@ switch ([name][0])
 
     render() {
 
-        const {classes} = this.props;
+
 
         let {languages, activeLanguage} = this.props;
-
-        const {value} = this.state;
 
         return (
 

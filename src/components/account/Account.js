@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Wallet from "../wallet/Wallet";
-import Paper from "@material-ui/core/Paper" ;
 
 class Account extends Component {
 

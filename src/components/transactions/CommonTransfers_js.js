@@ -1,16 +1,11 @@
 import React from "react";
 import {Sticky, StickyContainer} from "react-sticky";
 import Paging from "../wallet/Paging";
-// import {Client} from "../../services/api";
 import {Client} from "@tronscan/client";
-
-// import {AddressLink, TransactionHashLink} from "./Links";
-// import {TRXPrice} from "./Price";
 import {ONE_TRX} from "../../constants";
 import {tu} from "../../utils/i18n";
 import TimeAgo from "react-timeago";
-import {TronLoader} from "../tronwalletexloader/TronLoader";
-import {Truncate} from "../text/Text";
+// import {TronLoader} from "../tronwalletexloader/TronLoader";
 import {withTimers} from "../../utils/timing";
 import {FormattedNumber} from "react-intl";
 

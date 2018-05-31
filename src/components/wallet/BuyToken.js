@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 
-import {filter, find, includes, round, sortBy} from "lodash";
+// import {filter, find, includes, round, sortBy} from "lodash";
 // import {loadTokens} from "../../../actions/tokens";
 import {FormattedDate, FormattedNumber, FormattedRelative, FormattedTime} from "react-intl";
 import {tu} from "../../utils/i18n";
@@ -197,7 +197,6 @@ class BuyToken extends Component {
 
         const wallet  =  this.whichAddressSelected();
 
-        let {account} = this.props;
 
         let {amount} = this.state;
 
@@ -222,7 +221,6 @@ class BuyToken extends Component {
 
     renderGrid() {
 
-        let {account} = this.props;
         let {amount, tokens} = this.state;
 
         return (
@@ -409,11 +407,11 @@ class BuyToken extends Component {
 
     render() {
 
-        let {alert, loading, total, pageSize, page , selectedValue} = this.state;
+        let {alert, /*loading, total, pageSize, page*/  selectedValue} = this.state;
 
-        let {match} = this.props;
+        // let {match} = this.props;
 
-        let wallet = this.whichAddressSelected() ;
+        // let wallet = this.whichAddressSelected() ;
 
 
         return (
