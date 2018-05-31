@@ -16,7 +16,7 @@ class NotBeforeAddWallet extends Component {
 
                         <div className="header  pt-4 text-center">
 
-                            <h4>About TRonWalletEx 0.1.beta </h4>
+                            <h4>About TRonWalletEx 0.0.1 version </h4>
 
                         </div>
 
