@@ -2,26 +2,19 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
 
-export function passForm(){
+export function passForm() {
 
-    return(<form>
+    return (<form>
 
-    {/*<TextField*/}
-        {/*id="walletName"*/}
-        {/*label="Name"*/}
-        {/*className="text-center mr-1 bmd-label-static"*/}
-        {/*margin="normal"*/}
-    {/*/><br/>*/}
+            <TextField
 
-    <TextField
-
-    type = "wPassword"
-    required
-    id = "password"
-    label = "password"
-    className = "text-center bmd-label-static mt-2"
-    margin = "normal"
-    />
+                type="wPassword"
+                required
+                id="password"
+                label="password"
+                className="text-center bmd-label-static mt-2"
+                margin="normal"
+            />
 
         </form>
 
@@ -30,7 +23,7 @@ export function passForm(){
 }
 
 
-export  function  _downloadTxtFile  ()  {
+export function _downloadTxtFile() {
     let element = document.createElement("a");
     let file = new Blob([document.getElementById('wepassword').value], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
@@ -38,7 +31,7 @@ export  function  _downloadTxtFile  ()  {
     element.click();
 }
 
-export function  downloadFile (_downloadTxtFile , value){
+export function downloadFile(_downloadTxtFile, value) {
 
     console.log(value);
 
@@ -47,7 +40,7 @@ export function  downloadFile (_downloadTxtFile , value){
         <span>
 
 
-            <input id="wepassword" type="hidden" value={value} />
+            <input id="wepassword" type="hidden" value={value}/>
             <button className="btn btn-info btn-sm " onClick={_downloadTxtFile}> Download password </button>
 
         </span>
@@ -55,17 +48,16 @@ export function  downloadFile (_downloadTxtFile , value){
     );
 }
 
-export function  createAlert(t)
-{
+export function createAlert(t) {
     return (
 
         <div className="alert alert-danger font-weight-bold small" role="alert">
-             {t}
-    </div>);
+            {t}
+        </div>);
 }
 
 
-export const myFunction = ()=> {
+export const myFunction = () => {
     var copyText = document.getElementById("walletPass");
     copyText.select();
     document.execCommand("copy");
@@ -74,7 +66,7 @@ export const myFunction = ()=> {
     tooltip.innerHTML = "Copied: " + copyText.value;
 }
 
-export const outFunc = ()=> {
+export const outFunc = () => {
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copy to clipboard";
 }

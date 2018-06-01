@@ -37,7 +37,8 @@ class Account extends Component {
                                             <div className="text-center p-3">
 
                                                 you have not added any wallet yet <br/>
-                                                click on <a href="#/AddWallet">Add Wallet</a> to add or generate new wallet
+                                                click on <a href="#/AddWallet">Add Wallet</a> to add or generate new
+                                                wallet
 
                                             </div>
 
@@ -49,13 +50,10 @@ class Account extends Component {
                                 <div className="col-md-3"> </div>
 
                             </div>
-
                             <div/>
                         </div>
 
                 }
-
-
 
 
             </div>
