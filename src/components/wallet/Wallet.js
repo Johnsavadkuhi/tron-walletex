@@ -129,7 +129,6 @@ class  Wallet extends Component{
             });
 
 
-            // setTimeout(() => this.reloadTokens(), 1200);
 
             this.reloadTokens() ;
 
