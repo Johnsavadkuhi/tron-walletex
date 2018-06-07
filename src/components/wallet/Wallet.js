@@ -21,7 +21,6 @@ import IconButton from "@material-ui/core/IconButton" ;
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import {compose} from "redux";
 import {withStyles} from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -94,6 +93,7 @@ class  Wallet extends Component{
         let address = this.props.walletinfo.address ;
 
         let {loadTokenBalances , deleteTokensBalances} = this.props;
+
         console.log("ReducerBalances : " , this.props.balancesReducer.length );
 
         if(this.props.balancesReducer.length  > 1 ) {
@@ -152,6 +152,8 @@ class  Wallet extends Component{
         }
     };
 
+
+
     handleClick = event => {
         this.setState({ anchorEl: event.currentTarget });
     };
@@ -173,6 +175,7 @@ class  Wallet extends Component{
         this.setState({ anchorEl: null });
 
     };
+
 
     handleChange =(event , value) => {
 
@@ -818,7 +821,6 @@ const mapDispatchToProps = {
     loadTokenBalances,
     deleteTokensBalances,
     deleteWallet
-
 
 };
 
