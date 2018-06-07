@@ -9,6 +9,10 @@ import {ASSET_ISSUE_COST, ONE_TRX} from "../../constants";
 import {FormattedNumber} from "react-intl";
 import {Alert} from "reactstrap";
 import {addDays, addHours} from "date-fns";
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
+import {decryptString} from "../../services/encryption_js";
+import SweetAlert from "react-bootstrap-sweetalert";
+
 
 function ErrorLabel(error) {
     if (error !== null) {
@@ -47,6 +51,7 @@ class CreateToken extends Component {
             isTokenCreated: false,
             minimumDate: Date.now,
             issuedAsset: null,
+            privateKey:"",
             errors: {
                 name: null,
                 supply: null,
@@ -63,18 +68,37 @@ class CreateToken extends Component {
             submitMessage: null,
             frozenSupply: [],
 
-            selectedValue :"Select your Wallet"
+            selectedWallet :"Select your Wallet",
+            modal:null,
+            modal1:null ,
+            modal2:null
         };
     }
 
 
     handleChange= event=>{
 
-         this.setState({ selectedValue: event.target.value });
+         this.setState({ selectedWallet: event.target.value });
 
          if(event.target.value !=="Select your Wallet") {
 
              this.checkExistingToken(event.target.value);
+
+             this.setState({modal:(
+
+                     <SweetAlert
+                         confirmBtnText="Decrypt"
+                         input
+                         inputType="password"
+                         cancelBtnBsStyle="default"
+                         title={ <small className="small">Enter your wallet password</small>}
+                         required
+                         onConfirm={this.onConfirm}
+                         validationMsg="You must enter your password!"
+                     />
+                 )
+
+             })
          }
          else {
 
@@ -82,11 +106,107 @@ class CreateToken extends Component {
          }
     };
 
+
+    isValidDecryptedPKey = (address ,pKey)=>{
+
+
+        let addr  = "" ;
+
+        try {
+
+            addr  = pkToAddress(pKey);
+
+        }
+        catch (e) {
+
+            console.log(e);
+
+        }
+
+        return addr=== address;
+    };
+
+
+    onConfirm = event =>{
+
+        let { selectedWallet , privateKey} = this.state;
+
+        const obj =  this.props.wallets.filter(val => {
+
+            return selectedWallet === val.address;
+
+        });
+
+        const pKey = decryptString(event , obj[0].key);
+
+
+
+        if( this.isValidDecryptedPKey(selectedWallet , pKey) )
+        {
+
+            this.setState({modal:null , privateKey:pKey});
+
+            this.setState({modal1:(<SweetAlert  success title="Success" onConfirm={this.hideAlert1}>
+
+                    the private key was decrypted successfully
+
+                </SweetAlert> )});
+
+        }else {
+
+            this.setState({modal:null});
+
+            this.setState({modal2: (
+
+                    <SweetAlert danger title="Wrong Password" confirmBtnText="Try again" onConfirm={this.hideAlert2 } >
+
+                        you entered a wrong password! Try again
+
+                    </SweetAlert>
+
+                ) })
+
+        }
+
+    };
+
+
+    hideAlert1 =()=>{
+
+        this.setState({modal1:null });
+
+    };
+
+
+    hideAlert2=()=>{
+
+        this.setState({modal2:null, privateKey:""});
+        this.setState({modal:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small className="small">Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
+                />
+            )
+
+        })
+
+    };
+
+
+
+
     whichAddressSelected =() => {
 
-         let {selectedValue} = this.state ;
+         let {selectedWallet} = this.state ;
 
-         console.log("Selected Value after  Calling CHeckk Exsiting 58: " , selectedValue)
+         console.log("Selected Value after  Calling CHeckk Exsiting 58: " , selectedWallet)
 
          let wallet ={address :"" , key:"" , name:""};
 
@@ -94,7 +214,7 @@ class CreateToken extends Component {
 
          fr.filter(val =>{
 
-             return val.address === selectedValue
+             return val.address === selectedWallet
 
          }).map((obj)=>(wallet=obj));
 
@@ -106,13 +226,8 @@ class CreateToken extends Component {
     submit = async () => {
 
 
+        const {privateKey} = this.state ;
         const wallet = this.whichAddressSelected();
-
-
-        console.log("Wallet : " , wallet  ) ;
-
-
-        // let {account} = this.props
 
 
         this.setState({ loading: true, submitMessage: null });
@@ -130,7 +245,7 @@ class CreateToken extends Component {
                 description: this.state.description,
                 url: this.state.url,
                 frozenSupply: filter(this.state.frozenSupply, fs => fs.amount > 0),
-            })(wallet.key);
+            })(privateKey);
 
             if (success) {
                 this.setState({
@@ -147,7 +262,7 @@ class CreateToken extends Component {
             }
 
         } finally {
-            this.setState({ loading: false });
+            this.setState({ loading: false ,  privateKey:"" });
         }
     };
 
@@ -250,7 +365,7 @@ class CreateToken extends Component {
 
         this.setState({issuedAsset:null});
 
-        let selectedValue = e ;
+        let selectedWallet = e ;
 
         let wallet = null ;
 
@@ -258,7 +373,7 @@ class CreateToken extends Component {
 
             fr.filter(val => {
 
-                return val.address === selectedValue
+                return val.address === selectedWallet
 
             }).map((obj) => (wallet = obj));
 
@@ -472,9 +587,9 @@ class CreateToken extends Component {
         });
     }
 
-    selectedWallet(selectedValue , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
+    selectedWallet(selectedWallet , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
     {
-        if (selectedValue==="Select your Wallet") {
+        if (selectedWallet==="Select your Wallet") {
 
             if(this.props.wallets.length ===0)
             return (
@@ -811,29 +926,13 @@ class CreateToken extends Component {
     }
 
     render() {
-        let {numberOfCoins, numberOfTron, name, submitMessage, frozenSupply, url, confirmed, loading, issuedAsset , selectedValue} = this.state;
-
+        let {numberOfCoins, numberOfTron, name,
+            submitMessage, frozenSupply, url,
+            confirmed, loading, issuedAsset ,
+            selectedWallet , modal , modal1 , modal2
+        } = this.state;
 
         console.log("issuedAsset : " , issuedAsset) ;
-
-        //
-        // if (issuedAsset !== null) {
-        //     return (
-        //         <main className="container pb-3 token-create header-overlap">
-        //             <div className="row">
-        //                 <div className="col-sm-8">
-        //                     <div className="card">
-        //                         <div className="card-body">
-        //                             <div className="text-center p-3">
-        //                                 You may create only one token per account
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </main>
-        //     );
-        // }
 
         let {valid, errors} = this.isValid();
 
@@ -852,7 +951,9 @@ class CreateToken extends Component {
         return (
 
             <main className="container">
-
+                {modal}
+                {modal1}
+                {modal2}
             <div className="row mt-4 mb-2">
 
                 <div className="col-md-3"> </div>
@@ -865,7 +966,7 @@ class CreateToken extends Component {
                             <select
                                 className="form-control"
                                 onChange={this.handleChange }
-                                value={selectedValue}>
+                                value={selectedWallet}>
                                 <option  name="Select your Wallet">Select your Wallet</option>
                                 {
                                     this.props.wallets.map((wallet)=>(
@@ -888,7 +989,7 @@ class CreateToken extends Component {
 
                 <div className="row">
                     {
-                        this.selectedWallet(selectedValue , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
+                        this.selectedWallet(selectedWallet , errors , name , url , numberOfCoins , numberOfTron , exchangeRate , frozenSupply , submitMessage , issuedAsset)
                     }
                     {/*{this.avoidCreateToken(issuedAsset)}*/}
 

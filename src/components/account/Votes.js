@@ -30,6 +30,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {compose} from "redux"   ;
 import {setWitnesses} from "../../mainRedux/actions/actions";
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
+import {decryptString} from "../../services/encryption_js";
 
 
 const styles = theme => ({
@@ -98,8 +100,135 @@ class vote extends React.Component {
 
             anchorEl: null,
             selectedIndex: 0,
+            selectedWallet:"Select your Wallet",
+            modal1:null ,
+            modal2:null ,
+            modal3:null ,
+            privateKey : "",
         };
     }
+
+
+    handleChange= event=>{
+
+        this.setState({ selectedWallet: event.target.value });
+
+        if(event.target.value !=="Select your Wallet") {
+
+            this.setState({modal1:(
+
+                    <SweetAlert
+                        confirmBtnText="Decrypt"
+                        input
+                        inputType="password"
+                        cancelBtnBsStyle="default"
+                        title={ <small className="small">Enter your wallet password</small>}
+                        required
+                        onConfirm={this.onConfirm}
+                        validationMsg="You must enter your password!"
+                    />
+                )
+
+            })
+        }
+
+    };
+
+
+    isValidDecryptedPKey = (address ,pKey)=>{
+
+
+        let addr  = "" ;
+
+        try {
+
+            addr  = pkToAddress(pKey);
+
+        }
+        catch (e) {
+
+            console.log(e);
+
+        }
+
+        return addr=== address;
+    };
+
+
+    onConfirm = event =>{
+
+        let { selectedWallet , privateKey} = this.state;
+
+        const obj =  this.props.wallets.filter(val => {
+
+            return selectedWallet === val.address;
+
+        });
+
+        const pKey = decryptString(event , obj[0].key);
+
+
+
+        if( this.isValidDecryptedPKey(selectedWallet , pKey) )
+        {
+
+            this.setState({modal1:null , privateKey:pKey});
+
+            this.setState({modal2:(<SweetAlert  success title="Success" onConfirm={this.hideAlert1}>
+
+                    the private key was decrypted successfully
+
+                </SweetAlert> )});
+
+        }else {
+
+            this.setState({modal1:null});
+
+            this.setState({modal3: (
+
+                    <SweetAlert danger title="Wrong Password" confirmBtnText="Try again" onConfirm={this.hideAlert2 } >
+
+                        you entered a wrong password! Try again
+
+                    </SweetAlert>
+
+                ) })
+
+        }
+
+    };
+
+
+    hideAlert1 =()=>{
+
+        this.setState({modal2:null });
+
+    };
+
+
+    hideAlert2=()=>{
+
+        this.setState({modal3:null, privateKey:""});
+        this.setState({modal1:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small className="small">Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
+                />
+            )
+
+        })
+
+    };
+
+
+
 
     //for menu start
 
@@ -391,7 +520,9 @@ class vote extends React.Component {
                     />
                 </ListItem>
             </List>
+
             <Menu
+
                 id="lock-menu"
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
@@ -530,7 +661,7 @@ class vote extends React.Component {
         const { classes } = this.props;
         const { anchorEl } = this.state;
 
-        let {candidates, totalVotes, votingEnabled, votes, loading, modal, viewStats, colors } = this.state;
+        let {candidates, totalVotes, votingEnabled, votes, loading, modal, viewStats, colors , selectedWallet , modal1,modal2,modal3 } = this.state;
 
         console.log("my Wallet at line 479: " , this.props.wallets) ;
 
@@ -549,6 +680,9 @@ class vote extends React.Component {
 
             <main className="container header-overlap pb-3">
                 {modal}
+                {modal1}
+                {modal2}
+                {modal3}
                 {
                     viewStats &&
                     <div className="card">
@@ -558,6 +692,44 @@ class vote extends React.Component {
 
                     </div>
                 }
+
+                <div className="row mt-4">
+
+
+                    <div className="col-md-3"> </div>
+                    <div className="col-md-6">
+
+                        <label>{tu("wallet")}</label>
+
+                        <div className="input-group mb-3">
+
+                            <select
+                                className="form-control"
+                                onChange={this.handleChange}
+                                value={selectedWallet}>
+
+                                <option  name="Select your Wallet">Select your Wallet</option>
+                                {
+                                    this.props.wallets.map((wallet)=>(
+                                        <option key ={wallet.name} value={wallet.address} >
+                                            {wallet.address}
+                                        </option>
+
+                                    ))
+                                }
+
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <div className="col-md-3"> </div>
+
+
+
+                </div>
+
+
                 <div className="row mt-3">
 
 
@@ -635,6 +807,8 @@ class vote extends React.Component {
 
 
                 </div>
+
+
 
                 {
                     /*Loading Super Representatives*/

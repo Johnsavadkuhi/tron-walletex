@@ -90,7 +90,7 @@ class AddWallet extends Component {
 
     handleClick = message=>{
 
-        var level = 'error'; // 'success', 'warning', 'error' or 'info'
+        let level = 'error'; // 'success', 'warning', 'error' or 'info'
         this.state._notificationSystem.addNotification({
             title: (<span data-notify="icon" className="pe-7s-gift"> </span>),
             message: (
@@ -132,6 +132,20 @@ class AddWallet extends Component {
 
     };
 
+
+    addWalletSafe=(address , privateKey , name )=>
+    {
+        const passwordToBuffer = new Buffer(this.state.password);
+
+        const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer) , privateKey).hex;
+
+        // this.props.addWallet(address , privateKey , name );
+        this.props.addWallet(address , encryptedPKey , name );
+
+
+    };
+
+
     handleChange = nameOf => event=>{
 
         let {privateKey , address ,name  } = this.state;
@@ -144,6 +158,7 @@ class AddWallet extends Component {
                 this.setState({ showPassword: !this.state.showPassword });
 
                 break ;
+
             case "handleMouseDownPassword" :
 
                 event.preventDefault();
@@ -152,7 +167,14 @@ class AddWallet extends Component {
 
             case "nextAfterRegister" :
 
-                this.props.addWallet(address , privateKey , name );
+                // const passwordToBuffer = new Buffer(this.state.password);
+                //
+                // const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer) , privateKey).hex;
+
+                // this.props.addWallet(address , privateKey , name );
+                // this.props.addWallet(address , encryptedPKey , name );
+
+                this.addWalletSafe(address , privateKey , name);
 
                 this.props.history.push("/account");
                 // this.props.history.push("/wallets") ;
@@ -162,6 +184,8 @@ class AddWallet extends Component {
 
             case "unlockWallet":
 
+
+                // this.addWalletSafe(address , privateKey , name);
 
                 this.props.addWallet(address , privateKey , name );
 
@@ -229,7 +253,7 @@ class AddWallet extends Component {
 
                 if(x.length === 0) {
 
-                    console.log("in the IF " , x.length);
+
                     this.setState({
 
                         [nameOf]: event.target.value, nameExist:false
@@ -237,8 +261,6 @@ class AddWallet extends Component {
                     });
 
                 } else {
-
-                    console.log("event.target.value : " , event.target.value) ;
 
                     this.setState({[nameOf]:"", nameExist:true});
                     this.handleClick("Wallet Name Already Exist") ;
@@ -254,9 +276,12 @@ class AddWallet extends Component {
 
     };
 
-    generateAccount = () => {
+    /**
+     * create a wallet
+     */
+    createWallet = () => {
 
-        let account = generateAccount();
+        const account = generateAccount();
 
         this.setState({
 
@@ -340,14 +365,16 @@ class AddWallet extends Component {
 
 
 
-                </form>);
+                </form>
+
+              );
+
             case 1:
 
-                let privateKey = this.state.privateKey ;
-                let passbuffer = new Buffer(this.state.password);
-                console.log("passbuffer : " , passbuffer);
+                const privateKey = this.state.privateKey ;
+                const passwordToBuffer = new Buffer(this.state.password);
 
-                return downloadFile(_downloadTxtFile , encryptString(encryptKey(passbuffer) , privateKey).hex );
+                return downloadFile(_downloadTxtFile , encryptString(encryptKey(passwordToBuffer) , privateKey).hex );
 
                 case 2:
 
@@ -369,7 +396,13 @@ class AddWallet extends Component {
       return   encryptString(password , hexString )  ;
     };
 
-    decrypteFile =(password  , hexString )=>{
+    /**
+     *
+     * @param password
+     * @param hexString
+     * @return {*}
+     */
+    decryptFile =(password  , hexString )=>{
 
         return decryptString(password , encryptString(encryptKey(password ) , hexString) );
     };
@@ -386,7 +419,7 @@ class AddWallet extends Component {
         });
 
         if(this.state.activeStep===1)
-            this.generateAccount();
+            this.createWallet();
 
 
     };
@@ -408,7 +441,7 @@ class AddWallet extends Component {
             privateKey: "",
 
         });
-        this.generateAccount();
+        this.createWallet();
     };
 
     /**

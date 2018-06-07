@@ -10,8 +10,11 @@ import SendOption from "./SendOption";
 import {find} from "lodash";
 import {ONE_TRX} from "../../constants";
 import {withStyles} from '@material-ui/core/styles';
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
 
 import {compose} from "redux";
+import SweetAlert from "react-bootstrap-sweetalert";
+import {decryptString } from  "../../services/encryption_js";
 
 
 const styles = theme => ({
@@ -41,16 +44,134 @@ class Send extends React.Component {
       amount: "",
       sendStatus: 'waiting',
       isLoading: false,
-        selectedAddress:"",
-        selectedPrivateKey:"",
-        isSelectedAddress:false ,
-
-        selectedValue : "",
+        selectedWallet : "",
+        modal:null,
+        modal1:null ,
+        modal2:null,
+        privateKey:"",
 
     };
 
   }
 
+
+  handleChange = (event) =>{
+
+       this.setState({ selectedWallet: event.target.value} );
+
+       if(event.target.value !== "Select your Wallet")
+       {
+           console.log("event tareget for modal : " , event.target.value ) ;
+
+           this.setState({modal:(
+
+                   <SweetAlert
+                       confirmBtnText="Decrypt"
+
+                       input
+                       inputType="password"
+                       cancelBtnBsStyle="default"
+                       title={ <small className="small">Enter your wallet password</small>}
+                       required
+                       onConfirm={this.onConfirm}
+                       validationMsg="You must enter your password!"
+                   />
+               )
+
+           })
+       }
+  };
+
+  isValidDecryptedPKey = (address ,pKey)=>{
+
+
+      let addr  = "" ;
+
+          try {
+
+              addr  = pkToAddress(pKey);
+
+          }
+          catch (e) {
+
+              console.log(e);
+
+          }
+
+          return addr=== address;
+  };
+
+
+    onConfirm = event =>{
+
+        let { selectedWallet} = this.state;
+
+        const obj =  this.props.wallets.filter(val => {
+
+            return selectedWallet === val.address;
+
+        });
+
+        const pKey = decryptString(event , obj[0].key);
+
+
+
+       if( this.isValidDecryptedPKey(selectedWallet , pKey) )
+       {
+
+           this.setState({modal:null , privateKey:pKey});
+
+           this.setState({modal1:(<SweetAlert  success title="Success" onConfirm={this.hideAlert1}>
+
+                   the private key was decrypted successfully
+
+               </SweetAlert> )});
+
+       }else {
+
+           this.setState({modal:null});
+
+           this.setState({modal2: (
+
+               <SweetAlert danger title="Wrong Password" confirmBtnText="Try again" onConfirm={this.hideAlert2 } >
+
+                   you entered a wrong password! Try again
+
+               </SweetAlert>
+
+               ) })
+
+       }
+
+    };
+
+
+    hideAlert1 =()=>{
+
+        this.setState({modal1:null});
+
+    };
+
+    hideAlert2=()=>{
+
+        this.setState({modal2:null});
+        this.setState({modal:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small className="small">Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
+                />
+            )
+
+        })
+
+    };
 
 
   isAddress = (address) => {
@@ -64,7 +185,7 @@ class Send extends React.Component {
 
   isValid = () => {
 
-      let {to, token, amount , selectedValue} = this.state;
+      let {to, token, amount , selectedWallet} = this.state;
 
 
       let address ="" ;
@@ -73,7 +194,7 @@ class Send extends React.Component {
 
       fr.filter(val =>{
 
-          return val.address === selectedValue
+          return val.address === selectedWallet
 
       }).map((obj)=>(address=obj.address));
 
@@ -87,25 +208,26 @@ class Send extends React.Component {
 
       let  client = new Client()  ;
 
-    let {to, token, amount , selectedValue} = this.state;
+    let {to, token, amount , selectedWallet , privateKey} = this.state;
 
-
-    const obj =  this.props.wallets.filter(val => {
-
-          return selectedValue === val.address;
-
-      });
+    //
+    // const obj =  this.props.wallets.filter(val => {
+    //
+    //       return selectedWallet === val.address;
+    //
+    //   });
 
 
     this.setState({ isLoading: true });
 
-   const resulet =   await client.send( token,selectedValue ,to, amount * ONE_TRX)(obj[0].key);
+   const resulet =   await client.send( token,selectedWallet ,to, amount * ONE_TRX)(privateKey);
 
-      this.props.loadTokenBalances(selectedValue);
+      this.props.loadTokenBalances(selectedWallet);
 
     this.setState({
       sendStatus: 'success',
       isLoading: false,
+        privateKey:""
     });
 
     return resulet  ;
@@ -133,7 +255,7 @@ class Send extends React.Component {
   getSelectedTokenBalance = () => {
 
 
-      const { selectedValue} = this.state;
+      const { selectedWallet} = this.state;
 
       let tokenBalances = [] ;
 
@@ -141,7 +263,7 @@ class Send extends React.Component {
 
       fr.filter(val =>{
 
-          return val.address === selectedValue
+          return val.address === selectedWallet
 
       }).map((obj)=>(tokenBalances=obj.balances));
 
@@ -149,7 +271,7 @@ class Send extends React.Component {
     let {token} = this.state;
 
 
-    if(selectedValue !=="Select your Wallet") {
+    if(selectedWallet !=="Select your Wallet") {
         if (token !== "Select Token") {
 
             if (token) {
@@ -182,11 +304,11 @@ class Send extends React.Component {
 
   refreshTokenBalances = () => {
 
-      let {selectedValue} = this.state ;
+      let {selectedWallet} = this.state ;
 
       const obj =   this.props.tokensBalances.filter( value => {
 
-          return selectedValue === value.address;
+          return selectedWallet === value.address;
       });
 
 
@@ -198,11 +320,11 @@ class Send extends React.Component {
   componentDidUpdate() {
 
 
-      let {selectedValue} = this.state ;
+      let {selectedWallet} = this.state ;
 
       const obj =   this.props.tokensBalances.filter( value => {
 
-          return selectedValue === value.address;
+          return selectedWallet === value.address;
       });
 
 
@@ -269,7 +391,7 @@ class Send extends React.Component {
   renderForm(tokenBalances) {
 
     let {sendStatus} = this.state;
-    let {to, token, amount  , selectedValue} = this.state;
+    let {to, token, amount  , selectedWallet} = this.state;
     let isToValid = to.length === 0 || this.isAddress(to);
     let isAmountValid = this.isAmountValid();
 
@@ -300,8 +422,8 @@ class Send extends React.Component {
 
                   <select
                       className="form-control"
-                      onChange={(ev) =>  this.setState({ selectedValue: ev.target.value }) }
-                      value={selectedValue}>
+                      onChange={this.handleChange}
+                      value={selectedWallet}>
 
                       <option  name="Select your Wallet">Select your Wallet</option>
                       {
@@ -314,6 +436,8 @@ class Send extends React.Component {
                       }
 
                   </select>
+
+
               </div>
           </div>
 
@@ -383,13 +507,13 @@ class Send extends React.Component {
 
     // renderWallets = ()=>{
     //
-    //     const { selectedValue} = this.state;
+    //     const { selectedWallet} = this.state;
     //     const { classes } = this.props;
     //
     //
     //     const obj =   this.props.tokensBalances.filter( value => {
     //
-    //         return selectedValue === value.address;
+    //         return selectedWallet === value.address;
     //     });
     //
     //
@@ -417,7 +541,7 @@ class Send extends React.Component {
     //                                         aria-label="Select a Method "
     //                                         name=""
     //                                         className={classes.group}
-    //                                         value={this.state.selectedValue}
+    //                                         value={this.state.selectedWallet}
     //                                         onChange={this.handleChange}>
     //
     //                                         { this.props.wallets.length > 0 ?"" :"Please Generate Or Add wallet first "}
@@ -482,7 +606,7 @@ class Send extends React.Component {
 
     renderWallets = ()=>{
 
-        const { selectedValue} = this.state;
+        const { selectedWallet , modal,modal1,modal2 } = this.state;
 
 
         let tokenBalances = [] ;
@@ -491,7 +615,7 @@ class Send extends React.Component {
 
         fr.filter(val =>{
 
-            return val.address === selectedValue;
+            return val.address === selectedWallet;
 
         }).map((obj)=>(tokenBalances=obj.balances));
 
@@ -499,6 +623,11 @@ class Send extends React.Component {
 
         return (
             <main className="container-fluid pt-5 pb-5">
+
+                {modal}
+                {modal1}
+                {modal2}
+
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 col-sm-8 col-lg-5">
@@ -544,8 +673,7 @@ class Send extends React.Component {
 function mapStateToProps(state) {
   return {
 
-    // account: state.app.account,
-    // tokenBalances: state.tokens.tokens,
+
       tokensBalances:state.balancesReducer.walletBalances,
       wallets:state.walletsReducer.wallets,
 
@@ -555,9 +683,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadTokenBalances,
 };
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Send)
-
 
 
 export default compose(

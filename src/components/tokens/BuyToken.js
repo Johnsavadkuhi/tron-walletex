@@ -17,6 +17,8 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import {Client} from "@tronscan/client";
 import {setTokens} from "../../mainRedux/actions/actions";
 import {Sticky, StickyContainer} from "react-sticky";
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
+import {decryptString} from "../../services/encryption_js";
 
 
 class BuyToken extends Component {
@@ -42,8 +44,12 @@ class BuyToken extends Component {
             pageSize: 25,
             page: 0,
             tokens: [],
-            selectedValue:'Select your Wallet',
-            isSelectedValueValid :false
+            selectedWallet:'Select your Wallet',
+            isSelectedWalletValid :false,
+            modal : null ,
+            modal1 :null,
+            modal2:null ,
+            privateKey:""
         };
     }
 
@@ -51,12 +57,125 @@ class BuyToken extends Component {
     handleChange =event =>{
 
         if(event.target.value  === "Select your Wallet")
-          this.setState({ selectedValue: event.target.value ,isSelectedValueValid :false })
+          this.setState({ selectedWallet: event.target.value ,isSelectedWalletValid :false , modal:null })
+
         else
-            this.setState({selectedValue: event.target.value ,isSelectedValueValid :true })
+            this.setState({selectedWallet: event.target.value ,isSelectedWalletValid :true , modal:(
+
+                    <SweetAlert
+                        confirmBtnText="Decrypt"
+                        input
+                        inputType="password"
+                        cancelBtnBsStyle="default"
+                        title={ <small className="small">Enter your wallet password</small>}
+                        required
+                        onConfirm={this.onConfirm}
+                        validationMsg="You must enter your password!"
+                    />
+                )})
 
 
     };
+
+
+
+
+
+    isValidDecryptedPKey = (address ,pKey)=>{
+
+
+        let addr  = "" ;
+
+        try {
+
+            addr  = pkToAddress(pKey);
+
+        }
+        catch (e) {
+
+            console.log(e);
+
+        }
+
+        return addr=== address;
+    };
+
+
+    onConfirm = event =>{
+
+        let { selectedWallet} = this.state;
+
+        const obj =  this.props.wallets.filter(val => {
+
+            return selectedWallet === val.address;
+
+        });
+
+        const pKey = decryptString(event , obj[0].key);
+
+
+
+        if( this.isValidDecryptedPKey(selectedWallet , pKey) )
+        {
+
+            this.setState({modal:null , privateKey:pKey});
+
+            this.setState({modal1:(<SweetAlert  success title="Success" onConfirm={this.hideAlert1}>
+
+                    the private key was decrypted successfully
+
+                </SweetAlert> )});
+
+        }else {
+
+            this.setState({modal:null});
+
+            this.setState({modal2: (
+
+                    <SweetAlert danger title="Wrong Password" confirmBtnText="Try again" onConfirm={this.hideAlert2 } >
+
+                        you entered a wrong password! Try again
+
+                    </SweetAlert>
+
+                ) })
+
+        }
+
+    };
+
+
+    hideAlert1 =()=>{
+
+        this.setState({modal1:null });
+
+    };
+
+
+    hideAlert2=()=>{
+
+        this.setState({modal2:null, privateKey:""});
+        this.setState({modal:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small className="small">Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
+                />
+            )
+
+        })
+
+    };
+
+
+
+
 
 
 
@@ -176,7 +295,7 @@ class BuyToken extends Component {
 
     whichAddressSelected =() => {
 
-        let {selectedValue} = this.state ;
+        let {selectedWallet} = this.state ;
 
         let wallet ={address :"" , key:"" , name:""};
 
@@ -184,7 +303,7 @@ class BuyToken extends Component {
 
         fr.filter(val =>{
 
-            return val.address === selectedValue
+            return val.address === selectedWallet
 
         }).map((obj)=>(wallet=obj));
 
@@ -198,7 +317,7 @@ class BuyToken extends Component {
         const wallet  =  this.whichAddressSelected();
 
 
-        let {amount} = this.state;
+        let {amount , privateKey} = this.state;
 
         this.setState({loading: true});
 
@@ -209,7 +328,7 @@ class BuyToken extends Component {
             wallet.address,
             token.ownerAddress,
             token.name,
-            amount * token.price)(wallet.key);
+            amount * token.price)(privateKey);
 
         this.setState({
             activeToken: null,
@@ -286,7 +405,7 @@ class BuyToken extends Component {
                                         </li>
                                     </ul>
                                     {
-                                        (this.state.isSelectedValueValid && this.getTokenState(token) === 'active') && (
+                                        (this.state.isSelectedWalletValid && this.getTokenState(token) === 'active') && (
                                             !this.containsToken(token) ?
                                                 <div className="card-footer bg-transparent border-top-0">
                                                     {
@@ -407,7 +526,7 @@ class BuyToken extends Component {
 
     render() {
 
-        let {alert, /*loading, total, pageSize, page*/  selectedValue} = this.state;
+        let {alert, /*loading, total, pageSize, page*/  selectedWallet , modal , modal1 , modal2} = this.state;
 
         // let {match} = this.props;
 
@@ -417,6 +536,9 @@ class BuyToken extends Component {
         return (
             <Fragment>
                 {alert}
+                {modal}
+                {modal1}
+                {modal2}
                 <StickyContainer className="container header-overlap pb-3">
                     <Sticky>
                         {
@@ -448,7 +570,7 @@ class BuyToken extends Component {
                                     <select
                                         className="form-control"
                                         onChange={this.handleChange}
-                                        value={selectedValue}>
+                                        value={selectedWallet}>
 
                                         <option  name="Select your Wallet">Select your Wallet</option>
                                         {
