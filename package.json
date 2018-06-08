@@ -89,7 +89,8 @@
     "whatwg-fetch": "2.0.3",
     "@tronscan/client":"^0.2.2",
     "react-bootstrap":"^0.32.1",
-    "react-notification-system":"^0.2.17"
+    "react-notification-system":"^0.2.17",
+    "uikit":"^3.0.0-rc.5"
   },
   "scripts": {
     "start": "node scripts/start.js",
