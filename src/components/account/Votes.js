@@ -988,10 +988,7 @@ function mapStateToProps(state) {
 
 
     return {
-        // account: state.app.account,
-        // tokenBalances: state.account.tokens,
-        // wallet: state.wallet,
-        // flags: state.app.flags,
+
         balancesReducer: state.balancesReducer.walletBalances,
         wallets:state.walletsReducer.wallets
     };
