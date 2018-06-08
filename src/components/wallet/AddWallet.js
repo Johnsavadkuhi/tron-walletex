@@ -139,7 +139,6 @@ class AddWallet extends Component {
 
         const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer) , privateKey).hex;
 
-        // this.props.addWallet(address , privateKey , name );
         this.props.addWallet(address , encryptedPKey , name );
 
 

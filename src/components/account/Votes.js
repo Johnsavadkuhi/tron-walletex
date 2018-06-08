@@ -122,7 +122,7 @@ class vote extends React.Component {
                         input
                         inputType="password"
                         cancelBtnBsStyle="default"
-                        title={ <small className="small">Enter your wallet password</small>}
+                        title={ <small>Enter your wallet password</small>}
                         required
                         onConfirm={this.onConfirm}
                         validationMsg="You must enter your password!"
@@ -157,7 +157,7 @@ class vote extends React.Component {
 
     onConfirm = event =>{
 
-        let { selectedWallet , privateKey} = this.state;
+        let { selectedWallet } = this.state;
 
         const obj =  this.props.wallets.filter(val => {
 

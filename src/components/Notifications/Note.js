@@ -36,7 +36,7 @@ function returnContent(props , content , icon) {
         <div >
 
             <Paper className={classes.paper}>
-                <Grid container wrap="nowrap" spacing={2}>
+                <Grid container wrap="nowrap" spacing={0}>
                     <Grid item>
 
                         <Avatar> {icon} </Avatar>
@@ -64,7 +64,7 @@ function AutoGridNoWrap(props) {
 
         <div className="content m-4 p-4">
 
-            <Grid fluid>
+            <Grid>
 
                 <div className="card">
 

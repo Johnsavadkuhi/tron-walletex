@@ -1,6 +1,5 @@
 import pbkdf2 from 'pbkdf2';
 import aesjs from "aes-js";
-// import {isAddressValid, pkToAddress} from "@tronprotocol/wallet-api/src/utils/crypto";
 import {isAddressValid, pkToAddress} from "@tronscan/client/src/utils/crypto";
 
 
@@ -9,9 +8,9 @@ export function encryptKey(password) {
 }
 
 export function encryptString(password, hexString) {
-  var textBytes = aesjs.utils.utf8.toBytes(hexString);
-  var aesCtr = new aesjs.ModeOfOperation.ctr(password);
-  var encrypted = aesCtr.encrypt(textBytes);
+  const textBytes = aesjs.utils.utf8.toBytes(hexString);
+    const aesCtr = new aesjs.ModeOfOperation.ctr(password);
+    const encrypted = aesCtr.encrypt(textBytes);
   return {
     bytes: encrypted,
     hex: aesjs.utils.hex.fromBytes(encrypted),
@@ -21,15 +20,15 @@ export function encryptString(password, hexString) {
 
 export function decryptString(password, hexString) {
   let key = encryptKey(password);
-  var encryptedBytes = aesjs.utils.hex.toBytes(hexString);
-  var aesCtr = new aesjs.ModeOfOperation.ctr(key);
-  var decryptedBytes = aesCtr.decrypt(encryptedBytes);
+    const encryptedBytes = aesjs.utils.hex.toBytes(hexString);
+    const aesCtr = new aesjs.ModeOfOperation.ctr(key);
+    const decryptedBytes = aesCtr.decrypt(encryptedBytes);
   return aesjs.utils.utf8.fromBytes(decryptedBytes);
 }
 
 export function validatePrivateKey(privateKey) {
   try {
-    let address = pkToAddress(privateKey);
+      const address = pkToAddress(privateKey);
     return isAddressValid(address);
   } catch (e) {
     return false;
