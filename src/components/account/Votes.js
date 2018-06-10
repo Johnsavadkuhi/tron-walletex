@@ -46,36 +46,36 @@ let options = [
 
 ];
 
-//
-// function VoteChange({value, arrow = false}) {
-//     if (value > 0) {
-//         return (
-//
-//             <span className="text-success">
-//
-//                 <span className="mr-1">+{value}</span>
-//                 { arrow && <i className="fa fa-arrow-up" /> }
-//
-//                 </span>
-//         )
-//     }
-//
-//     if (value < 0) {
-//         return (
-//             <span className="text-danger">
-//         <span className="mr-1">{value}</span>
-//                 { arrow && <i className="fa fa-arrow-down" /> }
-//       </span>
-//         )
-//     }
-//
-//     return (
-//         <span>
-//       -
-//     </span>
-//     )
-// }
-//
+
+function VoteChange({value, arrow = false}) {
+    if (value > 0) {
+        return (
+
+            <span className="text-success">
+
+                <span className="mr-1">+{value}</span>
+                { arrow && <i className="fa fa-arrow-up" /> }
+
+                </span>
+        )
+    }
+
+    if (value < 0) {
+        return (
+            <span className="text-danger">
+        <span className="mr-1">{value}</span>
+                { arrow && <i className="fa fa-arrow-down" /> }
+      </span>
+        )
+    }
+
+    return (
+        <span>
+      -
+    </span>
+    )
+}
+
 
 
 
@@ -143,7 +143,6 @@ class vote extends React.Component {
         try {
 
             addr  = pkToAddress(pKey);
-
         }
         catch (e) {
 
@@ -451,18 +450,17 @@ class vote extends React.Component {
 
     renderVotingBar() {
 
-        let {votingEnabled, votesSubmitted} = this.state;
-        // let {account} = this.props;
+        let {votingEnabled, votesSubmitted , selectedWallet } = this.state;
 
         let {trxBalance} = this.getVoteStatus();
 
-        // if (!account.isLoggedIn) {
-        //     return (
-        //         <div className="text-center">
-        //             Open wallet to start voting
-        //         </div>
-        //     );
-        // }
+        if (selectedWallet==="Select your Wallet") {
+            return (
+                <div className="text-center">
+                    Select your wallet to start voting
+                </div>
+            );
+        }
 
         if (votesSubmitted) {
             return (
@@ -471,6 +469,7 @@ class vote extends React.Component {
                 </Alert>
             );
         }
+
 
         if (trxBalance <= 0) {
             return (
@@ -558,7 +557,6 @@ class vote extends React.Component {
     submitVotes = async () => {
 
         let client = new Client() ;
-        // let {account} = this.props;
 
         let myAddress  = options[this.state.selectedIndex].trim() ;
          myAddress = myAddress.trim();
@@ -637,8 +635,6 @@ class vote extends React.Component {
             val.address === options[this.state.selectedIndex])
         ).map(obj=>(balance= obj));
 
-        // console.log("balance in getTheWalletInfo : " , balance) ;
-        // console.log("frozen token : "  , balance.frozen.total);
 
         return balance  ;
     };
@@ -836,7 +832,7 @@ class vote extends React.Component {
                                                 }
                                             </Sticky>
                                         }
-                                        <table className="table vote-table table-hover table-striped m-0">
+                                        <table className="table vote-table table-hover table-striped m-0 ">
                                             <thead className="thead-dark">
                                             <tr>
                                                 <th className="d-none d-sm-table-cell" style={{width: 25}}>#</th>
@@ -897,10 +893,11 @@ class vote extends React.Component {
                                                         <td className="text-right">
                                                             {
                                                                 candidate.hasPage && <Fragment>
-                                                                    <Link className="btn btn-sm btn-outline-secondary mt-1" to={`/representative/${candidate.address}`}>
+                                                                    <a target="_blank" className="btn btn-sm btn-outline-secondary mt-1"
+                                                                          href={`https://tronscan.org/#/representative/${candidate.address}`}>
                                                                         {tu("Open Team Page")}
                                                                         <i className="fas fa-users ml-2"/>
-                                                                    </Link>
+                                                                    </a>
                                                                 </Fragment>
                                                             }
                                                         </td>
