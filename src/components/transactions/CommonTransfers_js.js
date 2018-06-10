@@ -8,6 +8,8 @@ import TimeAgo from "react-timeago";
 // import {TronLoader} from "../tronwalletexloader/TronLoader";
 import {withTimers} from "../../utils/timing";
 import {FormattedNumber} from "react-intl";
+import {Truncate} from "../text/Text" ;
+import {AddressLink, TransactionHashLink} from "../common/Links";
 
 class Transfers extends React.Component {
 
@@ -32,6 +34,8 @@ class Transfers extends React.Component {
       this.props.setInterval(() => this.load(), this.state.autoRefresh);
     }
   }
+
+
 
   onChange = ({page}) => {
     this.load(page);
@@ -60,6 +64,7 @@ class Transfers extends React.Component {
   };
 
   render() {
+
 
     let {transfers, page, total, pageSize, loading, emptyState: EmptyState = null} = this.state;
     let {theadClass = "thead-dark"} = this.props;
@@ -104,20 +109,24 @@ class Transfers extends React.Component {
                 <td className="text-nowrap d-none d-lg-table-cell">
                   <TimeAgo date={transfer.timestamp} />
                 </td>
-                <td className="d-none d-lg-table-cell">
-                  {/*<Truncate>*/}
-                    {/*<TransactionHashLink hash={transfer.transactionHash}>*/}
-                      {transfer.transactionHash}
-                    {/*</TransactionHashLink>*/}
-                  {/*</Truncate>*/}
-                </td>
-                <td className="d-none d-md-table-cell">
-                  {/*<AddressLink address={transfer.transferFromAddress} />*/}
-                    {transfer.transferFromAddress}
+
+
+                      <td className="d-none d-lg-table-cell">
+                          <Truncate>
+                          <TransactionHashLink hash={transfer.transactionHash}>
+
+                              {transfer.transactionHash}
+                          </TransactionHashLink>
+                          </Truncate>
+                      </td>
+
+
+                  <td className="d-none d-md-table-cell">
+                  <AddressLink address={transfer.transferFromAddress} />
+
                 </td>
                 <td>
-                  {/*<AddressLink address={transfer.transferToAddress} />*/}
-                    {transfer.transferToAddress}
+                  <AddressLink address={transfer.transferToAddress} />
                 </td>
                 <td className="text-nowrap text-right">
 
