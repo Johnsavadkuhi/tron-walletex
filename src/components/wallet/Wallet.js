@@ -205,7 +205,7 @@ class  Wallet extends Component{
 
         // let address = this.props.address;
         let transaction = buildUnfreezeBalance(address);
-        // let success = await client.signTransaction("", transaction);
+
         let success = await  client.sendTransaction(this.props.walletinfo.key ,transaction);
 
         if (success) {
