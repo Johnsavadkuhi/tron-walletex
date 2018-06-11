@@ -214,7 +214,18 @@ export const messages = {
     "participation_message_0":"Specify the participation period in which tokens will be issued.",
     "participation_message_1":"During the participation period users can exchange TRX for tokens.",
     'url_message':'A website where users can find more information about the token',
-    'token_issued_successfully'  :'Token Issued Successfully'
+    'token_issued_successfully'  :'Token Issued Successfully',
+    'view_live_ranking' :'View Live Ranking' ,
+    'next_round':'Next Round',
+    'total_votes' :'Total Votes',
+    'most_ranks':'Most Ranks',
+    'open_team_page' :'Open Team Page',
+    '24h':'24h' ,
+    '6h':'6h',
+    'QR Code':'QR Code' ,
+    'send_tokens':'Send Tokens'
+
+
 
 
 
