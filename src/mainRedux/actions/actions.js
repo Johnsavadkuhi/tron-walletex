@@ -1,6 +1,7 @@
 import {SET_WALLETS_BALANCE, SET_WALLETS, SET_TOKENS ,
-    DELETE_BALANCES, DELETE_WALLET , SET_LANGUAGE  ,SET_WITNESSES} from "./actionTypes";
+    DELETE_BALANCES, DELETE_WALLET , SET_LANGUAGE  ,SET_WITNESSES , SET_VOTE_LIST , SET_VOTE_TIMER} from "./actionTypes";
 
+import {addSeconds} from "date-fns";
 import {Client} from "@tronscan/client" ;
 
 
@@ -103,4 +104,31 @@ export const loadTokens = () => async (dispatch) => {
     let assets = await new Client().getTokens();
 
     dispatch(setTokens(assets));
+};
+
+
+
+
+//actions for Voting
+
+export const setVoteList = (voteList) => ({
+    type: SET_VOTE_LIST,
+    voteList
+});
+
+export const setVoteTimer = (voteTimer) => ({
+    type: SET_VOTE_TIMER,
+    voteTimer
+});
+
+
+export const loadVoteList = () => async (dispatch) => {
+    let {candidates} = await new Client().getVotesForCurrentCycle();
+    dispatch(setVoteList(candidates));
+};
+
+
+export const loadVoteTimer = () => async (dispatch) => {
+    let timeUntilNext = await new Client().secondsUntilNextCycle();
+    dispatch(setVoteTimer(addSeconds(new Date(), timeUntilNext)));
 };
