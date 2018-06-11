@@ -5,6 +5,7 @@ import walletsReducer from './welletsReducer';
 import balancesReducer from './balancesReducer' ;
 import voteReducer from './voteReducer' ;
 import tokensReducer from "./tokensReducer" ;
+import votesReducer from './votesReducer' ;
 
 export default combineReducers({
 
@@ -12,6 +13,7 @@ export default combineReducers({
     walletsReducer: walletsReducer,
     voteReducer: voteReducer,
     tokensReducer:tokensReducer ,
+    votes:votesReducer,
     app: appReducer,
     form: formReducer
 });
