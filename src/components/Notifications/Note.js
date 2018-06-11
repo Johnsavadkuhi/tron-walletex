@@ -70,7 +70,7 @@ function AutoGridNoWrap(props) {
 
                     <div className="header  pt-4 text-center">
 
-                        <h4>About TronWalletEx 0.0.2 version </h4>
+                        <h4>About TronWalletEx 0.0.3-beta.3 version </h4>
 
                     </div>
 

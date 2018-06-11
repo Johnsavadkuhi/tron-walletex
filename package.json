@@ -91,7 +91,8 @@
     "react-bootstrap":"^0.32.1",
     "react-notification-system":"^0.2.17",
     "uikit":"^3.0.0-rc.5",
-    "react-contextmenu":"^2.9.2"
+    "react-contextmenu":"^2.9.2",
+    "recharts":"^1.0.0-beta.10"
   },
   "scripts": {
     "start": "node scripts/start.js",

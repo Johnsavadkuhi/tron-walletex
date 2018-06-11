@@ -1,7 +1,9 @@
 
 @import "../../node_modules/bootstrap-material-design/scss/bootstrap-material-design";
 @import "../../node_modules/bootstrap-material-design/scss/variables/colors";
+@import "../../node_modules/uikit/src/scss/variables" ;
 
+@import "../../node_modules/uikit/src/scss/uikit" ;
 
 @import "utilities/bg-colors";
 @import "utilities/box-shadows";
@@ -15,6 +17,38 @@ body {
   overflow-y: scroll;
 }
 
+$color-light-grey: #f2f2f2;
+$light-red: #e50915;
+$red: #c43127;
+$dark-red: #c53027;
+
+.widget-icon {
+  position: relative;
+  overflow: hidden;
+}
+.icon-big {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+}
+.fa-5x {
+  font-size: 5em;
+}
+
+// Buttons
+.btn-tron {
+  color: #fff;
+  background-color: $dark-red;
+  border-color: $light-red;
+}
+
+
+.btn-tron:hover {
+  color: #fff;
+  background-color: $light-red;
+  border-color: $dark-red;
+}
 
 .progress1 {
   display: -ms-flexbox;
@@ -133,3 +167,4 @@ body { height : 100% !important; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
