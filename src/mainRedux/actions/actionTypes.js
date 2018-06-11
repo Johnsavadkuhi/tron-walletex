@@ -19,5 +19,9 @@ export  const DELETE_WALLET = "DELETE_WALLET" ;
 
 export const DELETE_BALANCES = "DELETE_BALANCES" ;
 
+export const SET_VOTE_LIST = "SET_VOTE_LIST" ;
+
+export  const SET_VOTE_TIMER = "SET_VOTE_TIMER" ;
+
 
 
