@@ -1,5 +1,5 @@
 /*eslint-disable no-script-url*/
-import React , {Component } from 'react';
+import React, {Component} from 'react';
 import {generateAccount} from "@tronscan/client/src/utils/account";
 import {connect} from "react-redux";
 import {tu} from "../../utils/i18n";
@@ -11,23 +11,21 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import StepContent from '@material-ui/core/StepContent';
-import {_downloadTxtFile, downloadFile } from "../../functions"
+import {_downloadTxtFile, downloadFile} from "../../functions"
 import {setWallet} from "../../mainRedux/actions/actions";
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import {compose} from "redux"   ;
-import {encryptKey  , decryptString , encryptString} from  "../../services/encryption_js";
+import {compose} from "redux";
+import {decryptString, encryptKey, encryptString} from "../../services/encryption_js";
 import TextField from "@material-ui/core/TextField/TextField";
-import  {pkToAddress  } from "@tronscan/client/src/utils/crypto";
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
 import Input from '@material-ui/core/Input';
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import {CopyToClipboard} from "react-copy-to-clipboard";
 import NotBeforeAddWallet from "../../components/Notifications/NotbeforeAddWallet";
-import NotificationSystem from 'react-notification-system';
-import {style} from "../../variables/Variables";
 
 
 /**
@@ -48,7 +46,6 @@ const styles = theme => ({
 });
 
 
-
 class AddWallet extends Component {
 
     /**
@@ -57,53 +54,40 @@ class AddWallet extends Component {
      */
     constructor(props) {
 
-        super(props) ;
-        this.handleClick = this.handleClick.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+        super(props);
 
 
         this.state = {
 
             _notificationSystem: null,
 
-            selectedValue : "",
-            address       : "",
-            privateKey    : "",
-            password      : "",
-            showPassword  : false,
-            name          :"",
-            activeStep    : 0,
-            value         :0,
-            isPassValid   : false ,
-            nameExist     :false ,
-            nameLengthIsOk:false,
-            privateKeyIsValid: false ,
-            passWarning:true ,
+            selectedValue: "",
+            address: "",
+            privateKey: "",
+            password: "",
+            showPassword: false,
+            name: "",
+            activeStep: 0,
+            value: 0,
+            isPassValid: false,
+            nameExist: false,
+            nameLengthIsOk: false,
+            privateKeyIsValid: false,
+            passWarning: true,
 
         };
     }
 
 
-    componentDidMount(){
-        this.setState({_notificationSystem: this.refs.notificationSystem})
+    componentDidMount() {
+
     }
 
-    handleClick = message=>{
+    handleClick = (value) => {
 
-        let level = 'error'; // 'success', 'warning', 'error' or 'info'
-        this.state._notificationSystem.addNotification({
-            title: (<span data-notify="icon" className="pe-7s-gift"> </span>),
-            message: (
-                <div>
-                    {message}
-                </div>
-            ),
-            level: level,
-            position: 'tr',
-            autoDismiss: 15,
-        });
+        console.log("value ", value);
+
     };
-
 
     /**
      * this method is used to upload keystore
@@ -114,7 +98,7 @@ class AddWallet extends Component {
 
         let file = event.target.files[0];
 
-        console.log("file data :  " , file );
+        console.log("file data :  ", file);
 
         if (file) {
             let data = new FormData();
@@ -133,85 +117,73 @@ class AddWallet extends Component {
     };
 
 
-    addWalletSafe=(address , privateKey , name )=>
-    {
+    addWalletSafe = (address, privateKey, name) => {
         const passwordToBuffer = new Buffer(this.state.password);
 
-        const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer) , privateKey).hex;
+        const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer), privateKey).hex;
 
-        this.props.addWallet(address , encryptedPKey , name );
+        this.props.addWallet(address, encryptedPKey, name);
 
 
     };
 
 
-    handleChange = nameOf => event=>{
+    handleChange = nameOf => event => {
 
-        let {privateKey , address ,name  } = this.state;
+        let {privateKey, address, name} = this.state;
 
 
-        switch ([nameOf][0])
-        {
+        switch ([nameOf][0]) {
             case "handleClickShowPassword" :
 
-                this.setState({ showPassword: !this.state.showPassword });
+                this.setState({showPassword: !this.state.showPassword});
 
-                break ;
+                break;
 
             case "handleMouseDownPassword" :
 
                 event.preventDefault();
 
-                break ;
+                break;
 
             case "nextAfterRegister" :
 
-                // const passwordToBuffer = new Buffer(this.state.password);
-                //
-                // const encryptedPKey = this.encryptPrivateKey(encryptKey(passwordToBuffer) , privateKey).hex;
-
-                // this.props.addWallet(address , privateKey , name );
-                // this.props.addWallet(address , encryptedPKey , name );
-
-                this.addWalletSafe(address , privateKey , name);
+                this.addWalletSafe(address, privateKey, name);
 
                 this.props.history.push("/account");
-                // this.props.history.push("/wallets") ;
 
-                break ;
+                break;
 
 
             case "unlockWallet":
 
 
-                // this.addWalletSafe(address , privateKey , name);
-
-                this.props.addWallet(address , privateKey , name );
+                this.addWalletSafe(address, privateKey, name);
 
                 this.props.history.push("/account");
 
-                break ;
+                break;
 
             case "privateKey":
 
 
-                this.setState({privateKey:event.target.value ,privateKeyIsValid:false});
+                this.setState({privateKey: event.target.value, privateKeyIsValid: false});
 
-                if(event.target.value.length === 64) {
+                if (event.target.value.length === 64) {
 
                     let address = pkToAddress(event.target.value);
 
-                    this.setState({address: address  ,privateKeyIsValid:true });
+                    this.setState({address: address, privateKeyIsValid: true});
                 }
 
-                break ;
+                break;
 
 
             case "selectedValue":
 
-                this.setState({ selectedValue: event.target.value });
+                this.setState({selectedValue: event.target.value});
 
-                break ;
+                break;
 
             case "password" :
 
@@ -225,52 +197,51 @@ class AddWallet extends Component {
                 else if (this.state.passWarning) {
 
                     this.handleClick("you should enter at least 8 characters");
-                    this.setState({passWarning:false});
+                    this.setState({passWarning: false});
                 }
 
-                break ;
+                break;
 
             case "name":
 
-                const v = event.target.value ;
+                const v = event.target.value;
 
-                if(v.length > 5 )
-                {
-                    this.setState({nameLengthIsOk:true })
+                if (v.length >= 5) {
+                    this.setState({nameLengthIsOk: true})
 
-                }else {
-                    this.setState({nameLengthIsOk:false })
+                } else {
+                    this.setState({nameLengthIsOk: false})
                 }
 
 
-                let x =   this.props.wallets.filter(val=>{
+                let x = this.props.wallets.filter(val => {
 
-                    return val.name === v ;
+                    return val.name === v;
 
                 });
 
 
-                if(x.length === 0) {
+                if (x.length === 0) {
 
 
                     this.setState({
 
-                        [nameOf]: event.target.value, nameExist:false
+                        [nameOf]: event.target.value, nameExist: false
 
                     });
 
                 } else {
 
-                    this.setState({[nameOf]:"", nameExist:true});
-                    this.handleClick("Wallet Name Already Exist") ;
+                    this.setState({[nameOf]: "", nameExist: true});
+                    this.handleClick("Wallet Name Already Exist");
 
                 }
 
-                break ;
+                break;
 
 
             default:
-                return ;
+                return;
         }
 
     };
@@ -310,78 +281,53 @@ class AddWallet extends Component {
         switch (stepIndex) {
             case 0:
                 // return passForm();
-              return (  <form>
+                return (<form>
 
-                  <TextField
-                      value={this.state.name}
-                      type = "text"
+                        <TextField
+                            value={this.state.name}
+                            type="text"
 
-                      id = "walletName"
-                      label = "Wallet Name"
-                      className = "text-center bmd-label-static mt-2"
-                      margin = "normal"
-                      onChange={this.handleChange("name")}
-                      helperText="Enter at least 5 characters "
-                  />
-                 <br/>
+                            id="walletName"
+                            label="Wallet Name"
+                            className="text-center bmd-label-static mt-2"
+                            margin="normal"
+                            onChange={this.handleChange("name")}
+                            helperText="Enter at least 5 characters "
+                        />
+                        <br/>
 
-                  <TextField
-                        value={this.state.password}
-                        type ="password"
-                        required
-                        id = "password"
-                        label = "password"
-                        className = "text-center bmd-label-static mt-2"
-                        margin = "normal"
-                        onChange={this.handleChange("password")}
-                        helperText="Enter at lease 8 characters"
+                        <TextField
+                            value={this.state.password}
+                            type="password"
+                            required
+                            id="password"
+                            label="password"
+                            className="text-center bmd-label-static mt-2"
+                            margin="normal"
+                            onChange={this.handleChange("password")}
+                            helperText="Enter at lease 8 characters"
 
-                    />
-
-
-                  {/*<Input*/}
-
-                      {/*className="text-center bmd-label-static mt-2 mb-3"*/}
-                      {/*type={this.state.showPassword ? 'text' : 'password'}*/}
-                      {/*value={this.state.password}*/}
-                      {/*onChange={this.handleChange('password')}*/}
-                      {/*placeholder="Password"*/}
-                      {/*fullWidth*/}
-
-                      {/*endAdornment={*/}
-                          {/*<InputAdornment position="end">*/}
-                              {/*<IconButton*/}
-                                  {/*aria-label="Toggle password visibility"*/}
-                                  {/*onClick={this.handleChange("handleClickShowPassword")}*/}
-                                  {/*onMouseDown={this.handleChange("handleMouseDownPassword")}*/}
-                              {/*>*/}
-                                  {/*{this.state.showPassword ? <VisibilityOff /> : <Visibility />}*/}
-                              {/*</IconButton>*/}
-                          {/*</InputAdornment>*/}
-                      {/*}*/}
-                  {/*/>*/}
+                        />
 
 
+                    </form>
 
-
-                </form>
-
-              );
+                );
 
             case 1:
 
-                const privateKey = this.state.privateKey ;
+                const privateKey = this.state.privateKey;
                 const passwordToBuffer = new Buffer(this.state.password);
 
-                return downloadFile(_downloadTxtFile , encryptString(encryptKey(passwordToBuffer) , privateKey).hex );
+                return downloadFile(_downloadTxtFile, encryptString(encryptKey(passwordToBuffer), privateKey).hex);
 
-                case 2:
+            case 2:
 
-                    return this.getPrivateKey(this.state.privateKey);
+                return this.getPrivateKey(this.state.privateKey);
 
-                default:
+            default:
 
-                    return 'Uknown stepIndex';
+                return 'Uknown stepIndex';
         }
     };
 
@@ -391,8 +337,8 @@ class AddWallet extends Component {
      * @param hexString
      * @return {{bytes, hex}}
      */
-    encryptPrivateKey= (password ,hexString) => {
-      return   encryptString(password , hexString )  ;
+    encryptPrivateKey = (password, hexString) => {
+        return encryptString(password, hexString);
     };
 
     /**
@@ -401,9 +347,9 @@ class AddWallet extends Component {
      * @param hexString
      * @return {*}
      */
-    decryptFile =(password  , hexString )=>{
+    decryptFile = (password, hexString) => {
 
-        return decryptString(password , encryptString(encryptKey(password ) , hexString) );
+        return decryptString(password, encryptString(encryptKey(password), hexString));
     };
 
     /**
@@ -417,7 +363,7 @@ class AddWallet extends Component {
             activeStep: activeStep + 1,
         });
 
-        if(this.state.activeStep===1)
+        if (this.state.activeStep === 1)
             this.createWallet();
 
 
@@ -455,23 +401,23 @@ class AddWallet extends Component {
                 <div className="row">
                     <div className="col-md-10">
 
-                <Input
-                 value={pKey}
-                className="form-control text-sm-left"
-                 disabled
-                 inputProps={{'aria-label': 'privateKey',}}
-                />
-                </div>
+                        <Input
+                            value={pKey}
+                            className="form-control text-sm-left"
+                            disabled
+                            inputProps={{'aria-label': 'privateKey',}}
+                        />
+                    </div>
 
                     <div className="col-md-2">
 
                         <div className="text-center">
 
-                                <CopyToClipboard text={pKey}>
-                                    <Button className="btn btn-info btn-sm mt-2 text-center " variant="raised">
-                                        <i className="fa fa-paste" />
-                                    </Button>
-                                </CopyToClipboard>
+                            <CopyToClipboard text={pKey}>
+                                <Button className="btn btn-info btn-sm mt-2 text-center " variant="raised">
+                                    <i className="fa fa-paste"/>
+                                </Button>
+                            </CopyToClipboard>
 
                         </div>
                     </div>
@@ -481,106 +427,104 @@ class AddWallet extends Component {
     };
 
 
-
-
     /*************************************************************
-                         Render Methods
-    *************************************************************/
+     Render Methods
+     *************************************************************/
 
 
 
-    renderRegisterWallet= (activeStep , steps , isPassValid  , nameLengthIsOk) =>{
+    renderRegisterWallet = (activeStep, steps, isPassValid, nameLengthIsOk) => {
 
         return (
 
             <div className="row p-4">
-            <div className="col-md-12">
-                <Paper className="p-4">
+                <div className="col-md-12">
+                    <Paper className="p-4">
 
-            <Stepper activeStep={activeStep} orientation="vertical">
+                        <Stepper activeStep={activeStep} orientation="vertical">
 
-                {steps.map((label, index) => {
+                            {steps.map((label, index) => {
 
-                    return (
+                                return (
 
-                        <Step key={index}>
+                                    <Step key={index}>
 
-                            <StepLabel>{label}</StepLabel>
+                                        <StepLabel>{label}</StepLabel>
 
-                            <StepContent>
+                                        <StepContent>
 
-                                <div>{this.getStepContent(index)}</div>
+                                            <div>{this.getStepContent(index)}</div>
 
-                                {/*start div */}
+                                            {/*start div */}
 
-                                <div className=" mt-2 mb-2">
-                                    <div>
+                                            <div className=" mt-2 mb-2">
+                                                <div>
 
-                                        <Button
+                                                    <Button
 
-                                        disabled={activeStep === 0}
-                                        onClick={this.handleBack}
-                                        className="btn btn-secondary btn-sm font-weight-normal">
-                                        {tu('back')}
+                                                        disabled={activeStep === 0}
+                                                        onClick={this.handleBack}
+                                                        className="btn btn-secondary btn-sm font-weight-normal">
+                                                        {tu('back')}
 
-                                        </Button>
+                                                    </Button>
 
-                                        <Button
-                                            // disabled={ !((isPassValid ===false ) && (nameLengthIsOk===false))}
-                                            disabled={ !(isPassValid && nameLengthIsOk)}
-                                            className="btn btn-info btn-sm font-weight-normal"
-                                            variant="raised"
-                                            onClick={this.handleNext}>
-
-
-                                            {activeStep === steps.length - 1 ? tu('finish') : tu('next') }
-
-                                        </Button>
-
-                                        {/*{activeStep===2 ? <button className="btn btn-info btn-sm font-weight-normal"> Print</button> : null}*/}
-
-                                    </div>
-                                </div>
-
-                                {/*end div */}
-
-                            </StepContent>
-                        </Step>
-                    );
-                })}
-
-            </Stepper>
-
-            {activeStep === steps.length &&
-
-            (
-                <Paper className="text-center" square elevation={0}>
-
-                    <Typography className="text-primary text-center mb-3">All steps completed</Typography>
+                                                    <Button
+                                                        // disabled={ !((isPassValid ===false ) && (nameLengthIsOk===false))}
+                                                        disabled={!(isPassValid && nameLengthIsOk)}
+                                                        className="btn btn-info btn-sm font-weight-normal"
+                                                        variant="raised"
+                                                        onClick={this.handleNext}>
 
 
-                    <Button onClick={this.handleReset}
-                            className="btn btn-primary btn-sm font-weight-normal">
-                        {tu('reset')}
-                    </Button>
+                                                        {activeStep === steps.length - 1 ? tu('finish') : tu('next')}
 
-                    <Button onClick={this.handleChange("nextAfterRegister")}
+                                                    </Button>
 
-                            className="btn btn-success btn-sm font-weight-normal">
+                                                    {/*{activeStep===2 ? <button className="btn btn-info btn-sm font-weight-normal"> Print</button> : null}*/}
 
-                        {tu('enter')}
+                                                </div>
+                                            </div>
 
-                        </Button>
+                                            {/*end div */}
 
-                </Paper>
-            )
+                                        </StepContent>
+                                    </Step>
+                                );
+                            })}
 
-            }
+                        </Stepper>
+
+                        {activeStep === steps.length &&
+
+                        (
+                            <Paper className="text-center" square elevation={0}>
+
+                                <Typography className="text-primary text-center mb-3">All steps completed</Typography>
 
 
-        </Paper>
-            </div>
+                                <Button onClick={this.handleReset}
+                                        className="btn btn-primary btn-sm font-weight-normal">
+                                    {tu('reset')}
+                                </Button>
+
+                                <Button onClick={this.handleChange("nextAfterRegister")}
+
+                                        className="btn btn-success btn-sm font-weight-normal">
+
+                                    {tu('enter')}
+
+                                </Button>
+
+                            </Paper>
+                        )
+
+                        }
+
+
+                    </Paper>
                 </div>
+            </div>
         );
     };
 
@@ -591,27 +535,23 @@ class AddWallet extends Component {
     render() {
 
         const steps = this.getSteps();
-        const {activeStep , selectedValue ,isPassValid , nameLengthIsOk} = this.state;
+        const {activeStep, selectedValue, isPassValid, nameLengthIsOk} = this.state;
 
 
-        const { classes } = this.props;
-
+        const {classes} = this.props;
 
 
         return (
 
-            <div className="container mt-4 mb-4" style={{height:'500px'}}>
+            <div className="container mt-4 mb-4" style={{height: '500px'}}>
 
+                <div className="row">
 
-            <div className="row" >
-                <NotificationSystem ref="notificationSystem" style={style}/>
-
-
-                <div className="col-md-4 ">
+                    <div className="col-md-4 ">
 
                         <div className={classes.root}>
 
-                            <FormControl component="fieldset"  className={classes.formControl}>
+                            <FormControl component="fieldset" className={classes.formControl}>
 
                                 <FormLabel component="legend">Select a Method to Unlock your Wallets</FormLabel>
 
@@ -622,9 +562,12 @@ class AddWallet extends Component {
                                     value={this.state.selectedValue}
                                     onChange={this.handleChange('selectedValue')}>
 
-                                    <FormControlLabel value="registernewwallet" control={<Radio />} label="Regist new Wallet" />
-                                    <FormControlLabel value="addwithprivatekey" control={<Radio />} label="Add with Private Key" />
-                                    <FormControlLabel disabled={true} value="addWithKeystore" control={<Radio />} label="Add with KeyStore" />
+                                    <FormControlLabel value="registernewwallet" control={<Radio/>}
+                                                      label="Regist new Wallet"/>
+                                    <FormControlLabel value="addwithprivatekey" control={<Radio/>}
+                                                      label="Add with Private Key"/>
+                                    <FormControlLabel disabled={true} value="addWithKeystore" control={<Radio/>}
+                                                      label="Add with KeyStore"/>
 
                                 </RadioGroup>
 
@@ -632,58 +575,84 @@ class AddWallet extends Component {
 
                         </div>
 
-                </div>
-
-                    <div className="col-md-8 col-sm-12 text-center p-2">
-                    {
-                        selectedValue==="registernewwallet"?
-
-                            this.renderRegisterWallet(activeStep , steps , isPassValid , nameLengthIsOk)
-
-                            :  selectedValue ==="addwithprivatekey" ?
-
-                            <div className="row p-4">
-                                <div className="col-md-12">
-                                    <Paper className="p-4">
-
-                                        <TextField
-                                            value={this.state.privateKey}
-                                            required
-                                            fullWidth
-                                            id = "priKeyforUnlock"
-                                            label = "Private Key"
-                                            className = "text-center bmd-label-static mt-2"
-                                            margin = "normal"
-                                            onChange={this.handleChange("privateKey")}
-                                            helperText="Enter your private key "
-                                        /><br/>
-
-                                        <Button disabled={this.state.privateKeyIsValid ===false}  onClick={this.handleChange("unlockWallet")} className="btn btn-sm  btn-primary mt-4 " > Unlock </Button>
-
-                                    </Paper></div></div>
-
-                            :  selectedValue === "addWithKeystore"  ?
-
-                                <div>
-
-                                <input type="file" id="fileUpload" multiple accept="txt/*" style={{display:'none'}}
-
-                    onChange={this.uploadFile}/>
-
-                    <label htmlFor="fileUpload" > Upload your KeyStore</label>
-
                     </div>
 
-                                : <NotBeforeAddWallet  />
-                    }
-                </div>
-            </div>
+                    <div className="col-md-8 col-sm-12 text-center p-2">
+                        {
+                            selectedValue === "registernewwallet" ?
 
-        </div>);
+                                this.renderRegisterWallet(activeStep, steps, isPassValid, nameLengthIsOk)
+
+                                : selectedValue === "addwithprivatekey" ?
+
+                                <div className="row p-4">
+                                    <div className="col-md-12">
+                                        <Paper className="p-4">
+
+
+                                            <TextField
+                                                value={this.state.privateKey}
+                                                required
+
+                                                id="priKeyforUnlock"
+                                                label="Private Key"
+                                                className="text-center bmd-label-static mt-2"
+                                                margin="normal"
+                                                onChange={this.handleChange("privateKey")}
+                                                helperText="Enter your private key "
+                                            />
+                                            <br/>
+                                            <TextField
+                                                value={this.state.name}
+                                                required
+
+                                                label="Wallet Name"
+                                                className="text-center bmd-label-static mt-2"
+                                                margin="normal"
+                                                onChange={this.handleChange("name")}
+                                                helperText="enter at least 5 characters"
+                                            /><br/>
+                                            <TextField
+                                                value={this.state.password}
+                                                required
+
+                                                label="Wallet Password"
+                                                className="text-center bmd-label-static mt-2"
+                                                margin="normal"
+                                                onChange={this.handleChange("password")}
+                                                helperText="enter at least 8 characters"
+                                            /><br/>
+
+                                            <Button
+                                                disabled={!(isPassValid && nameLengthIsOk && this.state.privateKeyIsValid)}
+                                                onClick={this.handleChange("unlockWallet")}
+                                                className="btn btn-sm  btn-primary mt-4 "> Unlock </Button>
+
+                                        </Paper></div>
+                                </div>
+
+                                : selectedValue === "addWithKeystore" ?
+
+                                    <div>
+
+                                        <input type="file" id="fileUpload" multiple accept="txt/*"
+                                               style={{display: 'none'}}
+
+                                               onChange={this.uploadFile}/>
+
+                                        <label htmlFor="fileUpload"> Upload your KeyStore</label>
+
+                                    </div>
+
+                                    : <NotBeforeAddWallet/>
+                        }
+                    </div>
+                </div>
+
+            </div>);
 
     }
 }
-
 
 
 /**
@@ -694,7 +663,7 @@ class AddWallet extends Component {
 function mapStateToProps(state) {
     return {
 
-        wallets : state.walletsReducer.wallets
+        wallets: state.walletsReducer.wallets
 
     };
 }
@@ -710,8 +679,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
 
-        addWallet:(address , key  , name ) =>{
-            dispatch(setWallet(address  ,key , name  ))
+        addWallet: (address, key, name) => {
+            dispatch(setWallet(address, key, name))
         }
 
     }
@@ -722,4 +691,4 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     withStyles(styles),
     connect(mapStateToProps, mapDispatchToProps)
-)( withRouter(AddWallet));
+)(withRouter(AddWallet));
