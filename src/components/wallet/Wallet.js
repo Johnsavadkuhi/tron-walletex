@@ -28,6 +28,10 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SweetAlert from "react-bootstrap-sweetalert";
+import {decryptString} from "../../services/encryption_js";
+import {pkToAddress} from "@tronscan/client/src/utils/crypto";
+
 
 
 const ITEM_HEIGHT = 48;
@@ -70,6 +74,9 @@ class  Wallet extends Component{
                 message: '',
             },
             expanded: null,
+            modal1:null ,
+            modal2:null,
+            modal3:null,
         }
     }
 
@@ -183,19 +190,140 @@ class  Wallet extends Component{
 
     };
 
-    showFreezeBalance = () => {
-        this.setState({
-            modal: (
-                <FreezeBalanceModal
-                    walletinfo ={this.props.walletinfo}
-                    onHide={() => this.setState({ modal: null })}
-                    onConfirm={() => {
-                        this.setState({ modal: null });
-                        setTimeout(() => this.reloadTokens(), 1200);
-                    }}
+
+
+    isValidDecryptedPKey = (address ,pKey)=>{
+
+
+        let addr  = "" ;
+
+        try {
+
+            addr  = pkToAddress(pKey);
+        }
+        catch (e) {
+
+            console.log(e);
+
+        }
+
+        return addr=== address;
+    };
+
+
+    onConfirm = event =>{
+
+
+        const pKey = decryptString(event , this.props.walletinfo.key);
+
+
+
+        if( this.isValidDecryptedPKey(this.props.walletinfo.address , pKey) )
+        {
+
+            this.setState({modal1:null});
+
+            this.setState({ modal2:(<SweetAlert  success title="Success" onConfirm={this.hideAlert1}>
+
+                    the private key was decrypted successfully
+
+                </SweetAlert> )});
+
+
+            this.setState({
+
+                modal: (
+                    <FreezeBalanceModal
+                        address ={this.props.walletinfo.address}
+                        privateKey = {pKey}
+                        onHide={() => this.setState({ modal: null })}
+                        onConfirm={() => {
+                            this.setState({ modal: null });
+                            setTimeout(() => this.reloadTokens(), 1200);
+                        }}
+                    />
+                )
+            })
+
+        }else {
+
+            this.setState({modal1:null});
+
+            this.setState({modal3: (
+
+                    <SweetAlert danger title="Wrong Password" confirmBtnText="Try again" onConfirm={this.hideAlert2 } >
+
+                        you entered a wrong password! Try again
+
+                    </SweetAlert>
+
+                ) })
+
+        }
+
+    };
+
+
+    hideAlert1 =()=>{
+
+        this.setState({modal2:null });
+
+    };
+
+onCancel = () =>{
+    this.setState({modal1:null});
+};
+    hideAlert2=()=>{
+
+        this.setState({modal3:null, privateKey:""});
+        this.setState({modal1:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    cancelBtnText="Cancel"
+                    onCancel={this.onCancel}
+                    showCancel
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small className="small">Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
                 />
             )
+
         })
+
+    };
+
+
+
+
+    showFreezeBalance = () => {
+
+        this.setState({modal1:(
+
+                <SweetAlert
+                    confirmBtnText="Decrypt"
+                    cancelBtnText="Cancel"
+                    showCancel
+                    onCancel={this.onCancel}
+                    input
+                    inputType="password"
+                    cancelBtnBsStyle="default"
+                    title={ <small>Enter your wallet password</small>}
+                    required
+                    onConfirm={this.onConfirm}
+                    validationMsg="You must enter your password!"
+                />
+            )
+
+        });
+
+
+
+
     };
 
     unfreeze = async () => {
@@ -454,7 +582,7 @@ class  Wallet extends Component{
         const { classes } = this.props;
         const { expanded } = this.state;
 
-        const {anchorEl , modal} = this.state;
+        const {anchorEl , modal , modal1 , modal2 , modal3} = this.state;
 
         let frozen = {total:0 , balances:[]};
 
@@ -484,6 +612,9 @@ class  Wallet extends Component{
 
                     <div className="mt-2 row" >
                         {modal}
+                        {modal1}
+                        {modal2}
+                        {modal3}
 
                         <div className="col-md-12 col-sm-12 col-lg-12 ">
 
