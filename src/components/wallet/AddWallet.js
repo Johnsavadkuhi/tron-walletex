@@ -566,8 +566,9 @@ class AddWallet extends Component {
                                                       label="Regist new Wallet"/>
                                     <FormControlLabel value="addwithprivatekey" control={<Radio/>}
                                                       label="Add with Private Key"/>
-                                    <FormControlLabel disabled={true} value="addWithKeystore" control={<Radio/>}
-                                                      label="Add with KeyStore"/>
+
+                                    {/*<FormControlLabel disabled={true} value="addWithKeystore" control={<Radio/>}*/}
+                                                      {/*label="Add with KeyStore"/>*/}
 
                                 </RadioGroup>
 
