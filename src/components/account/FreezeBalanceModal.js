@@ -25,7 +25,7 @@ class FreezeBalanceModal extends React.PureComponent {
 
         // let {account} = this.props;
 
-        this.props.loadTokenBalances(this.props.walletinfo.address);
+        this.props.loadTokenBalances(this.props.address);
     }
 
     hideModal = () => {
@@ -49,7 +49,7 @@ class FreezeBalanceModal extends React.PureComponent {
 
         br.filter(val => {
 
-            return val.address === this.props.walletinfo.address
+            return val.address === this.props.address
 
         }).map((obj) => (balance = obj.balance));
 
@@ -82,10 +82,9 @@ class FreezeBalanceModal extends React.PureComponent {
 
         this.setState({loading: true});
 
-        let transaction = buildFreezeBalance(this.props.walletinfo.address, amount * ONE_TRX, 3);
-        // await Client.signTransaction(account.key, transaction);
+        let transaction = buildFreezeBalance(this.props.address, amount * ONE_TRX, 3);
 
-        await client.sendTransaction(this.props.walletinfo.key, transaction);
+        await client.sendTransaction(this.props.privateKey, transaction);
 
         this.confirmModal({amount});
 
@@ -103,7 +102,7 @@ class FreezeBalanceModal extends React.PureComponent {
 
         br.filter(val => {
 
-            return val.address === this.props.walletinfo.address
+            return val.address === this.props.address
 
         }).map((obj) => (balance = obj.balance));
 
@@ -112,6 +111,9 @@ class FreezeBalanceModal extends React.PureComponent {
 
         let isValid = !loading && (amount > 0 && balance >= amount && confirmed);
 
+        console.log("Address : " , this.props.address);
+        console.log("PrivateKey : " , this.props.privateKey);
+        console.log("Balance at line 114 : " , balance) ;
 
         return (
 
