@@ -559,7 +559,7 @@ class vote extends React.Component {
                             <option  name="Select your Wallet">Select your Wallet</option>
                             {
                                 this.props.wallets.map((wallet)=>(
-                                    <option key ={wallet.name} value={wallet.address} >
+                                    <option key ={wallet.address} value={wallet.address} >
                                         {wallet.name + ' : ' +wallet.address}
                                     </option>
 

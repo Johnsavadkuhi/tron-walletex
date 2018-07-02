@@ -10,7 +10,7 @@ import SendIcon from '@material-ui/icons/Send';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import AddIcon from '@material-ui/icons/Add';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-
+import logo from "../../images/tronLogoForNote.png" ;
 
 import {Col, Row} from "react-bootstrap";
 
@@ -68,9 +68,10 @@ function AutoGridNoWrap(props) {
 
                 <div className="card">
 
-                    <div className="header  pt-4 text-center">
+                    <div className="header  pt-1 text-center">
 
-                        <h4>About TronWalletEx 0.0.3-beta.4 version </h4>
+                        <img src={logo} alt="Tron Logo"/>
+                        <h5 className="mt-3">About TronWalletEx 0.0.3-beta.4 version </h5>
 
                     </div>
 

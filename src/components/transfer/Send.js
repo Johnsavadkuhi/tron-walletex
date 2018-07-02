@@ -48,7 +48,9 @@ class Send extends React.Component {
         modal:null,
         modal1:null ,
         modal2:null,
+        modal3:null ,
         privateKey:"",
+        confirmSend : false
 
     };
 
@@ -145,6 +147,16 @@ class Send extends React.Component {
 
     };
 
+    onConfirm2 = event =>{
+
+        this.setState({confirmSend:true , modal3:null}) ;
+        setTimeout(()=>{
+
+            this.setState({confirmSend:false})  ;
+
+        }, 1000)
+
+    };
 
     hideAlert1 =()=>{
 
@@ -206,31 +218,45 @@ class Send extends React.Component {
 
   send = async() => {
 
-      let  client = new Client()  ;
+      this.setState({modal3:(
 
-    let {to, token, amount , selectedWallet , privateKey} = this.state;
+              <SweetAlert
+                  confirmBtnText="Yes"
+                  cancelBtnBsStyle="No"
+                  title={ <small className="small"> are you sure to send ? </small>}
+                  onConfirm={this.onConfirm2}
 
-    //
-    // const obj =  this.props.wallets.filter(val => {
-    //
-    //       return selectedWallet === val.address;
-    //
-    //   });
+              />
+          )
 
 
-    this.setState({ isLoading: true });
+      });
 
-   const resulet =   await client.send( token,selectedWallet ,to, amount * ONE_TRX)(privateKey);
+      if(this.state.confirmSend) {
 
-      this.props.loadTokenBalances(selectedWallet);
 
-    this.setState({
-      sendStatus: 'success',
-      isLoading: false,
-        privateKey:""
-    });
+          let client = new Client();
 
-    return resulet  ;
+          let {to, token, amount, selectedWallet, privateKey} = this.state;
+
+
+          this.setState({isLoading: true});
+
+
+          const resulet = await client.send(token, selectedWallet, to, amount * ONE_TRX)(privateKey);
+
+          this.props.loadTokenBalances(selectedWallet);
+
+          this.setState({
+              sendStatus: 'success',
+              isLoading: false,
+              privateKey: ""
+          });
+
+          return resulet;
+
+      }
+
 
   };
 

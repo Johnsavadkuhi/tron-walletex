@@ -26,7 +26,8 @@ import {pkToAddress} from "@tronscan/client/src/utils/crypto";
 import Input from '@material-ui/core/Input';
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import NotBeforeAddWallet from "../../components/Notifications/NotbeforeAddWallet";
-
+import Snackbar from '@material-ui/core/Snackbar';
+import Fade from '@material-ui/core/Fade'
 
 /**
  *
@@ -74,6 +75,7 @@ class AddWallet extends Component {
             nameLengthIsOk: false,
             privateKeyIsValid: false,
             passWarning: true,
+            welletExist : false
 
         };
     }
@@ -88,6 +90,8 @@ class AddWallet extends Component {
         console.log("value ", value);
 
     };
+
+
 
     /**
      * this method is used to upload keystore
@@ -134,17 +138,7 @@ class AddWallet extends Component {
 
 
         switch ([nameOf][0]) {
-            case "handleClickShowPassword" :
 
-                this.setState({showPassword: !this.state.showPassword});
-
-                break;
-
-            case "handleMouseDownPassword" :
-
-                event.preventDefault();
-
-                break;
 
             case "nextAfterRegister" :
 
@@ -173,7 +167,24 @@ class AddWallet extends Component {
 
                     let address = pkToAddress(event.target.value);
 
-                    this.setState({address: address, privateKeyIsValid: true});
+                    let w = this.props.wallets.filter(val => {
+
+                        return val.address === address;
+
+                    });
+
+                    if(w.length===0)
+                    {
+                        console.log("at line 175 : " , w.length) ;
+                        this.setState({address: address, privateKeyIsValid: true , welletExist :false });
+
+                    }else{
+                        console.log("at line 179 : " , w.length) ;
+
+                        this.setState({address: "", privateKeyIsValid: false , welletExist :true});
+
+                    }
+
                 }
 
                 break;
@@ -207,35 +218,35 @@ class AddWallet extends Component {
                 const v = event.target.value;
 
                 if (v.length >= 5) {
-                    this.setState({nameLengthIsOk: true})
+                    this.setState({nameLengthIsOk: true ,  [nameOf]: event.target.value})
 
                 } else {
-                    this.setState({nameLengthIsOk: false})
+                    this.setState({nameLengthIsOk: false ,  [nameOf]: event.target.value})
                 }
 
 
-                let x = this.props.wallets.filter(val => {
-
-                    return val.name === v;
-
-                });
-
-
-                if (x.length === 0) {
+                // let x = this.props.wallets.filter(val => {
+                //
+                //     return val.name === v;
+                //
+                // });
 
 
-                    this.setState({
-
-                        [nameOf]: event.target.value, nameExist: false
-
-                    });
-
-                } else {
-
-                    this.setState({[nameOf]: "", nameExist: true});
-                    this.handleClick("Wallet Name Already Exist");
-
-                }
+                // if (x.length === 0) {
+                //
+                //
+                //     this.setState({
+                //
+                //         [nameOf]: event.target.value, nameExist: false
+                //
+                //     });
+                //
+                // } else {
+                //
+                //     this.setState({[nameOf]: "", nameExist: true});
+                //     this.handleClick("Wallet Name Already Exist");
+                //
+                // }
 
                 break;
 
