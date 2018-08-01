@@ -10,11 +10,11 @@
     lodash "^4.2.0"
 
 "@babel/runtime@^7.0.0-beta.42":
-  version "7.0.0-beta.47"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.47.tgz#273f5e71629e80f6cbcd7507503848615e59f7e0"
+  version "7.0.0-beta.54"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.54.tgz#39ebb42723fe7ca4b3e1b00e967e80138d47cadf"
   dependencies:
-    core-js "^2.5.3"
-    regenerator-runtime "^0.11.1"
+    core-js "^2.5.7"
+    regenerator-runtime "^0.12.0"
 
 "@babel/types@7.0.0-beta.32":
   version "7.0.0-beta.32"
@@ -24,9 +24,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@material-ui/core@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.2.0.tgz#ec372fd44f949faa604c4ccd4b7ee0bc5e08ac8c"
+"@material-ui/core@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.4.1.tgz#fb041b95a99a8da0fee87e2953b4107df0120e92"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.42"
     "@types/jss" "^9.5.3"
@@ -38,6 +38,7 @@
     deepmerge "^2.0.1"
     dom-helpers "^3.2.1"
     hoist-non-react-statics "^2.5.0"
+    is-plain-object "^2.0.4"
     jss "^9.3.3"
     jss-camel-case "^6.0.0"
     jss-default-unit "^8.0.2"
@@ -47,24 +48,25 @@
     jss-vendor-prefixer "^7.0.0"
     keycode "^2.1.9"
     normalize-scroll-left "^0.1.2"
+    popper.js "^1.0.0"
     prop-types "^15.6.0"
     react-event-listener "^0.6.0"
     react-jss "^8.1.0"
-    react-popper "^0.10.0"
     react-transition-group "^2.2.1"
-    recompose "^0.26.0 || ^0.27.0"
+    recompose "^0.27.0"
     scroll "^2.0.3"
     warning "^4.0.1"
 
-"@material-ui/icons@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.1.0.tgz#4d025df7b0ba6ace8d6710079ed76013a4d26595"
+"@material-ui/icons@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-2.0.0.tgz#f2c4e80d0cb4bbbd433127781da67d93393535f8"
   dependencies:
-    recompose "^0.26.0 || ^0.27.0"
+    "@babel/runtime" "^7.0.0-beta.42"
+    recompose "^0.27.0"
 
-"@tronscan/client@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.2.4.tgz#a09b840217712ec5c5013c2ccb30975fd6957fb3"
+"@tronscan/client@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.2.7.tgz#0d0f3c38da409117247f992d7230ce5812abdb80"
   dependencies:
     axios "^0.18.0"
     babel-plugin-transform-class-properties "^6.24.1"
@@ -82,21 +84,21 @@
     qs "^6.5.1"
 
 "@types/jss@^9.5.3":
-  version "9.5.3"
-  resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.5.3.tgz#0c106de3fe0b324cd4173fac7dab26c12cda624e"
+  version "9.5.4"
+  resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.5.4.tgz#89a4ee32a14a8d2937187b1a7f443750e964a74d"
   dependencies:
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
 "@types/react-transition-group@^2.0.8":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.9.tgz#ed6a71fb711e524345844defec2a861c1a222a03"
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.11.tgz#feb274676a39383fffaa0dff710958d2251abefb"
   dependencies:
     "@types/react" "*"
 
 "@types/react@*":
-  version "16.3.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.14.tgz#f90ac6834de172e13ecca430dcb6814744225d36"
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.7.tgz#f33f6d759a7e1833befa15224d68942d178a5a3f"
   dependencies:
     csstype "^2.2.0"
 
@@ -1281,8 +1283,8 @@ better-assert@~1.0.0:
     callsite "1.0.0"
 
 big-integer@^1.6.16:
-  version "1.6.31"
-  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.31.tgz#6d7852486e67c642502dcc03f7225a245c9fc7fa"
+  version "1.6.32"
+  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.32.tgz#5867458b25ecd5bcb36b627c30bb501a13c07e89"
 
 big.js@^3.1.3:
   version "3.2.0"
@@ -1362,9 +1364,9 @@ bootstrap-material-design@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/bootstrap-material-design/-/bootstrap-material-design-4.1.1.tgz#87433db0bf64d6a0afb0f5faaa8606134c9d26d2"
 
-bootstrap@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
+bootstrap@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.2.tgz#aee2a93472e61c471fc79fb475531dcbc87de326"
 
 bowser@^1.7.3:
   version "1.9.3"
@@ -1633,8 +1635,8 @@ caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000792:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000843.tgz#4fdec258dc641c385744cdd49d23c5459c3d4411"
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000852"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000852.tgz#8b7510cec030cac7842e52beca2bf292af65f935"
+  version "1.0.30000865"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000865.tgz#70026616e8afe6e1442f8bb4e1092987d81a2f25"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -2017,9 +2019,13 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
 
-core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.3:
+core-js@^2.4.0, core-js@^2.5.0:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.6.tgz#0fe6d45bf3cac3ac364a9d72de7576f4eb221b9d"
+
+core-js@^2.5.7:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -2258,13 +2264,9 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.0.0, csstype@^2.2.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.2.tgz#4534308476ceede8fbe148b9b99f9baf1c80fa06"
-
-csstype@^2.5.2:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.3.tgz#2504152e6e1cc59b32098b7f5d6a63f16294c1f7"
+csstype@^2.0.0, csstype@^2.2.0, csstype@^2.5.2:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.6.tgz#2ae1db2319642d8b80a668d2d025c6196071e788"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -2397,8 +2399,8 @@ deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
 deepmerge@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.0.tgz#511a54fff405fc346f0240bb270a3e9533a31102"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2654,8 +2656,8 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.47.tgz#764e887ca9104d01a0ac8eabee7dfc0e2ce14104"
 
 electron-to-chromium@^1.3.47:
-  version "1.3.48"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.48.tgz#d3b0d8593814044e092ece2108fc3ac9aea4b900"
+  version "1.3.52"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.52.tgz#d2d9f1270ba4a3b967b831c40ef71fb4d9ab5ce0"
 
 elliptic@^6.0.0, elliptic@^6.4.0:
   version "6.4.0"
@@ -3665,8 +3667,8 @@ google-palette@^1.1.0:
   resolved "https://registry.yarnpkg.com/google-palette/-/google-palette-1.1.0.tgz#37e508568b8ca904e57976dfe28d92f701624a9a"
 
 google-protobuf@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.5.0.tgz#b8cc63c74d83457bd8a9a904503c8efb26bca339"
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.6.0.tgz#e2bafb00c20a8734174d8f89e0a842709e2ceed0"
 
 got@^6.7.1:
   version "6.7.1"
@@ -4994,8 +4996,8 @@ jss-vendor-prefixer@^7.0.0:
     css-vendor "^0.3.8"
 
 jss@^9.3.3, jss@^9.7.0:
-  version "9.8.1"
-  resolved "https://registry.yarnpkg.com/jss/-/jss-9.8.1.tgz#e2ff250777ad657430e6edc47a63516541b888fa"
+  version "9.8.7"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-9.8.7.tgz#ed9763fc0f2f0260fc8260dac657af61e622ce05"
   dependencies:
     is-in-browser "^1.1.3"
     symbol-observable "^1.1.0"
@@ -6132,7 +6134,7 @@ pngjs@^3.3.0:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.3.3.tgz#85173703bde3edac8998757b96e5821d0966a21b"
 
-popper.js@^1.12.9, popper.js@^1.14.1, popper.js@^1.14.3:
+popper.js@^1.0.0, popper.js@^1.12.9, popper.js@^1.14.1, popper.js@^1.14.3:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
 
@@ -6754,12 +6756,12 @@ react-error-overlay@^4.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
 react-event-listener@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.0.tgz#f8cf2821f5ca1844e0df1dac1c7b9a3ecb686fd7"
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.1.tgz#41c7a80a66b398c27dd511e22712b02f3d4eccca"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.42"
     prop-types "^15.6.0"
-    warning "^3.0.0"
+    warning "^4.0.1"
 
 react-intl@^2.4.0:
   version "2.4.0"
@@ -6775,10 +6777,10 @@ react-is@^16.3.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"
 
 react-jss@^8.1.0:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-8.4.0.tgz#7cb43d85dea56afafc8f0fd072ae27fcc0518950"
+  version "8.6.1"
+  resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-8.6.1.tgz#a06e2e1d2c4d91b4d11befda865e6c07fbd75252"
   dependencies:
-    hoist-non-react-statics "^2.3.1"
+    hoist-non-react-statics "^2.5.0"
     jss "^9.7.0"
     jss-preset-default "^4.3.0"
     prop-types "^15.6.0"
@@ -6807,7 +6809,7 @@ react-overlays@^0.8.0:
     react-transition-group "^2.2.0"
     warning "^3.0.0"
 
-react-popper@^0.10.0, react-popper@^0.10.4:
+react-popper@^0.10.4:
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.10.4.tgz#af2a415ea22291edd504678d7afda8a6ee3295aa"
   dependencies:
@@ -7023,9 +7025,9 @@ recompose@0.26.0:
     hoist-non-react-statics "^2.3.1"
     symbol-observable "^1.0.4"
 
-"recompose@^0.26.0 || ^0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.27.0.tgz#8230ebd651bf1159097006f79083fe224b1501cf"
+recompose@^0.27.0:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.27.1.tgz#1a49e931f183634516633bbb4f4edbfd3f38a7ba"
   dependencies:
     babel-runtime "^6.26.0"
     change-emitter "^0.1.2"
@@ -7101,9 +7103,13 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
 
-regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
+regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+
+regenerator-runtime@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.0.tgz#8052ac952d85b10f3425192cd0c53f45cf65c6cb"
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -7987,6 +7993,10 @@ sw-toolbox@^3.4.0:
   dependencies:
     path-to-regexp "^1.0.1"
     serviceworker-cache-polyfill "^4.0.0"
+
+sweetalert2@^7.26.6:
+  version "7.26.7"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.26.7.tgz#78377731819903a865bb318b94894cb16f1ffd83"
 
 symbol-observable@1.0.4:
   version "1.0.4"

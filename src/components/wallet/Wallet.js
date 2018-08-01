@@ -31,7 +31,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SweetAlert from "react-bootstrap-sweetalert";
 import {decryptString} from "../../services/encryption_js";
 import {pkToAddress} from "@tronscan/client/src/utils/crypto";
-
+import SendIcon from '@material-ui/icons/SendRounded';
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+import CloseIcon from '@material-ui/icons/Close'
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const ITEM_HEIGHT = 48;
@@ -636,6 +639,31 @@ onCancel = () =>{
                                         <div>
                                             {/*<Notifications wallet={this.props.walletinfo}/>*/}
 
+                                            <Tooltip title="Voting">
+                                            <IconButton
+                                                aria-label="More">
+
+
+                                                <AllInclusiveIcon/>
+
+                                            </IconButton></Tooltip>
+
+
+                                            <Tooltip title="Send">
+                                            <IconButton
+                                                aria-label="More">
+
+
+                                                <SendIcon nativeColor={"green"}/>
+
+                                            </IconButton></Tooltip>
+
+                                            {/*<IconButton*/}
+                                                {/*aria-label="More">*/}
+
+                                                {/*<CloseIcon color={"error"} />*/}
+
+                                            {/*</IconButton>*/}
 
                                             <IconButton
                                                 aria-label="More"
@@ -644,6 +672,7 @@ onCancel = () =>{
                                                 onClick={this.handleClick}>
 
                                                 <MoreVertIcon />
+
 
                                             </IconButton>
                                             <Menu
@@ -659,7 +688,8 @@ onCancel = () =>{
                                                 }}>
 
                                                 <MenuItem  onClick={this.handleClose('edite')}>Edit</MenuItem>
-                                                <MenuItem  onClick={this.handleClose('remove')}>Remove</MenuItem>
+                                                <MenuItem  onClick={this.handleClose('remove')}><CloseIcon /> close</MenuItem>
+
                                                 )
 
                                             </Menu>

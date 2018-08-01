@@ -93,7 +93,6 @@ function AutoGridNoWrap(props) {
                                 { returnContent(props , "you can buy Tokens" , <small>TRX</small>)}
                                 { returnContent(props , "you can vote for every Token" ,<AllInclusiveIcon/> )}
 
-
                             </Col>
 
 
@@ -104,15 +103,6 @@ function AutoGridNoWrap(props) {
                 </div>
             </Grid>
         </div>
-
-
-
-
-
-
-
-
-
 
     );
 }

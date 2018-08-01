@@ -11,10 +11,10 @@ import {find} from "lodash";
 import {ONE_TRX} from "../../constants";
 import {withStyles} from '@material-ui/core/styles';
 import {pkToAddress} from "@tronscan/client/src/utils/crypto";
-
 import {compose} from "redux";
 import SweetAlert from "react-bootstrap-sweetalert";
 import {decryptString } from  "../../services/encryption_js";
+import swal from 'sweetalert2'
 
 
 const styles = theme => ({
@@ -57,30 +57,80 @@ class Send extends React.Component {
   }
 
 
-  handleChange = (event) =>{
+  handleChange = async(event) =>{
 
        this.setState({ selectedWallet: event.target.value} );
 
        if(event.target.value !== "Select your Wallet")
        {
-           console.log("event tareget for modal : " , event.target.value ) ;
 
-           this.setState({modal:(
+           // this.setState({modal:(
+           //
+           //         <SweetAlert
+           //             confirmBtnText="Decrypt"
+           //             showCancel
+           //             input
+           //             inputType="password"
+           //             title={ <small className="small">Enter your wallet password</small>}
+           //             required
+           //             onConfirm={this.onConfirm}
+           //             onCancel={this.hideAlert1}
+           //             validationMsg="You must enter your password!"
+           //         />
+           //     )
+           //
+           // })
 
-                   <SweetAlert
-                       confirmBtnText="Decrypt"
 
-                       input
-                       inputType="password"
-                       cancelBtnBsStyle="default"
-                       title={ <small className="small">Enter your wallet password</small>}
-                       required
-                       onConfirm={this.onConfirm}
-                       validationMsg="You must enter your password!"
-                   />
-               )
+         let result=  await swal({
+             type:'question',
+               title: 'Decryption',
+             text :"Enter password of your wallet " ,
+               input: 'password',
+               inputAttributes: {
+                   autocapitalize: 'off'
+               },
 
-           })
+               showCancelButton: true,
+               confirmButtonText: 'decrypt',
+               showLoaderOnConfirm: true,
+               preConfirm: (pass) => {
+
+
+                   let { selectedWallet} = this.state;
+
+                   const obj =  this.props.wallets.filter(val => {
+
+                       return selectedWallet === val.address;
+
+                   });
+
+                   const pKey = decryptString(pass , obj[0].key);
+
+
+
+                   if( this.isValidDecryptedPKey(selectedWallet , pKey) )
+                   {
+                           swal({
+                               title:'Decrypted' ,
+                               type:'success'
+                           })
+                       }
+                       else {
+
+                           swal({title:"Error" , type:'error' })
+                       }
+
+
+
+               },
+               allowOutsideClick: () => !swal.isLoading()
+           });
+
+
+
+
+
        }
   };
 
@@ -150,13 +200,41 @@ class Send extends React.Component {
     onConfirm2 = event =>{
 
         this.setState({confirmSend:true , modal3:null}) ;
-        setTimeout(()=>{
+        // setTimeout(()=>{
+        //
+        //     this.setState({confirmSend:false})  ;
+        //
+        // }, 1000)
 
-            this.setState({confirmSend:false})  ;
 
-        }, 1000)
+        this.secondSend() ;
+
 
     };
+
+    secondSend = async () =>{
+
+
+        let client = new Client();
+
+        let {to, token, amount, selectedWallet, privateKey} = this.state;
+
+
+        this.setState({isLoading: true});
+
+
+        const resulet = await client.send(token, selectedWallet, to, amount * ONE_TRX)(privateKey);
+
+        this.props.loadTokenBalances(selectedWallet);
+
+        this.setState({
+            sendStatus: 'success',
+            isLoading: false,
+            privateKey: ""
+        });
+
+        return resulet;
+    } ;
 
     hideAlert1 =()=>{
 
@@ -216,7 +294,7 @@ class Send extends React.Component {
   };
 
 
-  send = async() => {
+  send = () => {
 
       this.setState({modal3:(
 
@@ -232,30 +310,30 @@ class Send extends React.Component {
 
       });
 
-      if(this.state.confirmSend) {
-
-
-          let client = new Client();
-
-          let {to, token, amount, selectedWallet, privateKey} = this.state;
-
-
-          this.setState({isLoading: true});
-
-
-          const resulet = await client.send(token, selectedWallet, to, amount * ONE_TRX)(privateKey);
-
-          this.props.loadTokenBalances(selectedWallet);
-
-          this.setState({
-              sendStatus: 'success',
-              isLoading: false,
-              privateKey: ""
-          });
-
-          return resulet;
-
-      }
+      // if(this.state.confirmSend) {
+      //
+      //
+      //     let client = new Client();
+      //
+      //     let {to, token, amount, selectedWallet, privateKey} = this.state;
+      //
+      //
+      //     this.setState({isLoading: true});
+      //
+      //
+      //     const resulet = await client.send(token, selectedWallet, to, amount * ONE_TRX)(privateKey);
+      //
+      //     this.props.loadTokenBalances(selectedWallet);
+      //
+      //     this.setState({
+      //         sendStatus: 'success',
+      //         isLoading: false,
+      //         privateKey: ""
+      //     });
+      //
+      //     return resulet;
+      //
+      // }
 
 
   };
@@ -531,108 +609,10 @@ class Send extends React.Component {
     )
   }
 
-    // renderWallets = ()=>{
-    //
-    //     const { selectedWallet} = this.state;
-    //     const { classes } = this.props;
-    //
-    //
-    //     const obj =   this.props.tokensBalances.filter( value => {
-    //
-    //         return selectedWallet === value.address;
-    //     });
-    //
-    //
-    //     return (
-    //
-    //
-    //         <div className="container mt-4 mb-4">
-    //             <Paper>
-    //
-    //                 <div className="row" style={{height:'450px'}}>
-    //
-    //
-    //                     <div className="col-md-4 col-sm-12 ">
-    //
-    //                         <div className="text-center text-secondary">
-    //
-    //                             <div className={classes.root}>
-    //
-    //
-    //                                 <FormControl component="fieldset"  className={classes.formControl}>
-    //
-    //                                     <FormLabel component="legend"> Your Wallets </FormLabel>
-    //
-    //                                     <RadioGroup
-    //                                         aria-label="Select a Method "
-    //                                         name=""
-    //                                         className={classes.group}
-    //                                         value={this.state.selectedWallet}
-    //                                         onChange={this.handleChange}>
-    //
-    //                                         { this.props.wallets.length > 0 ?"" :"Please Generate Or Add wallet first "}
-    //
-    //
-    //
-    //                                         {
-    //                                             this.props.wallets.map((wallet, index )=>(
-    //
-    //                                                 <FormControlLabel key={index} value={wallet.address} control={<Radio />} label={wallet.address} />
-    //                                             ))
-    //
-    //
-    //
-    //                                         }
-    //
-    //
-    //                                     </RadioGroup>
-    //
-    //                                 </FormControl>
-    //
-    //                             </div>
-    //
-    //                         </div>
-    //                     </div>
-    //
-    //                     <div className="col-md-8 col-sm-12 text-center p-2">
-    //
-    //                         {
-    //                             obj.length > 0 ?
-    //
-    //                                 <Paper className="p-4 m-4">
-    //                                     {this.renderForm(obj[0].balances)}
-    //                                 </Paper>
-    //
-    //
-    //                                 : <div className="container p-4 m-2">
-    //
-    //                                     <Paper>
-    //
-    //                                         Select Your Wallet from left Panel
-    //
-    //                                     </Paper>
-    //
-    //                                 </div>
-    //
-    //                         }
-    //
-    //
-    //
-    //                     </div>
-    //
-    //                 </div>
-    //             </Paper>
-    //         </div>
-    //
-    //     );
-    //
-    //
-    //
-    // };
 
     renderWallets = ()=>{
 
-        const { selectedWallet , modal,modal1,modal2 } = this.state;
+        const { selectedWallet , modal,modal1,modal2,modal3 } = this.state;
 
 
         let tokenBalances = [] ;
@@ -653,6 +633,7 @@ class Send extends React.Component {
                 {modal}
                 {modal1}
                 {modal2}
+                {modal3}
 
                 <div className="container">
                     <div className="row justify-content-center">
