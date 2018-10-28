@@ -6,15 +6,6 @@ import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withStyles} from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
-import DoneIcon from '@material-ui/icons/Done';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import SendIcon from '@material-ui/icons/Send';
-import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
-import AddIcon from '@material-ui/icons/Add';
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const styles = theme => ({
     root: {
