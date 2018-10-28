@@ -44,20 +44,20 @@ class Navigation extends Component {
             case "addWallet":
                 window.location = '#/AddWallet';
                 break;
-            case "send":
-                window.location = '#/send';
-                break;
-            case "buyToken":
-                window.location = '#/BuyToken';
-                break;
-
-            case "voting":
-                window.location = '#/account/votes';
-                break;
-
-            case "createToken":
-                window.location = '#/createToken';
-                break;
+            // case "send":
+            //     window.location = '#/send';
+            //     break;
+            // case "buyToken":
+            //     window.location = '#/BuyToken';
+            //     break;
+            //
+            // case "voting":
+            //     window.location = '#/account/votes';
+            //     break;
+            //
+            // case "createToken":
+            //     window.location = '#/createToken';
+            //     break;
 
             default:
                 return;
@@ -72,18 +72,14 @@ class Navigation extends Component {
 
     render() {
 
-
         let {languages, activeLanguage} = this.props;
 
         return (
 
             <div>
 
-
-
-
-
                 <nav data-uk-navbar className="uk-navbar-container uk-navbar">
+
                     <div className="uk-navbar-left">
 
                         <a className="uk-navbar-item uk-margin-left  " href="#">
@@ -95,19 +91,21 @@ class Navigation extends Component {
 
                             <ul className="uk-navbar-nav">
                                 <li>
-                                    <a  onClick={this.handleClick("myWallets")} >
-                                        <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: credit-card"></span>
-                                        MyWallet
+                                    <a onClick={this.handleClick("myWallets")}>
+                                        <span className="uk-icon uk-margin-small-right"
+                                              data-uk-icon="icon: info"></span>
+                                        MyWallets
                                     </a>
                                 </li>
                             </ul>
                         </a>
                         <a className="uk-navbar-item">
 
-                        <ul className="uk-navbar-nav">
+                            <ul className="uk-navbar-nav">
                                 <li>
-                                    <a  onClick={this.handleClick("addWallet")}>
-                                        <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: plus-circle"></span>
+                                    <a onClick={this.handleClick("addWallet")}>
+                                        <span className="uk-icon uk-margin-small-right"
+                                              data-uk-icon="icon: plus-circle"></span>
                                         Add Wallet
                                     </a>
                                 </li>
@@ -115,9 +113,14 @@ class Navigation extends Component {
 
                         </a>
 
+                    </div>
+
+
+                    <div className="uk-navbar-right uk-margin-right ">
 
                         <div className="btn-group">
-                            <button className="btn dropdown-toggle" type="button" id="buttonMenu1" data-toggle="dropdown"
+                            <button className="btn dropdown-toggle" type="button" id="buttonMenu1"
+                                    data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                 {activeLanguage.toUpperCase()}
                             </button>
@@ -132,7 +135,8 @@ class Navigation extends Component {
                                                 <a key={language}
                                                    className="dropdown-item "
                                                    href="javascript:;"
-                                                   onClick={() => this.setLanguage(language)}>{languages[language]}</a></li>
+                                                   onClick={() => this.setLanguage(language)}>{languages[language]}</a>
+                                            </li>
                                         ))
                                     }
 
@@ -140,56 +144,12 @@ class Navigation extends Component {
                                 </ul>
 
                             </div>
+
                         </div>
 
                     </div>
+                </nav>
 
-    </nav>
-
-                {/*<div className="text-center mt-4">*/}
-
-
-
-
-                    {/*<Chip*/}
-
-                        {/*avatar={<Avatar><SendIcon/></Avatar>}*/}
-                        {/*label="Send"*/}
-                        {/*onClick={this.handleClick("send")}*/}
-                        {/*onDelete={this.handleDelete}*/}
-                        {/*className="text-white m-2"*/}
-                        {/*deleteIcon={<DoneIcon/>}*/}
-                    {/*/>*/}
-
-                    {/*<Chip*/}
-                        {/*avatar={<Avatar> <AttachMoneyIcon/> </Avatar>}*/}
-                        {/*label="Buy Tokens"*/}
-                        {/*onClick={this.handleClick("buyToken")}*/}
-                        {/*onDelete={this.handleDelete}*/}
-                        {/*className="text-white mr-2 ml-2 mb-2 "*/}
-                        {/*deleteIcon={<DoneIcon/>}*/}
-                    {/*/>*/}
-
-                    {/*<Chip*/}
-                        {/*avatar={<Avatar><MoneyOffIcon/> </Avatar>}*/}
-                        {/*label="Create Token"*/}
-                        {/*onClick={this.handleClick("createToken")}*/}
-                        {/*onDelete={this.handleDelete}*/}
-                        {/*className="text-white m-2"*/}
-                        {/*deleteIcon={<DoneIcon/>}*/}
-                    {/*/>*/}
-
-                    {/*<Chip*/}
-
-                        {/*avatar={<Avatar><AllInclusiveIcon/></Avatar>}*/}
-                        {/*label="Voting"*/}
-                        {/*onClick={this.handleClick("voting")}*/}
-                        {/*onDelete={this.handleDelete}*/}
-                        {/*className="text-white m-2"*/}
-                        {/*deleteIcon={<DoneIcon/>}*/}
-                    {/*/>*/}
-
-                {/*</div>*/}
 
             </div>
 
