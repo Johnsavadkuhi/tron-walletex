@@ -15,7 +15,7 @@
     "babel-preset-react-app": "^3.1.1",
     "babel-runtime": "6.26.0",
     "bootstrap": "^4.1.2",
-    "bootstrap-material-design": "^4.1.1",
+    "bootstrap-material-design":"^4.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "^2.4.1",
     "crypto-js": "^3.1.9-1",
@@ -95,7 +95,6 @@
     "@tronscan/client":"^0.2.7",
     "sweetalert2":"^7.26.6",
     "@material-ui/lab": "^3.0.0-alpha.21"
-
 
   },
   "scripts": {

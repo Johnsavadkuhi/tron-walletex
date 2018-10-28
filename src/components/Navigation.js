@@ -32,15 +32,26 @@ class Navigation extends Component {
 
         this.state = {
             value: 0,
+            age: '',
+            labelWidth: 0
         };
 
     }
 
+    // componentDidMount() {
+    //     this.setState({
+    //         labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    //     });
+    // }
     componentWillMount() {
         if (this.state.value !== 0) {
             this.setState({value: 0});
         }
     }
+
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.value });
+    };
 
     handleDelete = () => {
     }
@@ -90,128 +101,46 @@ class Navigation extends Component {
 
             <div>
 
-                <nav data-uk-navbar className="uk-navbar-container uk-navbar-transparent">
+
+
+
+
+                <nav data-uk-navbar className="uk-navbar-container uk-navbar">
                     <div className="uk-navbar-left">
 
                         <a className="uk-navbar-item uk-margin-left uk-background-blend-color " href="#">
                             <img src={Redlogo} className="logo" alt="TronWalletEx"/>
                         </a>
 
-                        <ul className="uk-navbar-nav">
-                            <li className="uk-active">
+                        <div className="btn-group">
+                            <button className="btn dropdown-toggle" type="button" id="buttonMenu1" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                {activeLanguage.toUpperCase()}
+                            </button>
+                            <div className="dropdown-menu" aria-labelledby="buttonMenu1">
 
-                                <a href="#">  {activeLanguage.toUpperCase()} </a>
-
-                                <div className="uk-navbar-dropdown">
-                                    <ul className="uk-nav uk-navbar-dropdown-nav">
-                                        {
-                                            Object.keys(languages).map(language => (
-                                                <li className="uk-active">
+                                <ul className="uk-nav uk-navbar-dropdown-nav">
+                                    {
+                                        Object.keys(languages).map(language => (
+                                            <li className="uk-active">
 
                                                 <a key={language}
                                                    className="dropdown-item "
                                                    href="javascript:;"
                                                    onClick={() => this.setLanguage(language)}>{languages[language]}</a></li>
-                                            ))
-                                        }
+                                        ))
+                                    }
 
 
-                                    </ul>
-                                </div>
+                                </ul>
 
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
+
                     </div>
 
 
-
-
-
-
-
-
     </nav>
-
-
-                {/*<nav className="navbar navbar-expand-md navbar-dark bg-white">*/}
-                    {/*<div className="container">*/}
-                        {/*<div className="navbar-toggler dropdown-toggle" data-toggle="collapse">*/}
-
-
-                                {/*<div className="dropdown">*/}
-                                    {/*<button className="btn btn-secondary dropdown-toggle" type="button"*/}
-                                            {/*id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"*/}
-                                            {/*aria-expanded="false">*/}
-
-                                        {/*{activeLanguage.toUpperCase()}*/}
-
-                                    {/*</button>*/}
-
-                                    {/*<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">*/}
-                                        {/*{*/}
-                                            {/*Object.keys(languages).map(language => (*/}
-                                                {/*<a key={language}*/}
-                                                   {/*className="dropdown-item font-weight-bold text-dark"*/}
-                                                   {/*href="javascript:;"*/}
-                                                   {/*onClick={() => this.setLanguage(language)}>{languages[language]}</a>*/}
-                                            {/*))*/}
-                                        {/*}*/}
-
-                                    {/*</div>*/}
-                                {/*</div>*/}
-
-
-
-                        {/*</div>*/}
-
-
-                        {/*<div className="d-md-none pull-right">*/}
-                            {/*<img src={Redlogo} className="logo" alt="TronWalletEx"/>*/}
-                        {/*</div>*/}
-
-                        {/*<div className="collapse navbar-collapse" id="navbar-top">*/}
-                            {/*<ul className="navbar-nav mr-auto ">*/}
-                                {/*<li className="nav-item d-none d-md-block">*/}
-                                    {/*<img src={Redlogo} className="logo" alt="Tron"/>*/}
-                                {/*</li>*/}
-
-
-                            {/*</ul>*/}
-
-                            {/*<ul className="navbar-nav navbar-right mr-4">*/}
-
-                                {/*<div className="dropdown">*/}
-                                    {/*<button className="btn btn-secondary dropdown-toggle" type="button"*/}
-                                            {/*id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"*/}
-                                            {/*aria-expanded="false">*/}
-
-                                        {/*{activeLanguage.toUpperCase()}*/}
-
-                                    {/*</button>*/}
-
-                                    {/*<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">*/}
-                                        {/*{*/}
-                                        {/*Object.keys(languages).map(language => (*/}
-                                        {/*<a key={language}*/}
-                                        {/*className="dropdown-item font-weight-bold text-dark"*/}
-                                        {/*href="javascript:;"*/}
-                                        {/*onClick={() => this.setLanguage(language)}>{languages[language]}</a>*/}
-                                        {/*))*/}
-                                        {/*}*/}
-
-                                    {/*</div>*/}
-                                {/*</div>*/}
-
-
-
-                            {/*</ul>*/}
-
-
-                        {/*</div>*/}
-                    {/*</div>*/}
-                {/*</nav>*/}
-
-
 
                 <div className="text-center mt-4">
 
@@ -225,7 +154,6 @@ class Navigation extends Component {
                         deleteIcon={<DoneIcon/>}
 
                     />
-
 
                     <Chip
 
