@@ -35,7 +35,7 @@ import SendIcon from '@material-ui/icons/SendRounded';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import CloseIcon from '@material-ui/icons/Close'
 import Tooltip from '@material-ui/core/Tooltip';
-
+import OpenIconSpeedDial from './OpenIconSpeedDial.js' ;
 
 const ITEM_HEIGHT = 48;
 
@@ -607,10 +607,6 @@ onCancel = () =>{
 
         let hasFrozen = frozen.balances.length > 0;
 
-
-
-
-
             return (
 
                     <div className="mt-2 row" >
@@ -658,41 +654,7 @@ onCancel = () =>{
 
                                             </IconButton></Tooltip>
 
-                                            {/*<IconButton*/}
-                                                {/*aria-label="More">*/}
 
-                                                {/*<CloseIcon color={"error"} />*/}
-
-                                            {/*</IconButton>*/}
-
-                                            <IconButton
-                                                aria-label="More"
-                                                aria-owns={anchorEl ? 'long-menu' : null}
-                                                aria-haspopup="true"
-                                                onClick={this.handleClick}>
-
-                                                <MoreVertIcon />
-
-
-                                            </IconButton>
-                                            <Menu
-                                                id="long-menu"
-                                                anchorEl={anchorEl}
-                                                open={Boolean(anchorEl)}
-                                                onClose={this.handleClose}
-                                                PaperProps={{
-                                                    style: {
-                                                        maxHeight: ITEM_HEIGHT * 4.5,
-                                                        width: 200,
-                                                    },
-                                                }}>
-
-                                                <MenuItem  onClick={this.handleClose('edite')}>Edit</MenuItem>
-                                                <MenuItem  onClick={this.handleClose('remove')}><CloseIcon /> close</MenuItem>
-
-                                                )
-
-                                            </Menu>
 
 
 
@@ -704,9 +666,6 @@ onCancel = () =>{
                                 />
 
                                 {/* END  : Header */}
-
-
-
 
 
                                 <CardContent>
@@ -918,49 +877,21 @@ onCancel = () =>{
                                         </ExpansionPanelDetails>
                                     </ExpansionPanel>
 
-                                        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChangeForExpand('panel3')}>
-                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                                {/*<Typography className={classes.heading}></Typography>*/}
-                                                <Typography className={classes.secondaryHeading}>
-                                                    Request Trx For Test
-                                                </Typography>
-                                            </ExpansionPanelSummary>
-
-                                            <ExpansionPanelDetails className="text-center">
-
-                                                <div className="container">
-
-                                                    <div className="row ">
-                                                        <div className="col-md-3">
-
-                                                        </div>
-                                                        <div className="col-md-6">
-
-                                                            <small className="text-muted mt-2 mb-2 text-justify">
-                                                                When requesting TRX you will receive 10000 TRX which you can use for testing on the testnet.
-                                                                You may only request TRX 10 times per account.
-                                                            </small>
-
-
-                                                            {this.renderTestnetRequest()}
-
-
-                                                            </div>
-                                                        <div className="col-md-3"> </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </ExpansionPanelDetails>
-                                        </ExpansionPanel>
 
                                 </div>
 
                                 </CardContent>
                                 {/*End: the Card Container*/}
                                 {/* request Trx for Test */}
-                            </Card>
+
+<br/><br/>
+                                </Card>
+                            <br/> <br/>
+                            <OpenIconSpeedDial/>
+
                         </div>
+
+
                     </div>
 
         );
