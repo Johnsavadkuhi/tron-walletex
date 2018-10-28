@@ -23,8 +23,6 @@ class Navigation extends Component {
 
         this.state = {
             value: 0,
-            age: '',
-            labelWidth: 0
         };
 
     }
@@ -35,12 +33,6 @@ class Navigation extends Component {
         }
     }
 
-    handleChange = name => event => {
-        this.setState({ [name]: event.target.value });
-    };
-
-    handleDelete = () => {
-    }
 
     handleClick = name => event => {
 
