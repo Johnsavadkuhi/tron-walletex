@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {routes} from "../routes";
-import {Link, Route, Switch} from "react-router-dom";
+import {Link, Route, Switch  } from "react-router-dom";
 import {tu} from "../utils/i18n";
 import {filter} from "lodash";
-
 
 function Badge({value}) {
 
@@ -14,9 +13,11 @@ export default class Content extends Component {
 
   render() {
     return (
-      <Switch>
+
+        <Switch>
         {routes.map(route => {
           return (
+
             <Route
               key={route.path}
               path={route.path}
@@ -60,6 +61,7 @@ export default class Content extends Component {
 
               </React.Fragment>
             )} />
+
           )
         })
         }

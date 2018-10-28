@@ -118,8 +118,10 @@ class Navigation extends Component {
                                     </a>
                                 </li>
                             </ul>
+                        </a>
+                        <a className="uk-navbar-item">
 
-                            <ul className="uk-navbar-nav">
+                        <ul className="uk-navbar-nav">
                                 <li>
                                     <a  onClick={this.handleClick("addWallet")}>
                                         <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: plus-circle"></span>
@@ -158,7 +160,6 @@ class Navigation extends Component {
                         </div>
 
                     </div>
-
 
     </nav>
 
