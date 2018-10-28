@@ -38,11 +38,6 @@ class Navigation extends Component {
 
     }
 
-    // componentDidMount() {
-    //     this.setState({
-    //         labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
-    //     });
-    // }
     componentWillMount() {
         if (this.state.value !== 0) {
             this.setState({value: 0});
@@ -108,15 +103,40 @@ class Navigation extends Component {
                 <nav data-uk-navbar className="uk-navbar-container uk-navbar">
                     <div className="uk-navbar-left">
 
-                        <a className="uk-navbar-item uk-margin-left uk-background-blend-color " href="#">
+                        <a className="uk-navbar-item uk-margin-left  " href="#">
                             <img src={Redlogo} className="logo" alt="TronWalletEx"/>
                         </a>
+
+                        <a className="uk-navbar-item">
+
+
+                            <ul className="uk-navbar-nav">
+                                <li>
+                                    <a  onClick={this.handleClick("myWallets")} >
+                                        <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: credit-card"></span>
+                                        MyWallet
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul className="uk-navbar-nav">
+                                <li>
+                                    <a  onClick={this.handleClick("addWallet")}>
+                                        <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: plus-circle"></span>
+                                        Add Wallet
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </a>
+
 
                         <div className="btn-group">
                             <button className="btn dropdown-toggle" type="button" id="buttonMenu1" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                 {activeLanguage.toUpperCase()}
                             </button>
+
                             <div className="dropdown-menu" aria-labelledby="buttonMenu1">
 
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
@@ -142,68 +162,50 @@ class Navigation extends Component {
 
     </nav>
 
-                <div className="text-center mt-4">
+                {/*<div className="text-center mt-4">*/}
 
-                    <Chip
 
-                        avatar={<Avatar><AccountBalanceWalletIcon/></Avatar>}
-                        label="My Wallets"
-                        onClick={this.handleClick("myWallets")}
-                        onDelete={this.handleDelete}
-                        className="text-white m-2"
-                        deleteIcon={<DoneIcon/>}
 
-                    />
 
-                    <Chip
+                    {/*<Chip*/}
 
-                        avatar={<Avatar><AddIcon/></Avatar>}
-                        label="Add Wallet"
-                        onClick={this.handleClick("addWallet")}
-                        onDelete={this.handleDelete}
-                        className="text-white m-2"
-                        deleteIcon={<DoneIcon/>}
-                    />
+                        {/*avatar={<Avatar><SendIcon/></Avatar>}*/}
+                        {/*label="Send"*/}
+                        {/*onClick={this.handleClick("send")}*/}
+                        {/*onDelete={this.handleDelete}*/}
+                        {/*className="text-white m-2"*/}
+                        {/*deleteIcon={<DoneIcon/>}*/}
+                    {/*/>*/}
 
-                    <Chip
+                    {/*<Chip*/}
+                        {/*avatar={<Avatar> <AttachMoneyIcon/> </Avatar>}*/}
+                        {/*label="Buy Tokens"*/}
+                        {/*onClick={this.handleClick("buyToken")}*/}
+                        {/*onDelete={this.handleDelete}*/}
+                        {/*className="text-white mr-2 ml-2 mb-2 "*/}
+                        {/*deleteIcon={<DoneIcon/>}*/}
+                    {/*/>*/}
 
-                        avatar={<Avatar><SendIcon/></Avatar>}
-                        label="Send"
-                        onClick={this.handleClick("send")}
-                        onDelete={this.handleDelete}
-                        className="text-white m-2"
-                        deleteIcon={<DoneIcon/>}
-                    />
+                    {/*<Chip*/}
+                        {/*avatar={<Avatar><MoneyOffIcon/> </Avatar>}*/}
+                        {/*label="Create Token"*/}
+                        {/*onClick={this.handleClick("createToken")}*/}
+                        {/*onDelete={this.handleDelete}*/}
+                        {/*className="text-white m-2"*/}
+                        {/*deleteIcon={<DoneIcon/>}*/}
+                    {/*/>*/}
 
-                    <Chip
-                        avatar={<Avatar> <AttachMoneyIcon/> </Avatar>}
-                        label="Buy Tokens"
-                        onClick={this.handleClick("buyToken")}
-                        onDelete={this.handleDelete}
-                        className="text-white mr-2 ml-2 mb-2 "
-                        deleteIcon={<DoneIcon/>}
-                    />
+                    {/*<Chip*/}
 
-                    <Chip
-                        avatar={<Avatar><MoneyOffIcon/> </Avatar>}
-                        label="Create Token"
-                        onClick={this.handleClick("createToken")}
-                        onDelete={this.handleDelete}
-                        className="text-white m-2"
-                        deleteIcon={<DoneIcon/>}
-                    />
+                        {/*avatar={<Avatar><AllInclusiveIcon/></Avatar>}*/}
+                        {/*label="Voting"*/}
+                        {/*onClick={this.handleClick("voting")}*/}
+                        {/*onDelete={this.handleDelete}*/}
+                        {/*className="text-white m-2"*/}
+                        {/*deleteIcon={<DoneIcon/>}*/}
+                    {/*/>*/}
 
-                    <Chip
-
-                        avatar={<Avatar><AllInclusiveIcon/></Avatar>}
-                        label="Voting"
-                        onClick={this.handleClick("voting")}
-                        onDelete={this.handleDelete}
-                        className="text-white m-2"
-                        deleteIcon={<DoneIcon/>}
-                    />
-
-                </div>
+                {/*</div>*/}
 
             </div>
 
