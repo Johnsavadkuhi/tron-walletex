@@ -676,73 +676,121 @@ onCancel = () =>{
                                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                             {/*<Typography className={classes.heading}>Wallet</Typography>*/}
                                             <Typography className={classes.secondaryHeading}> Wallet Info </Typography>
+
                                         </ExpansionPanelSummary>
 
                                         <ExpansionPanelDetails>
-
                                             <div className="container">
 
-                                                <div className="row">
+                                            <div className="row">
 
                                             <div className="col-md-4 mt-3 mt-md-0">
-                                                <div className="card h-100 text-center widget-icon">
-                                                    {/*<WidgetIcon className="fa fa-clock text-primary"  />*/}
-                                                    <div className="card-body">
 
-                                                        <p className="text-primary">{frozen.total / ONE_TRX}</p>
 
-                                                        Tron Power
+                                                <div className="row">
+                                                    <div className="col-md-6">
+                                                <ul className="uk-list uk-list-striped">
+                                                    <li>  <span >Tron Power </span></li>
+                                                    <li>  <span >BandWidth  </span> </li>
+                                                    <li>  <span >Energy     </span></li>
+
+                                                </ul>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                    <div className="col-md-6">
+                                                        <ul className="uk-list uk-list-striped  uk-text-center">
+                                                            <li>  <span >{frozen.total / ONE_TRX} </span></li>
+                                                            <li>  <span > {bandwidth.netRemaining}  </span> </li>
+                                                            <li>  <span > 0   </span></li>
 
-                                                <div className="col-md-4 mt-3 mt-md-0">
-                                                    <div className="card h-100 text-center widget-icon">
-                                                        {/*<WidgetIcon className="fa fa-clock text-primary"  />*/}
-
-                                                        <div className="card-body">
-
-                                                            <p className="text-primary">{bandwidth.netRemaining}</p>
-
-                                                            Bandwidth
-
-                                                        </div>
-
+                                                        </ul>
                                                     </div>
+
                                                 </div>
 
-
-                                                    <div className="col-md-4 mt-3 mt-md-0">
-                                                        <div className="card h-100 text-center widget-icon">
-
-                                                            {/*<WidgetIcon className="fa fa-clock text-primary"  />*/}
-
-                                                            <div className="card-body">
+                                            </div> <hr className="uk-divider-vertical"/>
 
 
-                                                                <p className="text-primary">0</p>
+                                                <div className="col-md-3 mt-3 mt-md-0">
 
-                                                              Transactions
 
-                                                            </div>
+                                                </div><hr className="uk-divider-vertical"/>
 
-                                                        </div>
 
-                                                    </div>
+                                                <div className="col-md-3 mt-3 mt-md-0">
+
+                                                </div><hr className="uk-divider-vertical"/>
 
                                             </div>
-
-                                                <div className="row mt-4 ">
-                                                    <div className="col-me-12">
-                                                    <div className="text-center">
-
-                                                        <p className="text-muted small "> Address : {address} </p>
-
-                                                    </div>
-                                                </div>
-                                                </div>
-
                                             </div>
+
+
+                                            {/*<div className="container">*/}
+
+                                                {/*<div className="row">*/}
+
+                                                    {/*<div className="col-md-4 mt-3 mt-md-0">*/}
+                                                        {/*<div className="card h-100 text-center widget-icon">*/}
+                                                            {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
+                                                            {/*<div className="card-body">*/}
+
+                                                                {/*<p className="text-primary">{frozen.total / ONE_TRX}</p>*/}
+
+                                                                {/*Tron Power*/}
+                                                            {/*</div>*/}
+                                                        {/*</div>*/}
+                                                    {/*</div>*/}
+
+                                                    {/*<div className="col-md-4 mt-3 mt-md-0">*/}
+                                                        {/*<div className="card h-100 text-center widget-icon">*/}
+                                                            {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
+
+                                                            {/*<div className="card-body">*/}
+
+                                                                {/*<p className="text-primary">{bandwidth.netRemaining}</p>*/}
+
+                                                                {/*Bandwidth*/}
+
+                                                            {/*</div>*/}
+
+                                                        {/*</div>*/}
+                                                    {/*</div>*/}
+
+
+                                                    {/*<div className="col-md-4 mt-3 mt-md-0">*/}
+                                                        {/*<div className="card h-100 text-center widget-icon">*/}
+
+                                                            {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
+
+                                                            {/*<div className="card-body">*/}
+
+
+                                                                {/*<p className="text-primary">0</p>*/}
+
+                                                                {/*Transactions*/}
+
+                                                            {/*</div>*/}
+
+                                                        {/*</div>*/}
+
+                                                    {/*</div>*/}
+
+
+                                                    {/**/}
+                                                    {/**/}
+
+                                            {/*</div>*/}
+
+                                                {/*<div className="row mt-4 ">*/}
+                                                    {/*<div className="col-me-12">*/}
+                                                    {/*<div className="text-center">*/}
+
+                                                        {/*<p className="text-muted small "> Address : {address} </p>*/}
+
+                                                    {/*</div>*/}
+                                                {/*</div>*/}
+                                                {/*</div>*/}
+
+                                            {/*</div>*/}
 
 
                                         </ExpansionPanelDetails>
