@@ -189,6 +189,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default compose(
-    withStyles(styles),
-    connect(mapStateToProps, mapDispatchToProps)
-)(withRouter(AddWallet));
+    withStyles(styles))(withRouter(AddWallet));

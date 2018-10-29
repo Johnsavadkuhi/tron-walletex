@@ -6,6 +6,8 @@ import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withStyles} from '@material-ui/core/styles';
+import {tu} from "../utils/i18n";
+
 
 const styles = theme => ({
     root: {
@@ -94,7 +96,7 @@ class Navigation extends Component {
                                     <a onClick={this.handleClick("myWallets")}>
                                         <span className="uk-icon uk-margin-small-right"
                                               data-uk-icon="icon: info"></span>
-                                        MyWallets
+                                        {tu('myWallets')}
                                     </a>
                                 </li>
                             </ul>
@@ -106,7 +108,7 @@ class Navigation extends Component {
                                     <a onClick={this.handleClick("addWallet")}>
                                         <span className="uk-icon uk-margin-small-right"
                                               data-uk-icon="icon: plus-circle"></span>
-                                        Add Wallet
+                                        {tu('addWallet')}
                                     </a>
                                 </li>
                             </ul>
@@ -149,7 +151,6 @@ class Navigation extends Component {
 
                     </div>
                 </nav>
-
 
             </div>
 

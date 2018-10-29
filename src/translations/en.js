@@ -223,8 +223,9 @@ export const messages = {
     '24h':'24h' ,
     '6h':'6h',
     'QR Code':'QR Code' ,
-    'send_tokens':'Send Tokens'
-
+    'send_tokens':'Send Tokens',
+    "myWallets": "My Wallets",
+    "addWallet":"Add Wallet",
 
 
 

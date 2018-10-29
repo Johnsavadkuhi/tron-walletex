@@ -18,9 +18,6 @@ import {buildUnfreezeBalance} from "@tronscan/client/src/utils/transactionBuilde
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 import Transfers from "../transactions/CommonTransfers_js";
 import IconButton from "@material-ui/core/IconButton" ;
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import {compose} from "redux";
 import {withStyles} from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -33,7 +30,6 @@ import {decryptString} from "../../services/encryption_js";
 import {pkToAddress} from "@tronscan/client/src/utils/crypto";
 import SendIcon from '@material-ui/icons/SendRounded';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
-import CloseIcon from '@material-ui/icons/Close'
 import Tooltip from '@material-ui/core/Tooltip';
 import OpenIconSpeedDial from './OpenIconSpeedDial.js' ;
 
