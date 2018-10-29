@@ -1,8 +1,6 @@
 /*eslint-disable no-script-url*/
 import React, {Component} from 'react';
-import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import {setWallet} from "../../../mainRedux/actions/actions";
 import {withStyles} from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -15,11 +13,7 @@ import NotBeforeAddWallet from "../../Notifications/NotbeforeAddWallet";
 import Add from "./Add";
 import Register from './Register';
 
-/**
- *
- * @param theme
- * @return {{root: {display: string}, formControl: {margin: number}, group: {margin: string}}}
- */
+
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -88,7 +82,7 @@ class AddWallet extends Component {
 
     render() {
 
-        const {selectedValue } = this.state ;
+        const {selectedValue} = this.state;
 
         const {classes} = this.props;
 
@@ -146,9 +140,9 @@ class AddWallet extends Component {
                                     <div>
 
                                         {/*<input type="file" id="fileUpload" multiple accept="txt/*"*/}
-                                               {/*style={{display: 'none'}}*/}
+                                        {/*style={{display: 'none'}}*/}
 
-                                               {/*onChange={this.uploadFile}/>*/}
+                                        {/*onChange={this.uploadFile}/>*/}
 
                                         {/*<label htmlFor="fileUpload"> Upload your KeyStore</label>*/}
 
@@ -164,28 +158,6 @@ class AddWallet extends Component {
 
     }
 }
-
-
-function mapStateToProps(state) {
-    return {
-
-        wallets: state.walletsReducer.wallets
-
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-
-
-    return {
-
-        addWallet: (address, key, name) => {
-            dispatch(setWallet(address, key, name))
-        }
-
-    }
-
-};
 
 
 export default compose(
