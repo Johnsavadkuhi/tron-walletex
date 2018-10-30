@@ -37,13 +37,13 @@ export function downloadFile(_downloadTxtFile, value) {
 
     return (
 
-        <span>
+        <form>
 
-
+            <div >
             <input id="wepassword" type="hidden" value={value}/>
-            <button className="btn btn-info btn-sm " onClick={_downloadTxtFile}> Download password </button>
-
-        </span>
+            <button className="btn btn-info btn-sm " onClick={_downloadTxtFile}> Download KeyStore </button>
+            </div>
+        </form>
 
     );
 }

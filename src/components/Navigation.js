@@ -92,24 +92,21 @@ class Navigation extends Component {
 
 
                             <ul className="uk-navbar-nav">
-                                <li>
-                                    <a onClick={this.handleClick("myWallets")}>
+                                <li onClick={this.handleClick("myWallets")}>
                                         <span className="uk-icon uk-margin-small-right"
-                                              data-uk-icon="icon: info"></span>
+                                              data-uk-icon="icon: info"> </span>
                                         {tu('myWallets')}
-                                    </a>
                                 </li>
                             </ul>
                         </a>
                         <a className="uk-navbar-item">
 
                             <ul className="uk-navbar-nav">
-                                <li>
-                                    <a onClick={this.handleClick("addWallet")}>
+                                <li onClick={this.handleClick("addWallet")}>
                                         <span className="uk-icon uk-margin-small-right"
-                                              data-uk-icon="icon: plus-circle"></span>
+                                              data-uk-icon="icon: plus-circle"> </span>
                                         {tu('addWallet')}
-                                    </a>
+
                                 </li>
                             </ul>
 
@@ -132,16 +129,13 @@ class Navigation extends Component {
                                 <ul className="uk-nav uk-navbar-dropdown-nav">
                                     {
                                         Object.keys(languages).map(language => (
-                                            <li className="uk-active">
 
                                                 <a key={language}
                                                    className="dropdown-item "
                                                    href="javascript:;"
                                                    onClick={() => this.setLanguage(language)}>{languages[language]}</a>
-                                            </li>
                                         ))
                                     }
-
 
                                 </ul>
 

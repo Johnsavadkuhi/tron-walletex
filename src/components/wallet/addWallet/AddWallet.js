@@ -12,6 +12,7 @@ import {compose} from "redux";
 import NotBeforeAddWallet from "../../Notifications/NotbeforeAddWallet";
 import Add from "./Add";
 import Register from './Register';
+import RegisterHorizantal from './RegisterHorizantal';
 
 
 const styles = theme => ({
@@ -88,13 +89,11 @@ class AddWallet extends Component {
 
         return (
 
-            <div className="container mt-4 mb-4" style={{height: '500px'}}>
+            <div className="container " style={{height: '400px'}}>
 
                 <div className="row">
 
                     <div className="col-md-4 ">
-
-                        <div className={classes.root}>
 
                             <FormControl component="fieldset" className={classes.formControl}>
 
@@ -119,15 +118,15 @@ class AddWallet extends Component {
 
                             </FormControl>
 
-                        </div>
+
 
                     </div>
-
-                    <div className="col-md-8 col-sm-12 text-center p-2">
+                    <hr className="uk-divider"/>
+                    <div className="col-md-8 col-sm-12 text-center p-4 ">
                         {
                             selectedValue === "registernewwallet" ?
 
-                                <Register/>
+                                <RegisterHorizantal/>
 
 
                                 : selectedValue === "addwithprivatekey" ?
@@ -151,6 +150,10 @@ class AddWallet extends Component {
                                     : <NotBeforeAddWallet/>
                         }
                     </div>
+                </div>
+                <div className="row">
+
+
                 </div>
 
 

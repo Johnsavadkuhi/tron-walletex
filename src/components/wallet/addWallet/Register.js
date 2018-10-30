@@ -18,6 +18,41 @@ import {setWallet} from "../../../mainRedux/actions/actions";
 import connect from "react-redux/es/connect/connect";
 import {withRouter} from "react-router-dom";
 
+const styles = theme => ({
+    root: {
+        width: '90%',
+    },
+
+    backButton: {
+        marginRight: theme.spacing.unit,
+
+    },
+    instructions: {
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
+    },
+
+});
+
+function getSteps() {
+    return ['Select a Wallet Name', 'Enter a Password', 'Download your Wallet KeyStore' , 'Copy your Wallet PrivateKey'];
+}
+
+function getStepContent(stepIndex) {
+    switch (stepIndex) {
+        case 0:
+            return 'Enter Wallet Name';
+        case 1:
+            return 'Enter a Password ';
+        case 2:
+            return 'Download your Wallet KeyStore ';
+        case 3:
+            return 'Copy your Wallet PrivateKey'
+        default:
+            return 'Uknown stepIndex';
+    }
+}
+
 
 class Register extends React.Component {
 
@@ -27,7 +62,7 @@ class Register extends React.Component {
 
         this.state = {
 
-            selectedValue: "",
+
             address: "",
             privateKey: "",
             password: "",
@@ -103,11 +138,8 @@ class Register extends React.Component {
                 break;
 
 
-            case "selectedValue":
 
-                this.setState({selectedValue: event.target.value});
 
-                break;
 
             case "password" :
 
@@ -168,10 +200,48 @@ class Register extends React.Component {
         });
 
     };
+    encryptPrivateKey = (password, hexString) => {
+        return encryptString(password, hexString);
+    };
+    getPrivateKey = (pKey) => {
+
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-10">
+
+                        <Input
+                            value={pKey}
+                            className="form-control text-sm-left"
+                            disabled
+                            inputProps={{'aria-label': 'privateKey',}}
+                        />
+                    </div>
+
+                    <div className="col-md-2">
+
+                        <div className="text-center">
+
+                            <CopyToClipboard text={pKey}>
+                                <Button className="btn btn-info btn-sm mt-2 text-center " variant="contained">
+                                    <i className="fa fa-paste"/>
+                                </Button>
+                            </CopyToClipboard>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+
+    //the methods of steeper
 
     getSteps = () => {
 
-        return [<h6 className="text-muted"> Enter a Strong Password</h6>,
+        return [<h6 className="text-muted"> Enter Name</h6>,
+            <h6 className="text-muted"> Enter a Strong Password</h6>,
             <h6 className="text-muted">Download KeyStore</h6>,
             <h6 className="text-muted">Copy Private Key </h6>];
     };
@@ -179,49 +249,51 @@ class Register extends React.Component {
     getStepContent = (stepIndex) => {
 
         switch (stepIndex) {
+
             case 0:
-                // return passForm();
                 return (<form>
 
                         <TextField
                             value={this.state.name}
                             type="text"
-
                             id="walletName"
                             label="Wallet Name"
                             className="text-center bmd-label-static mt-2"
                             margin="normal"
                             onChange={this.handleChange("name")}
-                            helperText="Enter at least 5 characters "
-                        />
+                            helperText="Enter at least 5 characters"/>
+
                         <br/>
 
-                        <TextField
-                            value={this.state.password}
-                            type="password"
-                            required
-                            id="password"
-                            label="password"
-                            className="text-center bmd-label-static mt-2"
-                            margin="normal"
-                            onChange={this.handleChange("password")}
-                            helperText="Enter at lease 8 characters"
 
-                        />
 
 
                     </form>
 
                 );
+            case 1 :
 
-            case 1:
+return (
+                <TextField
+                    value={this.state.password}
+                    type="password"
+                    required
+                    id="password"
+                    label="password"
+                    className="text-center bmd-label-static mt-2"
+                    margin="normal"
+                    onChange={this.handleChange("password")}
+                    helperText="Enter at lease 8 characters"
+
+                />);
+            case 2:
 
                 const privateKey = this.state.privateKey;
                 const passwordToBuffer = new Buffer(this.state.password);
 
                 return downloadFile(_downloadTxtFile, encryptString(encryptKey(passwordToBuffer), privateKey).hex);
 
-            case 2:
+            case 3:
 
                 return this.getPrivateKey(this.state.privateKey);
 
@@ -229,10 +301,6 @@ class Register extends React.Component {
 
                 return 'Uknown stepIndex';
         }
-    };
-
-    encryptPrivateKey = (password, hexString) => {
-        return encryptString(password, hexString);
     };
 
     handleNext = () => {
@@ -266,37 +334,7 @@ class Register extends React.Component {
         this.createWallet();
     };
 
-    getPrivateKey = (pKey) => {
 
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-10">
-
-                        <Input
-                            value={pKey}
-                            className="form-control text-sm-left"
-                            disabled
-                            inputProps={{'aria-label': 'privateKey',}}
-                        />
-                    </div>
-
-                    <div className="col-md-2">
-
-                        <div className="text-center">
-
-                            <CopyToClipboard text={pKey}>
-                                <Button className="btn btn-info btn-sm mt-2 text-center " variant="contained">
-                                    <i className="fa fa-paste"/>
-                                </Button>
-                            </CopyToClipboard>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
 
     render() {
 
