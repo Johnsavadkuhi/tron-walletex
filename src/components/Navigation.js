@@ -1,12 +1,13 @@
 /*eslint-disable no-script-url*/
 import React, {Component} from 'react';
 import Redlogo from '../images/mainLogo.png';
-import {withRouter} from "react-router-dom";
+import {withRouter , Link} from "react-router-dom";
 import {setLanguage} from "../mainRedux/actions/actions";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {withStyles} from '@material-ui/core/styles';
 import {tu} from "../utils/i18n";
+import { NavLink } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -92,22 +93,36 @@ class Navigation extends Component {
 
 
                             <ul className="uk-navbar-nav">
-                                <li onClick={this.handleClick("myWallets")}>
-                                        <span className="uk-icon uk-margin-small-right"
-                                              data-uk-icon="icon: info"> </span>
-                                        {tu('myWallets')}
-                                </li>
+
+                                <NavLink to='account' activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "red"
+                                }}> <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: info"> </span>
+                                    {tu('myWallets')}</NavLink>
+                                {/*<li onClick={this.handleClick("myWallets")}>*/}
+                                        {/*<span className="uk-icon uk-margin-small-right"*/}
+                                              {/*data-uk-icon="icon: info"> </span>*/}
+                                        {/*{tu('myWallets')}*/}
+                                {/*</li>*/}
                             </ul>
                         </a>
                         <a className="uk-navbar-item">
 
                             <ul className="uk-navbar-nav">
-                                <li onClick={this.handleClick("addWallet")}>
-                                        <span className="uk-icon uk-margin-small-right"
-                                              data-uk-icon="icon: plus-circle"> </span>
-                                        {tu('addWallet')}
 
-                                </li>
+                                <Link to='addWallet' replace>
+                                    <span className="uk-icon uk-margin-small-right"
+                                          data-uk-icon="icon: plus-circle"> </span>
+                                    {tu('addWallet')}
+
+                                    </Link>
+
+                                {/*<li onClick={this.handleClick("addWallet")}>*/}
+                                        {/*<span className="uk-icon uk-margin-small-right"*/}
+                                              {/*data-uk-icon="icon: plus-circle"> </span>*/}
+                                        {/*{tu('addWallet')}*/}
+
+                                {/*</li>*/}
                             </ul>
 
                         </a>

@@ -23,9 +23,9 @@ export default class Content extends Component {
               path={route.path}
               render={props => (
               <React.Fragment>
-                <div className="nav-scroller bg-white box-shadow">
+
                   <div className="container">
-                    <nav className="nav nav-underline">
+                    <nav className="nav">
                       {
                         route.routes && filter(route.routes, r => r.showInMenu !== false).map(subRoute => {
                           return (
@@ -45,7 +45,7 @@ export default class Content extends Component {
                       }
                     </nav>
                   </div>
-                </div>
+
                 <Switch>
                   {
                     route.routes && route.routes.map(subRoute => (

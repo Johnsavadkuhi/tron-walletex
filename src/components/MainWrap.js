@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import Content from "./Content";
 import {IntlProvider} from "react-intl";
 import {languages} from "../translations";
-import {HashRouter as Router} from "react-router-dom";
+import {HashRouter as Router } from "react-router-dom";
 import Lockr from "lockr";
 import Footer from "./Footer";
 
@@ -15,6 +15,9 @@ class MainWrap extends React.Component {
         // Use language from local storage or detect from browser settings
         let language = Lockr.get("language", navigator.language.split(/[-_]/)[0]);
         this.props.setLanguage(language);
+        document.body.classList.add('body_back');
+
+
     }
 
     render() {
@@ -23,6 +26,7 @@ class MainWrap extends React.Component {
 
         return (
             <React.Fragment>
+
                 <IntlProvider
                     locale={activeLanguage}
                     messages={languages[activeLanguage]}>
@@ -34,6 +38,7 @@ class MainWrap extends React.Component {
                         </React.Fragment>
                     </Router>
                 </IntlProvider>
+
             </React.Fragment>
         )
     }

@@ -60,6 +60,25 @@ $dark-red: #c53027;
   border-radius: 0;
 }
 
+
+.body_back {
+
+  background: rgba(149, 149, 149, 0.12);
+
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0
+  }
+}
+.loaderfirst {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(53, 126, 221);
+  padding-top: 20px;
+}
+
+
 .progress-bar1 {
   display: -ms-flexbox;
   display: flex;
