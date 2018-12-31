@@ -8,7 +8,7 @@ const fullNode = new HttpProvider('https://api.shasta.trongrid.io'); // Full nod
 const solidityNode = new HttpProvider('https://api.shasta.trongrid.io'); // Solidity node http endpoint
 const eventServer = new HttpProvider('https://api.shasta.trongrid.io'); // Contract events http endpoint
 
-const privateKey = 'E6A65EEF70B781FBDD3407DA326BD8F3157DE151DB3EE044FF0629D8DB2141D2';
+const privateKey = '';
 //const privateKey = '6FE16021421613EB79FD48D40448B7B532C12A9EA18B57DBBE041BCAB580E28F' ;
 
 const tronWeb = new TronWeb(
