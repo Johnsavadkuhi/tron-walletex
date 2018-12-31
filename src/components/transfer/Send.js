@@ -36,6 +36,8 @@ class Send extends React.Component {
   constructor(props) {
     super(props);
 
+
+
     let queryParams = qs.parse(props.location.search);
 
     this.state = {
@@ -63,24 +65,6 @@ class Send extends React.Component {
 
        if(event.target.value !== "Select your Wallet")
        {
-
-           // this.setState({modal:(
-           //
-           //         <SweetAlert
-           //             confirmBtnText="Decrypt"
-           //             showCancel
-           //             input
-           //             inputType="password"
-           //             title={ <small className="small">Enter your wallet password</small>}
-           //             required
-           //             onConfirm={this.onConfirm}
-           //             onCancel={this.hideAlert1}
-           //             validationMsg="You must enter your password!"
-           //         />
-           //     )
-           //
-           // })
-
 
          let result=  await swal({
              type:'question',
@@ -310,30 +294,7 @@ class Send extends React.Component {
 
       });
 
-      // if(this.state.confirmSend) {
-      //
-      //
-      //     let client = new Client();
-      //
-      //     let {to, token, amount, selectedWallet, privateKey} = this.state;
-      //
-      //
-      //     this.setState({isLoading: true});
-      //
-      //
-      //     const resulet = await client.send(token, selectedWallet, to, amount * ONE_TRX)(privateKey);
-      //
-      //     this.props.loadTokenBalances(selectedWallet);
-      //
-      //     this.setState({
-      //         sendStatus: 'success',
-      //         isLoading: false,
-      //         privateKey: ""
-      //     });
-      //
-      //     return resulet;
-      //
-      // }
+
 
 
   };

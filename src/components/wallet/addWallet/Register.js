@@ -188,6 +188,8 @@ class Register extends React.Component {
         this.props.addWallet(address, encryptedPKey, name);
 
     };
+
+
     createWallet = () => {
 
         const account = generateAccount();
@@ -200,9 +202,13 @@ class Register extends React.Component {
         });
 
     };
+
+
     encryptPrivateKey = (password, hexString) => {
         return encryptString(password, hexString);
     };
+
+
     getPrivateKey = (pKey) => {
 
         return (
@@ -223,10 +229,12 @@ class Register extends React.Component {
                         <div className="text-center">
 
                             <CopyToClipboard text={pKey}>
+
                                 <Button className="btn btn-info btn-sm mt-2 text-center " variant="contained">
                                     <i className="fa fa-paste"/>
                                 </Button>
-                            </CopyToClipboard>
+
+                                </CopyToClipboard>
 
                         </div>
                     </div>

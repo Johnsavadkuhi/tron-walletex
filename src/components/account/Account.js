@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Wallet from "../wallet/Wallet";
+import Swal from "../transfer/TDNS";
 
 class Account extends Component {
 
+
     render() {
+
+
 
         let wallets = this.props.wallets;
 
@@ -14,6 +18,7 @@ class Account extends Component {
             <div className="container mt-4 mb-4">
 
                 {
+
 
                     wallets.length > 0 ? wallets.map((wallet, i) => (
 

@@ -10,9 +10,10 @@ import {withRouter} from "react-router-dom";
 
  class Add extends React.Component{
 
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
+
 
         this.state={
 

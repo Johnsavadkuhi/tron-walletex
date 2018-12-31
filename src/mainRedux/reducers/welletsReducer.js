@@ -1,9 +1,25 @@
 import {DELETE_WALLET, SET_WALLETS} from "../../mainRedux/actions/actionTypes";
 
 
+const initialState ={
+
+    wallets : [
+
+        {address :'' , key:'' , name :''}
+
+
+    ]
+
+};
+
 const walletsReducer = (state = {wallets:[]}, action) => {
 
+
+
+
     switch (action.type) {
+
+
 
         case SET_WALLETS :
 

@@ -18,17 +18,34 @@ export const addWallet = (address, key, name) => (dispatch) => {
 };
 
 
-
-export const setTokenBalances = (address, balance,balances = [] , bandwidth={} , frozen = {}, name , representative = {},
-                                 ) =>
+export const setTokenBalances = (representative= {},
+                                 accountType,
+                                 name,
+                                 address,
+                                 bandwidth={},
+                                 balances=null,
+                                 balance=null ,
+                                 tokenBalances = null ,
+                                 trc20token_balances=null,
+                                 frozen={},
+                                 accountResource={}) =>
     ({
 
-    type: SET_WALLETS_BALANCE,
+        type: SET_WALLETS_BALANCE,
 
-    address,balance , balances, bandwidth , frozen , name ,  representative
+        representative,
+        accountType,
+        name,
+        address,
+        bandwidth,
+        balances,
+        balance,
+        tokenBalances,
+        trc20token_balances,
+        frozen,
+        accountResource
 
     });
-
 
 export const deleteBalances = (address) => ({
     type: DELETE_BALANCES,
@@ -45,9 +62,36 @@ export const removeWallet = (address) => ({
 export const loadTokenBalances = (myAddress) => async (dispatch) => {
 
     let x = new Client();
-    let {address,balance , balances, bandwidth , frozen , name ,  representative} = await  x.getAccountByAddress(myAddress);
 
-    dispatch(setTokenBalances(address,balance , balances , bandwidth , frozen , name , representative));
+    let {
+        representative,
+        accountType,
+        name,
+        address,
+        bandwidth,
+        balances=null,
+        balance,
+        tokenBalances= null ,
+        trc20token_balances = null ,
+        frozen,
+        accountResource
+
+    } = await x.getAccountByAddress(myAddress);
+
+
+
+    // dispatch(setTokenBalances(address,balance , balances , bandwidth , frozen , name , representative));
+    dispatch(setTokenBalances( representative,
+        accountType,
+        name,
+        address,
+        bandwidth,
+        balances,
+        balance,
+        tokenBalances,
+        trc20token_balances,
+        frozen,
+        accountResource));
 
 };
 
@@ -115,6 +159,7 @@ export const setVoteList = (voteList) => ({
     type: SET_VOTE_LIST,
     voteList
 });
+
 
 export const setVoteTimer = (voteTimer) => ({
     type: SET_VOTE_TIMER,

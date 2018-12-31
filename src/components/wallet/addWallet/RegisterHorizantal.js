@@ -210,6 +210,9 @@ class RegisterHorizantal extends React.Component {
     encryptPrivateKey = (password, hexString) => {
         return encryptString(password, hexString);
     };
+
+
+
     getPrivateKey = (pKey) => {
 
         return (

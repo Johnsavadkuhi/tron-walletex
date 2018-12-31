@@ -11,8 +11,7 @@ import {compose} from "redux";
 // import {decryptString, encryptKey, encryptString} from "../../services/encryption_js";
 import NotBeforeAddWallet from "../../Notifications/NotbeforeAddWallet";
 import Add from "./Add";
-import Register from './Register';
-import RegisterHorizantal from './RegisterHorizantal';
+import CreateWallet from './CreateWallet';
 
 
 const styles = theme => ({
@@ -30,11 +29,24 @@ const styles = theme => ({
 
 class AddWallet extends Component {
 
+    constructor(props) {
+
+        super(props);
+
+
+        this.state = {
+
+            selectedValue: "",
+
+        };
+    }
+
     handleChange = nameOf => event => {
 
         this.setState({selectedValue: event.target.value});
 
     };
+
     uploadFile = (event) => {
 
 
@@ -57,18 +69,6 @@ class AddWallet extends Component {
 
 
     };
-
-    constructor(props) {
-
-        super(props);
-
-
-        this.state = {
-
-            selectedValue: "",
-
-        };
-    }
 
 
     // encryptPrivateKey = (password, hexString) => {
@@ -95,29 +95,28 @@ class AddWallet extends Component {
 
                     <div className="col-md-4 ">
 
-                            <FormControl component="fieldset" className={classes.formControl}>
+                        <FormControl component="fieldset" className={classes.formControl}>
 
-                                <FormLabel component="legend">Select a Method to Unlock your Wallets</FormLabel>
+                            <FormLabel component="legend">Select a Method to Unlock your Wallets</FormLabel>
 
-                                <RadioGroup
-                                    aria-label="Select a Method "
-                                    name=""
-                                    className={classes.group}
-                                    value={this.state.selectedValue}
-                                    onChange={this.handleChange('selectedValue')}>
+                            <RadioGroup
+                                aria-label="Select a Method "
+                                name=""
+                                className={classes.group}
+                                value={this.state.selectedValue}
+                                onChange={this.handleChange('selectedValue')}>
 
-                                    <FormControlLabel value="registernewwallet" control={<Radio/>}
-                                                      label="Regist new Wallet"/>
-                                    <FormControlLabel value="addwithprivatekey" control={<Radio/>}
-                                                      label="Add with Private Key"/>
+                                <FormControlLabel value="registernewwallet" control={<Radio/>}
+                                                  label="Regist new Wallet"/>
+                                <FormControlLabel value="addwithprivatekey" control={<Radio/>}
+                                                  label="Import with Private Key"/>
 
-                                    {/*<FormControlLabel disabled={true} value="addWithKeystore" control={<Radio/>}*/}
-                                    {/*label="Add with KeyStore"/>*/}
+                                {/*<FormControlLabel disabled={true} value="addWithKeystore" control={<Radio/>}*/}
+                                {/*label="Add with KeyStore"/>*/}
 
-                                </RadioGroup>
+                            </RadioGroup>
 
-                            </FormControl>
-
+                        </FormControl>
 
 
                     </div>
@@ -126,7 +125,7 @@ class AddWallet extends Component {
                         {
                             selectedValue === "registernewwallet" ?
 
-                                <RegisterHorizantal/>
+                                <CreateWallet/>
 
 
                                 : selectedValue === "addwithprivatekey" ?
