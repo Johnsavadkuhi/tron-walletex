@@ -789,7 +789,7 @@ class TDNS extends React.Component {
             <div className="header white ">
 
                 <p>
-                    <b>Send TRX : </b> for sending trx you can use either recipient's address or the name of address.
+                    <b>Send TRX : </b> for sending trx you can use either recipient's address or the name of address.<br/>
 
                     <label>
 

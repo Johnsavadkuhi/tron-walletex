@@ -91,18 +91,18 @@ class AddWallet extends Component {
 
             <div className="container " style={{height: '400px'}}>
 
-                <div className="row">
+                <div className="row ">
 
-                    <div className="col-md-4 ">
+                    <div className="col-md-4  ">
 
-                        <FormControl component="fieldset" className={classes.formControl}>
+                        <FormControl component="fieldset" className={classes.formControl }>
 
                             <FormLabel component="legend">Select a Method to Unlock your Wallets</FormLabel>
 
                             <RadioGroup
                                 aria-label="Select a Method "
                                 name=""
-                                className={classes.group}
+                                className={classes.group+ 'header white'}
                                 value={this.state.selectedValue}
                                 onChange={this.handleChange('selectedValue')}>
 
@@ -120,6 +120,7 @@ class AddWallet extends Component {
 
 
                     </div>
+
                     <hr className="uk-divider"/>
                     <div className="col-md-8 col-sm-12 text-center p-4 ">
                         {
