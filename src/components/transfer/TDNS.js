@@ -178,10 +178,23 @@ class TDNS extends React.Component {
 
                     if (event.target.value.length === 0 || this.isAddress(event.target.value.trim())) {
 
-                        this.setState({errorTo: false, helperTo: 'Valid Address'});
+
+                        event.target.value === this.state.address ? this.setState({errorTo: true, helperTo: 'You can not send TRX to your address'}) :
+
+                            this.setState({errorTo: false, helperTo: 'Valid Address'});
 
 
-                    } else {
+                        // if (event.target.value === this.state.address )
+                        // {
+                        //     this.setState({errorTo: true, helperTo: 'You can not send TRX to your address'});
+                        // }else {
+                        //
+                        //     this.setState({errorTo: false, helperTo: 'Valid Address'});
+                        // }
+
+                    }
+
+                    else {
 
 
                         this.setState({errorTo: true, helperTo: 'Invalid Address'});
@@ -214,9 +227,16 @@ class TDNS extends React.Component {
 
                         if (x !== DONT_ADDRESS) {
 
-                            this.setState({errorTo: false, isAddressNameFree: false, helperTo: 'It is ok : ' + x, to: x});
+                            //this.setState({errorTo: false, isAddressNameFree: false, helperTo: 'It is ok : ' + x, to: x});
 
-                            console.log("to address : ", this.state.to);
+                            x  === this.state.address ? this.setState({errorTo: true, helperTo: 'You can not send TRX to your address'}) :
+
+                                this.setState({errorTo: false, isAddressNameFree: false, helperTo: 'It is ok : ' + x, to: x})  ;
+
+
+
+
+
 
                         } else if (this.state.sendTo === "") {
 
@@ -291,9 +311,6 @@ class TDNS extends React.Component {
     };
 
     myChange =  event => {
-
-
-
 
 
         this.setState({checkedG: event.target.checked});
@@ -416,11 +433,7 @@ class TDNS extends React.Component {
 
 
         }
-    }
-
-
-
-    ;
+    };
 
 
     isValidDecryptedPKey = (address ,pKey)=>{
@@ -638,7 +651,6 @@ class TDNS extends React.Component {
                             label="Send To"
                             name="sendTo"
                             variant="outlined"
-                            placeholder="Example: JustinSun.tron"
                             required
                             fullWidth
                             onChange={this.handlerChange}

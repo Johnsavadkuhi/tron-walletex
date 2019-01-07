@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
@@ -10,107 +10,91 @@ import SendIcon from '@material-ui/icons/Send';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import AddIcon from '@material-ui/icons/Add';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-import logo from "../../images/tronLogoForNote.png" ;
-
+//import logo from "../../images/tronLogoForNote.png" ;
+import logo from './tutor2.gif'
 import {Col, Row} from "react-bootstrap";
 
 
-const styles = theme => ({
-    root: {
-        overflow: 'hidden',
-        padding: `0 ${theme.spacing.unit * 3}px`,
-    },
-    wrapper: {
-        maxWidth: 400,
-    },
-    paper: {
-        margin: theme.spacing.unit,
-        padding: theme.spacing.unit * 2,
-    },
-});
-
-function returnContent(props , content , icon) {
-    const { classes } = props;
-
-    return(<div >
-        <div >
-
-            <Paper className={classes.paper}>
-                <Grid container wrap="nowrap" spacing={0}>
-                    <Grid item>
-
-                        <Avatar> {icon} </Avatar>
-
-                    </Grid>
-
-                    <Grid item xs>
-
-                        <Typography> {content} </Typography>
-
-                    </Grid>
-                </Grid>
-            </Paper>
-        </div>
-    </div>)
+class Note extends React.Component {
 
 
-}
+    render() {
 
-function AutoGridNoWrap(props) {
-
-
-    return (
+        return (
 
 
-        <div className="content m-4 p-4">
+            <div className="container-fluid">
 
-            <Grid>
-
-                <div className="card">
-
-                    <div className="header  pt-1 text-center">
-
-                        <img src={logo} alt="Tron Logo"/>
-                        <h5 className="mt-3">About TronWalletEx 0.0.3-beta.4 version </h5>
-
-                    </div>
-
-                    <div className="content mt-4 text-center">
-
-                        <Row>
-
-                            <Col  md={6} >
-
-                                { returnContent(props , "you can create multiple wallets" , <AddIcon />)}
-                                { returnContent(props , "you can add wallet with private Key" , <AccountBalanceWalletIcon/>)}
-                                { returnContent(props , "you can Create Token" , <MoneyOffIcon/>)}
+                <div className="row">
 
 
-                            </Col>
-
-                            <Col  md={6} >
-                                { returnContent(props , "you can Send TRX and other Tokens" , <SendIcon/>)}
-                                { returnContent(props , "you can buy Tokens" , <small>TRX</small>)}
-                                { returnContent(props , "you can vote for every Token" ,<AllInclusiveIcon/> )}
-
-                            </Col>
 
 
-                        </Row>
+                    <div className="col-md-12">
+                        <div className="kontainer">
+                            <div className="header white">
+
+                                <p className="p-3 m-3 text-muted text-justify">
+
+                                    This is a web base Wallet for Tron (TRX) that allows you to both Send TRX and it's tokens
+                                    TRC10 and TRC20. another features of this wallet is voting for Representatives , issue Tokens
+                                    and  buy tokens.<br/>
+
+                                    on of the greatest feature of this Wallet is  <b> <span className="text-danger">Tron</span> Decentralized Name System (TDNS) </b>
+                                    that allows you to use a name instead of Wallet Address . <a href="https://tdns.tronwallet.network">TDNS</a>
+
+
+                                </p>
+
+                            </div>
+                        </div>
+
 
 
                     </div>
                 </div>
-            </Grid>
-        </div>
 
-    );
+                <hr/>
+                    <div className="row ">
+                        <hr/>
+                        <div className="col-md-12 text-center">
+
+
+                            <img src={logo} alt="tutorial" className="img-fluid"/>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        )
+
+
+    }
+
+
 }
 
-AutoGridNoWrap.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(AutoGridNoWrap);
+export default (Note);
 
 

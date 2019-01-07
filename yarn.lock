@@ -106,10 +106,10 @@
     "@babel/runtime" "7.2.0"
     react-is "^16.6.3"
 
-"@tronscan/client@^0.2.30":
-  version "0.2.30"
-  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.2.30.tgz#ebc2b65d03fa59cb74529e2e4d65f5573d1d622c"
-  integrity sha512-Tud7kEsM9LEC48/fU5k1Bb9B1aqMG8kSr+HNq8xbSjYIEGdaUcAH6ytNcEXG8gzpEDiUk6RCZ7CAYEW26M/n8Q==
+"@tronscan/client@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@tronscan/client/-/client-0.2.32.tgz#95ada289e22c5baa803f82c7807628eb451a928e"
+  integrity sha512-F2/bp2sRcN+nGbOuW3NlSDYWUNFvKbIkLxpVgSYKiniYiJEwx6YRz5TL93hBfLwLfP8AvqmiXxdOsPCiQf1lcw==
   dependencies:
     axios "^0.18.0"
     babel-plugin-transform-class-properties "^6.24.1"

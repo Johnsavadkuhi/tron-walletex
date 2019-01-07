@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Wallet from "../wallet/Wallet";
-import Swal from "../transfer/TDNS";
 
 class Account extends Component {
 

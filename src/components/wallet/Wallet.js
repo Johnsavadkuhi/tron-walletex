@@ -258,7 +258,6 @@ class Wallet extends Component {
     }
 
 
-
     renderTokens() {
 
         let tokenBalances = [];
@@ -358,7 +357,7 @@ class Wallet extends Component {
         const {classes} = this.props;
         const {expanded} = this.state;
 
-        const { modal} = this.state;
+        const {modal} = this.state;
 
         let frozen = {total: 0, balances: []};
 
@@ -623,9 +622,6 @@ class Wallet extends Component {
                                 </ExpansionPanel>
 
 
-
-
-
                                 <ExpansionPanel expanded={expanded === 'panel2'}
                                                 onChange={this.handleChangeForExpand('panel2')}>
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
@@ -757,8 +753,6 @@ const mapDispatchToProps = {
     deleteWallet
 
 };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Wallet)
 
 
 export default compose(
