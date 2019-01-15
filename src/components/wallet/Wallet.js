@@ -27,9 +27,7 @@ import SendIcon from '@material-ui/icons/SendRounded';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import Tooltip from '@material-ui/core/Tooltip';
 import OpenIconSpeedDial from './OpenIconSpeedDial.js';
-
-const ITEM_HEIGHT = 48;
-
+import Panel from '../common/Panel' ;
 
 const styles = theme => ({
     root: {
@@ -366,6 +364,7 @@ class Wallet extends Component {
             freeNetRemaining: 0, freeNetPercentage: 0,
             netUsed: 0, netLimit: 0, netPercentage: 0, netRemaining: 0
         };
+        let energy = 0 ;
 
         let fr = this.props.balancesReducer;
 
@@ -377,6 +376,7 @@ class Wallet extends Component {
         }).map((obj) => {
             frozen = obj.frozen;
             bandwidth = obj.bandwidth
+
         });
 
 
@@ -500,74 +500,6 @@ class Wallet extends Component {
                                             </div>
                                         </div>
 
-
-                                        {/*<div className="container">*/}
-
-                                        {/*<div className="row">*/}
-
-                                        {/*<div className="col-md-4 mt-3 mt-md-0">*/}
-                                        {/*<div className="card h-100 text-center widget-icon">*/}
-                                        {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
-                                        {/*<div className="card-body">*/}
-
-                                        {/*<p className="text-primary">{frozen.total / ONE_TRX}</p>*/}
-
-                                        {/*Tron Power*/}
-                                        {/*</div>*/}
-                                        {/*</div>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div className="col-md-4 mt-3 mt-md-0">*/}
-                                        {/*<div className="card h-100 text-center widget-icon">*/}
-                                        {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
-
-                                        {/*<div className="card-body">*/}
-
-                                        {/*<p className="text-primary">{bandwidth.netRemaining}</p>*/}
-
-                                        {/*Bandwidth*/}
-
-                                        {/*</div>*/}
-
-                                        {/*</div>*/}
-                                        {/*</div>*/}
-
-
-                                        {/*<div className="col-md-4 mt-3 mt-md-0">*/}
-                                        {/*<div className="card h-100 text-center widget-icon">*/}
-
-                                        {/*/!*<WidgetIcon className="fa fa-clock text-primary"  />*!/*/}
-
-                                        {/*<div className="card-body">*/}
-
-
-                                        {/*<p className="text-primary">0</p>*/}
-
-                                        {/*Transactions*/}
-
-                                        {/*</div>*/}
-
-                                        {/*</div>*/}
-
-                                        {/*</div>*/}
-
-
-                                        {/**/}
-                                        {/**/}
-
-                                        {/*</div>*/}
-
-                                        {/*<div className="row mt-4 ">*/}
-                                        {/*<div className="col-me-12">*/}
-                                        {/*<div className="text-center">*/}
-
-                                        {/*<p className="text-muted small "> Address : {address} </p>*/}
-
-                                        {/*</div>*/}
-                                        {/*</div>*/}
-                                        {/*</div>*/}
-
-                                        {/*</div>*/}
 
 
                                     </ExpansionPanelDetails>

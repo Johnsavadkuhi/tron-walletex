@@ -331,3 +331,8 @@ body { height : 100% !important; }
     visibility: visible;
   }
 }
+
+.tbody {
+  height: 120px;
+  overflow-y: auto;
+}

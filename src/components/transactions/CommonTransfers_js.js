@@ -5,7 +5,6 @@ import {Client} from "@tronscan/client";
 import {ONE_TRX} from "../../constants";
 import {tu} from "../../utils/i18n";
 import TimeAgo from "react-timeago";
-// import {TronLoader} from "../tronwalletexloader/TronLoader";
 import {withTimers} from "../../utils/timing";
 import {FormattedNumber} from "react-intl";
 import {Truncate} from "../text/Text" ;
@@ -28,11 +27,13 @@ class Transfers extends React.Component {
   }
 
   componentDidMount() {
+
     this.load();
 
     if (this.state.autoRefresh !== false) {
       this.props.setInterval(() => this.load(), this.state.autoRefresh);
     }
+
   }
 
 

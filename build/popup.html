@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 400px;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="/node_modules/semantic-ui-flag/flag.css">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tron Wallet</title>
+</head>
+
+<body >
+
+
+<div class="container m-2">
+
+
+    <table width="100%" class="table table-sm mt-3">
+        <thead>
+        <tr>
+            <th>
+                <small class="badge badge-light text-muted ">CNY</small>
+                <i class="cn flag"></i>
+            </th>
+
+            <th>
+                <small class="badge badge-light text-muted ">USD</small>
+                <i class="us flag "></i>
+            </th>
+
+            <th>
+                <small class="badge badge-light text-muted ">EUR</small>
+                <i class="eu flag "> </i>
+            </th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+        <td>
+            <small class="text-muted" id="cnyPrice"> </small>
+        </td>
+
+        <td>
+            <small class="text-muted" id="usdPrice"> </small>
+
+        </td>
+
+        <td>
+            <small class="text-muted" id="eurPrice"> </small>
+
+        </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+<hr>
+
+
+
+    <a href="index.html" target="_blank" class="btn  btn-sm badge badge-primary text-white">open wallet</a>
+    <!--<a disabled  class="btn  btn-sm badge badge-success text-white">send</a>-->
+    <!--<a disabled   class="btn  btn-sm badge badge-danger text-white">vote</a>-->
+
+
+</div>
+
+<hr/>
+
+
+<script type="text/javascript" src="popup.bundle.js"></script></body>
+
+
+
+<footer class="footer container" style="background: #19294b">
+<div class="container ">
+
+    <p class="pt-4 small text-white ">Contact</p>
+
+    <div class="row">
+
+        <!--<div class="col col-md-6">-->
+            <!--<div>-->
+                <!--<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB9ElEQVR42qyW3yuDURjHvfPjRtbWMCuUpUiyC6ysWC1KcsGKuHUhykjaH+BifwG54I64UHJBKRd2I6lJkVxYiKIt1NqUmBzfU89bb+/OsXe2pz6dc95z9n065znPc6Ywxor+sFrgB32gCdiBAl5BFByBXXAjVeAOBJSDFZBmxmwD2EVaIvFe8MhytwQYy+ZgluVvIZkDDyuc+VVdhYJcBp6Brahw5gAxEw2WJeKnIAB6gBdMgxODDrbUW2STbHNBcsM4AYNH1coXzwsmNkmoHxyAYhrvg0nqTxhwsFSCTQzotvYDgtR3gk5KLm5VNL4F9waOycuD/IBOveZjCpglP+AOBkGceANusAiaBetjfKsp3ba+gUNw7k4wRTHTz/EjvBAcUYpPvgsm1gUiQ8BK/Qg56gDH9I2Pv0QOniQBCuoctFFrAi3UWsiJuuZKpxE3UVUU2TCwUusBLs0luKY2Ac40v7HrNF74LTqkJNJbBbgDFs23KCWfyNZAZUaiYht1OdSYJPAJ4uOTrO9Sa9E2GMmhzkTAJagGnyANxnVrzkG76sBMr1RpHsWNaRKSWyNPSLXYJcFontVTKz5D2Z7x4IQK8BasZnsy+bP38U/xOSNvMqcB7OUgHAYukZaS5W+Lm2LTDWooJxSKWYxyYgeEZQK/AgwA4ZimdIBya4YAAAAASUVORK5CYII=" alt="">-->
+                <!--<a href="" class="small text-white">Justin Sun's Wechat</a> </div>-->
+
+        <!--</div>-->
+
+
+        <div class="col col-md-6">
+            <div class="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAABt0lEQVR42rzWzSsEYRwH8GfXtomdbFrFRXNADpSklNeQUtsWKeXEzT/gIjebODspDouTEzk4uOyehFLiopw2l80BlxWS8X22Z+rp6TfPPDvt+NWnnZ555vnOy87zDHMch0nScAElJ1iVxPFpeVw5IOvUtjbUkIwTTmXkkHxIIQU+fqSSxFgZGlh19QvHcCa2Z2FR6fMBjfwqLCLdr35gRvnTcHOwC+dSX4vvSCkD9MOaT8gOEeCKQ06cCK9UFJeTUC6xHrZgEp48btWpz61shjqxnYgSHSbEbx56YBlulT6vmoAhyMgNVMgKxMX2NxzAANiwBJvwqQlpURtiRKdLMdie0l6EQ4N/XZvaQF3JA+yz4NVnErIKXQEDIjBlEpKEK5gPEDIG7SYhTDzYURisMmSdavQKaYV7uK4iYAGmyT14I23Nm30EvZq329UNbx5j2NS0Qi1EuqAOKGqOT1ETpFv8zLahSRPAJ8kXn5O03M5lqfFRzKYxj4H58jACJwazdVleTwowLj8quIMbeIYvMel1wjD1VntUoTIX/ufyy8TCX8vKUl8roX0Suc9EV0mDe/+u2/knwABYsNtjNdizWQAAAABJRU5ErkJggg==" alt="">
+                <a href="https://twitter.com/Tronfoundation" target="_blank"
+                   class="small text-white">TRON official account</a> </div>
+        </div>
+
+        <div class="mr-4">
+
+            <a href="https://tronfoundation.slack.com/" target="_blank" rel="nofollow">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAMAAADX9CSSAAAAwFBMVEUAAADzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkfzXkeO3yyqAAAAP3RSTlMAAQIJDA0QESkrLC0vMTU4Oz0+QFJTVFhkZmdoaWprbG1ub3GJjY6PkpOUl7W2t7nAwcLExdLW1+Pk5fH09/mxbNO7AAAA5ElEQVQoz32SbTPDQBSFn5XqIiKIoFSLWhX1Em2Vaur8/3/lw06yYXA+7Txz986Zcy4ANsmCEotXPNV3TWOAeKWfWsVAmJ73FvUPsGFsh4P6aUkk6ePySVKOmd0OlpKUkElSn+5amgAwlKTMcweFSw1A57HF59QaV2r4ItsAiPIrcAr8DIBRpSoibfFy6+jOcOwdTfLdWbNfSokqVdcAnLe4g9FJB8DsvwX+WTSOXlo+n7sA7LkCxi0+AOBeWm/S9zyRpGXvpjTkkh4u3n0+TZ6HbIdobcj/9bQMjf3T11/9/n4PX/nPT60JhQbRAAAAAElFTkSuQmCC" alt="">
+                <span class="text-white small">Slack</span>
+            </a>
+        </div>
+
+    </div>
+
+
+    </div>
+    <hr class="text-white">
+
+    <div class="row justify-content-center">
+        <a class=" nav-link js-scroll-trigger text-white small"
+           href="https://tron.network" target="_blank">TRON Foundation &copy; 2017-2018 </a>
+    </div>
+
+</footer>
+
+</html>

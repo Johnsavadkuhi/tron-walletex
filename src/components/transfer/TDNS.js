@@ -6,7 +6,7 @@ import {isAddressValid, pkToAddress} from "@tronscan/client/src/utils/crypto";
 import SendOption from "./SendOption";
 
 import {find} from "lodash";
-import {createMuiTheme, withStyles} from '@material-ui/core/styles';
+import { withStyles} from '@material-ui/core/styles';
 import {compose} from "redux";
 import TextField from '@material-ui/core/TextField';
 import green from '@material-ui/core/colors/green';
@@ -30,7 +30,6 @@ import Button from "@material-ui/core/Button" ;
 import {ENABLE_ADDRESS_NAME , DISABLE_ADDRESS_NAME} from "../constant/Constant";
 import Swal from 'sweetalert2';
 import {decryptString} from "../../services/encryption_js";
-import swal from "./Send";
 
 const styles = theme => ({
     root: {
@@ -56,16 +55,6 @@ const styles = theme => ({
 });
 
 
-const theme = createMuiTheme({
-
-    palette: {
-
-        primary: green,
-    },
-
-    typography: {useNextVariants: true},
-
-});
 
 
 class TDNS extends React.Component {
@@ -87,7 +76,7 @@ class TDNS extends React.Component {
             errorTo: false,
             amount: 0 ,
             helperAmount: 'Amount',
-            errorAmount: '',
+            errorAmount: false,
 
             labelWidth: 0,
             checkedG: false,
@@ -105,8 +94,11 @@ class TDNS extends React.Component {
     componentWillMount() {
 
         let walletAddress = '';
+
         if (localStorage && localStorage.getItem('walletAddress')) {
+
             walletAddress = JSON.parse(localStorage.getItem('walletAddress'));
+
         }
         this.setState({address: walletAddress});
 
@@ -116,7 +108,9 @@ class TDNS extends React.Component {
     componentDidMount() {
 
         this.setState({
+
             labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+
         });
 
         console.log(this.state.token);
@@ -126,42 +120,6 @@ class TDNS extends React.Component {
         this.refreshTokenBalances();
 
     }
-
-    // componentDidUpdate() {
-    //
-    //
-    //     let {address} = this.state;
-    //
-    //     const obj = this.props.tokensBalances.filter(value => {
-    //
-    //         return address === value.address;
-    //
-    //     });
-    //
-    //
-    //     if (obj > 0) {
-    //
-    //         let tokensBalances = obj[0].balances;
-    //
-    //         console.log("token balances : ", tokensBalances);
-    //
-    //
-    //         let {token} = this.state;
-    //
-    //
-    //         if (!token && tokensBalances.length > 0) {
-    //
-    //             this.setState({
-    //
-    //                 token: tokensBalances[0].name,
-    //
-    //             })
-    //
-    //         }
-    //
-    //     }
-    //
-    // }
 
 
     handlerChange = async event => {
@@ -340,7 +298,7 @@ class TDNS extends React.Component {
 
     decryption  = async () => {
 
-        const {value: password} = await Swal({
+        await Swal({
             type: 'question',
             title: 'Enter your Password',
             input: 'password',

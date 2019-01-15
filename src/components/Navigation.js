@@ -47,20 +47,6 @@ class Navigation extends Component {
             case "addWallet":
                 window.location = '#/AddWallet';
                 break;
-            // case "send":
-            //     window.location = '#/send';
-            //     break;
-            // case "buyToken":
-            //     window.location = '#/BuyToken';
-            //     break;
-            //
-            // case "voting":
-            //     window.location = '#/account/votes';
-            //     break;
-            //
-            // case "createToken":
-            //     window.location = '#/createToken';
-            //     break;
 
             default:
                 return;
@@ -85,11 +71,11 @@ class Navigation extends Component {
 
                     <div className="uk-navbar-left">
 
-                        <a className="uk-navbar-item uk-margin-left  " href="#">
+                        <a className="uk-navbar-item uk-margin-left  " href="javascript:void(0)">
                             <img src={Redlogo} className="logo" alt="TronWalletEx"/>
                         </a>
 
-                        <a className="uk-navbar-item">
+                        <div className="uk-navbar-item">
 
 
                             <ul className="uk-navbar-nav">
@@ -98,15 +84,14 @@ class Navigation extends Component {
                                     fontWeight: "bold",
                                     color: "red"
                                 }}> <span className="uk-icon uk-margin-small-right" data-uk-icon="icon: info"> </span>
-                                    {tu('myWallets')}</NavLink>
-                                {/*<li onClick={this.handleClick("myWallets")}>*/}
-                                        {/*<span className="uk-icon uk-margin-small-right"*/}
-                                              {/*data-uk-icon="icon: info"> </span>*/}
-                                        {/*{tu('myWallets')}*/}
-                                {/*</li>*/}
+                                    {tu('myWallets')}
+                                </NavLink>
+
+
+
                             </ul>
-                        </a>
-                        <a className="uk-navbar-item">
+                        </div>
+                        <div className="uk-navbar-item">
 
                             <ul className="uk-navbar-nav">
 
@@ -117,15 +102,9 @@ class Navigation extends Component {
 
                                     </Link>
 
-                                {/*<li onClick={this.handleClick("addWallet")}>*/}
-                                        {/*<span className="uk-icon uk-margin-small-right"*/}
-                                              {/*data-uk-icon="icon: plus-circle"> </span>*/}
-                                        {/*{tu('addWallet')}*/}
-
-                                {/*</li>*/}
                             </ul>
 
-                        </a>
+                        </div>
 
                     </div>
 

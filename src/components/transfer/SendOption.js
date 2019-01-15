@@ -1,6 +1,5 @@
 import React from "react";
 import {injectIntl} from "react-intl";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const SendOption = ({ name, balance, intl }) => (
 

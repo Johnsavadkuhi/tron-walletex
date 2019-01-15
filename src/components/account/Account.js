@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import Wallet from "../wallet/Wallet";
-
+import NewWallet from "../wallet/NewWallet";
 class Account extends Component {
 
+    searchInWallets () {
 
+        let wallets = this.props.wallets;
+
+        for (let i = 0; i < wallets.length; i++)
+        {
+
+        }
+    }
     render() {
-
 
 
         let wallets = this.props.wallets;
@@ -23,7 +29,7 @@ class Account extends Component {
 
                             <div key={i}>
 
-                                <Wallet walletinfo={wallet}/>
+                                <NewWallet walletInfo={wallet}/>
 
                             </div>
                         )) :
@@ -62,6 +68,8 @@ class Account extends Component {
 
             </div>
         );
+
+
 
     }
 }

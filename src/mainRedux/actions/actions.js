@@ -59,7 +59,7 @@ export const removeWallet = (address) => ({
 });
 
 
-export const loadTokenBalances = (myAddress) => async (dispatch) => {
+export const loadTokenBalances =   (myAddress) => async  (dispatch) => {
 
     let x = new Client();
 
@@ -81,7 +81,7 @@ export const loadTokenBalances = (myAddress) => async (dispatch) => {
 
 
     // dispatch(setTokenBalances(address,balance , balances , bandwidth , frozen , name , representative));
-    dispatch(setTokenBalances( representative,
+   await dispatch(setTokenBalances( representative,
         accountType,
         name,
         address,

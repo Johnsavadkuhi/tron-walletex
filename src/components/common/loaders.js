@@ -20,7 +20,7 @@ export function TronLoader({options = {}, children = null, height = 70, ...props
 
   return (
     <div className="p-3 text-center">
-      <img src={TronIcon} style={{ height }} />
+      <img alt=" loader " src={TronIcon} style={{ height }} />
       {
         children && <div className="pt-3">
           {children}
